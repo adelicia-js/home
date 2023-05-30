@@ -14,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #53caca;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +22,31 @@
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
 }
+
+.Animated-Header
+  {
+    font-size: 3rem;
+    background-image: linear-gradient(
+     -210deg,
+     #0ccece 0%,
+     #1fec18 30%,
+     #133288 60%,
+     #41a841 100%
+   );
+   background-size: 200% auto;
+   color: #fff;
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: textclip 2s linear 3;
+   display: inline-block;
+ }
+ 
+ @keyframes textclip {
+   to {
+     background-position: 200% top;
+   }
+ }
 
 .App-link {
   color: #61dafb;

@@ -1,12 +1,10 @@
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Hi, I'm Adelicia.
-        </p>
+        <p className="Animated-Header">Hi, I'm Adelicia.</p>
       </header>
     </div>
   );
