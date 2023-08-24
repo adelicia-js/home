@@ -30,7 +30,8 @@
    animation: textclip 2s linear infinite;
    display: inline-block;
    margin: 0;
- }
+   text-shadow: 1px 0.1px 3px #06fbde4c;
+  }
  
  @keyframes textclip {
    to {
@@ -43,11 +44,15 @@
 }
 
 .Socials-header {
+  color:#085c5c;
+  text-shadow: 1px 0.1px 1px #258989;
   font-size: clamp(0.8rem, 2rem, 1.5rem);
 }
 
 .Socials-list {
   display: flex;
+  color:#085c5c;
+  text-shadow: 1px 0.1px 1px #258989;
   list-style-type: none;
   gap: 1rem;
   padding-left: 0;
@@ -56,11 +61,11 @@
 }
 
 .Socials-list a {
-  color: #000000;
+  color:#085c5c;
 }
 
 .Socials-list :visited {
-  color: #000000;
+  color:#085c5c;
 } 
 
 .Socials-list :hover {
