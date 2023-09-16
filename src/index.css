@@ -1,16 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  background: linear-gradient(rgb(80, 229, 235), rgb(162, 250, 250), rgb(116, 204, 189));
-  margin: 0;
-  font-family: 'Unbounded',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .text-shadow-custom-blue {
+    text-shadow: 1px 0.1px 5px #0ea5e9;
+  }
 }

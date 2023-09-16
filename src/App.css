@@ -1,19 +1,12 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+
+#App {
+    font-family: 'Unbounded',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
-}
-
-.Animated-Header
-  {
+#Animated-Header {
     font-size: clamp(1rem, 4rem, 3rem);
     background-image: linear-gradient(
      -210deg,
@@ -29,46 +22,25 @@
    -webkit-text-fill-color: transparent;
    animation: textclip 2s linear infinite;
    display: inline-block;
-   margin: 0;
-   text-shadow: 1px 0.1px 3px #06fbde4c;
-  }
- 
- @keyframes textclip {
-   to {
-     background-position: 200% top;
-   }
- }
-
-.App-link {
-  color: #61dafb;
+   text-shadow: 1px 0.1px 3px #0957484c;
 }
 
-.Socials-header {
-  color:#085c5c;
-  text-shadow: 1px 0.1px 1px #258989;
+@keyframes textclip {
+    to {
+      background-position: 200% top;
+    }
+}
+
+#Socials-header {
   font-size: clamp(0.8rem, 2rem, 1.5rem);
-}
-
-.Socials-list {
-  display: flex;
-  color:#085c5c;
   text-shadow: 1px 0.1px 1px #258989;
-  list-style-type: none;
-  gap: 1rem;
-  padding-left: 0;
-  justify-content: center;
-  margin: 0;
 }
 
-.Socials-list a {
-  color:#085c5c;
+#Socials-list :visited {
+    color:#085c5c;
 }
 
-.Socials-list :visited {
-  color:#085c5c;
-} 
-
-.Socials-list :hover {
-  color:#1cab91;
-  text-shadow: 1px 0.1px 15px #99e2f6;
+#Socials-list :hover {
+    color:#1cab91;
+    text-shadow: 1px 0.1px 15px #99e2f6;
 }
