@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Unbounded&display=swap");
 
-#App {
+* {
   font-family: "Unbounded", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
 }
 
 .animated {
-  font-family: "Unbounded", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
   background-image: linear-gradient(
     -210deg,
     #0ccece 0%,
@@ -26,43 +23,13 @@
   display: inline-block;
   text-shadow: 1px 0.1px 3px #0957484c;
 }
-
 @keyframes textclip {
   to {
     background-position: 200% top;
   }
 }
 
-#Animated-Header {
-  font-family: "Unbounded", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
-  font-size: clamp(1rem, 4rem, 3rem);
-  background-image: linear-gradient(
-    -210deg,
-    #0ccece 0%,
-    #1fec18 30%,
-    #133288 60%,
-    #41a841 100%
-  );
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
-  display: inline-block;
-  text-shadow: 1px 0.1px 3px #0957484c;
-}
-
-@keyframes textclip {
-  to {
-    background-position: 200% top;
-  }
-}
-
-#Socials-header {
-  font-size: clamp(0.8rem, 2rem, 1.5rem);
+#socials-header {
   text-shadow: 1px 0.1px 1px #258989;
 }
 
@@ -73,4 +40,19 @@
 .icons :hover {
   color: #1cab91;
   text-shadow: 1px 0.1px 15px #99e2f6;
+}
+
+.scroll-down {
+  transform: translateX(-50%);
+  animation: jump 1.7s infinite;
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-40px);
+  }
 }
