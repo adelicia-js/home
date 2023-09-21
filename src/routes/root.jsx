@@ -37,14 +37,20 @@ export default function Root() {
                   rel="noreferrer"
                   href="https://www.github.com/adelicia-js"
                 >
-                  <GitHubIcon sx={{ fontSize: 37 }} className={`hover:text-emerald-200`}/>
+                  <GitHubIcon
+                    sx={{ fontSize: 37 }}
+                    className={`hover:text-emerald-200`}
+                  />
                 </a>
                 <a
                   target="_blank"
                   rel="noreferrer"
                   href="https://www.linkedin.com/in/adelicia"
                 >
-                  <LinkedInIcon sx={{ fontSize: 39 }} className={`hover:text-emerald-200`} />
+                  <LinkedInIcon
+                    sx={{ fontSize: 39 }}
+                    className={`hover:text-emerald-200`}
+                  />
                 </a>
               </div>
             </ul>
@@ -64,25 +70,26 @@ export default function Root() {
         className={`pt-4 min-h-screen grid grid-cols-3 grid-rows-4 items-center justify-around text-black`}
       >
         <div
-          className={`hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-bold hover:underline hover:underline-offset-[10px] row-start-1 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 col-start-2 text-xl sm:text-2xl`}
         >
           <a href="/me">About Me</a>
         </div>
         <div
-          className={`hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold hover:underline hover:underline-offset-[10px] row-start-2 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 col-start-2 text-xl sm:text-2xl`}
         >
           <a href="/projects">My Projects</a>
         </div>
         <div
-          className={`hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold hover:underline hover:underline-offset-[10px] row-start-3 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 col-start-2 text-xl sm:text-2xl`}
         >
           <a href="/resume">My Resume</a>
         </div>
-        <div
-          className={`text-emerald-900 hover:font-semibold hover:underline hover:underline-offset-[10px] row-start-4 col-start-2`}
-          >
+        <div className={`text-emerald-900 row-start-4 col-start-2`}>
           <a href="#">
-            <ArrowUpwardRoundedIcon sx={{fontSize: 45}} className={`absolute scroll-down`} />
+            <ArrowUpwardRoundedIcon
+              sx={{ fontSize: 45 }}
+              className={`absolute scroll-down`}
+            />
           </a>
         </div>
       </main>
