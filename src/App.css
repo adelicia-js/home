@@ -56,3 +56,22 @@
     transform: translateX(-50%) translateY(-20px);
   }
 }
+
+.pdf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-controls {
+  margin-bottom: 1rem;
+}
+
+.pdf-controls button {
+  margin: 0 0.5rem;
+}
+
+.pdf-content {
+  max-width: 100%;
+  overflow-x: auto;
+}

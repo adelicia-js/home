@@ -82,7 +82,7 @@ export default function Root() {
         <div
           className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 col-start-2 text-xl sm:text-2xl`}
         >
-          <a href="/resume">My Resume</a>
+          <a href="./ady-resume.pdf" target="_blank">My Resume</a>
         </div>
         <div className={`text-emerald-900 row-start-4 col-start-2`}>
           <a href="#">
