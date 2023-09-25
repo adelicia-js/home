@@ -7,7 +7,7 @@ export default function Projects() {
     >
       <h1 className={`text-3xl font-bold pb-4`}>{`[insert magnificent projects here]`}</h1>
       <h3 className={`text-xs pb-4`}>{`[`}This page is currently still being worked on.{`]`}</h3>
-      <a className={`text-3xl text-emerald-900 icons`} href="/">
+      <a className={`text-3xl text-emerald-900 hover:text-emerald-500`} href="/">
         <CottageRoundedIcon sx={{ fontSize: 40 }} />
       </a>{" "}
     </div>
