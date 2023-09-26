@@ -2,6 +2,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 
 export default function Root() {
   return (
@@ -25,33 +26,58 @@ export default function Root() {
               id="socials-header"
               className={`font-bold text-emerald-800 py-4 text-xl max-[400px]:text-l sm:text-3xl`}
             >
-              Connect with me
+              {`I'm a`}{" "}
+              <span id="changing-text" className="">
+                web developer.
+              </span>
             </h2>
             <ul
               id="socials"
-              className={`flex flex-col justify-center text-emerald-800`}
+              className={` flex flex-col justify-center text-emerald-800`}
             >
               <div className={`flex flex-row justify-center gap-5`}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.github.com/adelicia-js"
-                >
-                  <GitHubIcon
-                    sx={{ fontSize: 37 }}
-                    className={`hover:text-emerald-200`}
-                  />
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.linkedin.com/in/adelicia"
-                >
-                  <LinkedInIcon
-                    sx={{ fontSize: 39 }}
-                    className={`hover:text-emerald-200`}
-                  />
-                </a>
+                <li>
+                  <a
+                    id="github-link"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.github.com/adelicia-js"
+                  >
+                    <GitHubIcon
+                      id="github-icon"
+                      sx={{ fontSize: 37 }}
+                      className={`hover:text-emerald-200`}
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    id="linkedin-link"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/in/adelicia"
+                  >
+                    <LinkedInIcon
+                      id="linkedin-icon"
+                      sx={{ fontSize: 39 }}
+                      className={`hover:text-emerald-200`}
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    id="email-link"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="mailto:a.seq@gmail.com"
+                  >
+                    <AlternateEmailRoundedIcon
+                      id="email-icon"
+                      sx={{ fontSize: 39 }}
+                      className={`hover:text-emerald-200`}
+                    />
+                  </a>
+                </li>
               </div>
             </ul>
           </div>
@@ -67,38 +93,44 @@ export default function Root() {
       </header>
       <main
         id="menu"
-        className={`text-center pt-4 min-h-screen grid grid-cols-3 grid-rows-4 items-center justify-around text-black text-l sm:text-2xl`}
+        className={`text-center pt-4 min-h-screen grid grid-rows-4 items-center justify-around text-black text-l sm:text-2xl`}
       >
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 col-start-2`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 `}
         >
           <a href="/me">About Me</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 col-start-2`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 `}
         >
           <a href="/projects">My Projects</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 col-start-2`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 `}
         >
           <a href="/resume">My Resume</a>
         </div>
-        <div className={`text-emerald-900 row-start-4 col-start-2 flex flex-col gap-20 items-center`}>
+        <div
+          className={`text-emerald-900 row-start-4 flex flex-col gap-20 items-center`}
+        >
           <a href="#">
             <ArrowUpwardRoundedIcon
               sx={{ fontSize: 45 }}
               className={`absolute scroll-down`}
             />
           </a>
-          <a href="https://github.com/adelicia-js/home" target="_blank" rel="noreferrer">
-          <p className="w-screen font-semibold hover:underline hover:underline-offset-8"><span className="">Source</span> | <span className="text-emerald-500">2023 - 2024</span></p>
+          <a
+            href="https://github.com/adelicia-js/home"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p className="w-screen md:w-full font-semibold hover:underline hover:underline-offset-8">
+              <span className="tracking-wide">Source</span> |{" "}
+              <span className="text-emerald-500">2023 - 2024</span>
+            </p>
           </a>
         </div>
       </main>
-      <footer>
-        
-      </footer>
     </div>
   );
 }

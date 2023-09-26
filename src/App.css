@@ -55,7 +55,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
+  animation: textclip 5s linear infinite;
   display: inline-block;
   text-shadow: 1px 0.1px 3px #0957484c;
 }
@@ -78,6 +78,22 @@
   }
   50% {
     transform: translateX(-50%) translateY(-20px);
+  }
+}
+
+.beat {
+  animation: pulse 7s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    scale: 100%;
+  }
+  50% {
+    scale: 105%;
+  }
+  100% {
+    scale:100%;
   }
 }
 

@@ -49,7 +49,6 @@ export default function Resume() {
           Link
         </a>
       </h2>
-      <h3 className={`text-xs pb-4`}>{`[`}This page is currently still being worked on.{`]`}</h3>
       {/* <div className="pdf-container">
       <div className="pdf-controls">
         <button onClick={goToPrevPage} disabled={pageNum <= 1}>
