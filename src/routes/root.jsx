@@ -8,7 +8,7 @@ export default function Root() {
   return (
     <div
       id="home"
-      className={`text-center bg-gradient-to-b from-cyan-300 via-emerald-400 to-cyan-300`}
+      className={`text-center bg-gradient-to-b from-teal-500 via-emerald-300 to-cyan-600`}
     >
       <header
         id="header"
@@ -17,28 +17,24 @@ export default function Root() {
         <section className={`row-start-2`}>
           <h1
             id="welcome-text"
-            className={`animated font-bold pb-2 text-4xl max-[400px]:text-3xl sm:text-6xl`}
+            className={`animated font-bold pb-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl`}
           >
             Hi, I{`'`}m Adelicia.
           </h1>
           <div>
             <h2
-              id="socials-header"
-              className={`font-bold text-emerald-800 py-4 text-xl max-[400px]:text-l sm:text-3xl`}
+              className={`max-[370px]:text-sm max-[300px]:text-xs text-md md:text-xl sm:text-md font-bold text-emerald-800 pb-2`}
             >
-              {`I'm a`}{" "}
-              <span id="changing-text" className="">
-                web developer.
-              </span>
+              <span id="intro-line" className="italic changing-me"></span>
             </h2>
             <h2
-              className={`font-bold text-emerald-600 pb-4 text-s max-[400px]:text-md sm:text-md`}
+              className={`max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs font-bold text-emerald-600 pb-4`}
             >
-              React | Next.js | Tailwind | Vite | Node.js | Vercel | Figma 
+              React | Next.js | Tailwind | Vite | Node.js | Figma
             </h2>
             <ul
               id="socials"
-              className={` flex flex-col justify-center text-emerald-800`}
+              className={`flex flex-col justify-center text-emerald-800`}
             >
               <div className={`flex flex-row justify-center gap-5`}>
                 <li>
@@ -64,7 +60,7 @@ export default function Root() {
                   >
                     <LinkedInIcon
                       id="linkedin-icon"
-                      sx={{ fontSize: 39 }}
+                      sx={{ fontSize: 40 }}
                       className={`hover:text-emerald-200`}
                     />
                   </a>
@@ -101,39 +97,42 @@ export default function Root() {
         className={`text-center pt-4 min-h-screen grid grid-rows-4 items-center justify-around text-black text-l sm:text-2xl`}
       >
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 `}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-1 `}
         >
           <a href="/me">About Me</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 `}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-2 `}
         >
           <a href="/projects">My Projects</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 `}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-3 `}
         >
           <a href="/resume">My Resume</a>
         </div>
         <div
-          className={`text-emerald-900 row-start-4 flex flex-col gap-20 items-center`}
+          className={`text-emerald-900 row-start-4 flex flex-col gap-16 items-center`}
         >
-          <a href="#">
+          <a href="/">
             <ArrowUpwardRoundedIcon
               sx={{ fontSize: 45 }}
               className={`absolute scroll-down`}
             />
           </a>
-          <a
-            href="https://github.com/adelicia-js/home"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <p className="w-screen md:w-full font-semibold hover:underline hover:underline-offset-8">
-              <span className="tracking-wide">Source</span> |{" "}
-              <span className="text-emerald-500">2023 - 2024</span>
-            </p>
-          </a>
+          <div>
+            <p className="text-md sm:text-lg md:text-xl italic sm:pb-2 pb-1">Thank you for visiting! :{`)`}</p>
+            <a
+              href="https://github.com/adelicia-js/home"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <p className="text-sm sm:text-md md:text-lg font-semibold hover:underline hover:underline-offset-8 hover:decoration-2">
+                <span className="tracking-wide"> Source</span> |{" "}
+                <span className="text-emerald-400">2023 - 2024 </span>
+              </p>
+            </a>
+          </div>
         </div>
       </main>
     </div>

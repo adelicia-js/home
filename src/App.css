@@ -45,20 +45,23 @@
 .animated {
   background-image: linear-gradient(
     -210deg,
-    #0ccece 0%,
-    #1fec18 30%,
-    #133288 60%,
-    #41a841 100%
+    #07ffff 0%,
+    #04ff9b 40%,
+    #ffee52 60%,
+    #04ff9b 80%,
+    #07ffff 100%
   );
   background-size: 200% auto;
   color: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 5s linear infinite;
+  animation: textclip 5s ease infinite;
   display: inline-block;
-  text-shadow: 1px 0.1px 3px #0957484c;
+  text-shadow: 1px 1px 5px #043c2c2e;
 }
+
+/* I'm still sane I swear :) */
 
 @keyframes textclip {
   to {
@@ -93,7 +96,7 @@
     scale: 105%;
   }
   100% {
-    scale:100%;
+    scale: 100%;
   }
 }
 
@@ -109,20 +112,58 @@
     #ff88f9a4
   );
   background-size: 200% auto;
-  animation: groovy 12s ease infinite;
-  text-shadow: 1px 0.1px 3px #0957484c;
+  animation: groovy 30s ease-in-out infinite;
+  text-shadow: 1px 0.1px 3px #07463a4c;
 }
 
 @keyframes groovy {
   0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 50% 0%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.changing-me::before {
+  content: "I'm a web developer. I love coding.";
+  animation: who 8s linear infinite;
+}
+
+@keyframes who {
+  0% {
+    color: #085c5c;
+    content: "I'm a web developer. I love coding.";
+  }
+  20% {
+    color: #085c5c2a;
+  }
+  30% {
+    color: #085c5c84;
+  }
+  40% {
+    color: #085c5c;
+    content: "I'm a designer. I frequent Pinterest.";
+  }
+  60% {
+    color: #085c5c2a;
+  }
+  70% {
+    color: #085c5c84;
+  }
+  80% {
+    color: #085c5c;
+    content: "I'm an artist. I craft jewellery.";
+  }
+  90% {
+    color: #085c5c2a;
+  }
+  100% {
+    color: #085c5c84;
+  }
 }
 
 /* Utility Classes */
