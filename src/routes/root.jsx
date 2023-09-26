@@ -67,32 +67,38 @@ export default function Root() {
       </header>
       <main
         id="menu"
-        className={`pt-4 min-h-screen grid grid-cols-3 grid-rows-4 items-center justify-around text-black`}
+        className={`text-center pt-4 min-h-screen grid grid-cols-3 grid-rows-4 items-center justify-around text-black text-l sm:text-2xl`}
       >
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-1 col-start-2`}
         >
           <a href="/me">About Me</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-2 col-start-2`}
         >
           <a href="/projects">My Projects</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 col-start-2 text-xl sm:text-2xl`}
+          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold sm:hover:underline sm:hover:underline-offset-[10px] row-start-3 col-start-2`}
         >
           <a href="/resume">My Resume</a>
         </div>
-        <div className={`text-emerald-900 row-start-4 col-start-2`}>
+        <div className={`text-emerald-900 row-start-4 col-start-2 flex flex-col gap-20 items-center`}>
           <a href="#">
             <ArrowUpwardRoundedIcon
               sx={{ fontSize: 45 }}
               className={`absolute scroll-down`}
             />
           </a>
+          <a href="https://github.com/adelicia-js/home" target="_blank" rel="noreferrer">
+          <p className="w-screen font-semibold hover:underline hover:underline-offset-8"><span className="">Source</span> | <span className="text-emerald-500">2023 - 2024</span></p>
+          </a>
         </div>
       </main>
+      <footer>
+        
+      </footer>
     </div>
   );
 }
