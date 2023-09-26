@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer utilities {
-  .text-shadow-custom-blue {
-    text-shadow: 1px 0.1px 5px #0ea5e9;
+
+  .w-50vw {
+    width: 50vw;
   }
+
+  .border-35 {
+    border-radius: 2px 15px 2px 7px;
+  }
+
 }
