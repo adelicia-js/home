@@ -1,8 +1,31 @@
-# React + Vite
+# My portfolio website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Description 
+This project was built using Vite + React, React Router DOM, Tailwind CSS, Material UI Icons and hosted using Cloudflare Pages. 
 
-Currently, two official plugins are available:
+To clone the project, type this into your terminal: 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`git clone https://github.com/adelicia-js/home.git`
+
+Install all dependencies:
+
+`npm i`
+
+Run the app:
+
+`npm run dev`
+
+Open the app in your browser:
+
+`localhost:5173`
+
+Thanks for visiting. Cheers. :D
+
+### Relevant Docs/Resources: 
+1. https://vitejs.dev/guide/ 
+2. https://tailwindcss.com/docs/installation/using-postcss
+3. https://reactrouter.com/en/main/start/tutorial
+4. https://www.npmjs.com/package/react-router-dom
+5. https://mui.com/material-ui/material-icons/
+6. https://www.npmjs.com/package/@mui/icons-material
+7. https://developer.mozilla.org/en-US/ (the best)

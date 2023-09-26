@@ -31,6 +31,11 @@ export default function Root() {
                 web developer.
               </span>
             </h2>
+            <h2
+              className={`font-bold text-emerald-600 pb-4 text-s max-[400px]:text-md sm:text-md`}
+            >
+              React | Next.js | Tailwind | Vite | Node.js | Vercel | Figma 
+            </h2>
             <ul
               id="socials"
               className={` flex flex-col justify-center text-emerald-800`}
