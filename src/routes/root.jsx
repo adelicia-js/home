@@ -17,7 +17,7 @@ export default function Root() {
         <section className={`row-start-2`}>
           <h1
             id="welcome-text"
-            className={`animated font-bold pb-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl`}
+            className={`animated text-shadow-sea font-bold pb-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl`}
           >
             Hi, I{`'`}m Adelicia.
           </h1>
@@ -28,7 +28,8 @@ export default function Root() {
               <span id="intro-line" className="italic changing-me"></span>
             </h2>
             <h2
-              className={`max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs font-bold text-emerald-600 pb-4`}
+              // className={`tracking-widest font-normal font-mono max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs text-emerald-600 pb-4`}
+              className={`text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-emerald-600 pb-4`}
             >
               React | Next.js | Tailwind | Vite | Node.js | Figma
             </h2>
@@ -97,17 +98,17 @@ export default function Root() {
         className={`text-center pt-4 min-h-screen grid grid-rows-4 items-center justify-around text-black text-l sm:text-2xl`}
       >
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-1 `}
+          className={`text-shadow-sea sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-1 `}
         >
           <a href="/me">About Me</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-2 `}
+          className={`text-shadow-sea sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-2 `}
         >
           <a href="/projects">My Projects</a>
         </div>
         <div
-          className={`sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-3 `}
+          className={`text-shadow-sea sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-3 `}
         >
           <a href="/resume">My Resume</a>
         </div>
@@ -121,13 +122,19 @@ export default function Root() {
             />
           </a>
           <div>
-            <p className="text-md sm:text-lg md:text-xl italic sm:pb-2 pb-1">Thank you for visiting! :{`)`}</p>
+            <p className="text-md sm:text-lg md:text-xl italic uppercase sm:pb-2 pb-1 ">
+              <span className="text-lg sm:text-xl md:text-2xl not-italic"> 🧜🏽‍♀️ </span>
+              <span>
+                Thank you for visiting{" "}
+              </span>
+              <span className="text-lg sm:text-xl md:text-2xl not-italic"> 🌴 </span>
+            </p>
             <a
               href="https://github.com/adelicia-js/home"
               target="_blank"
               rel="noreferrer"
             >
-              <p className="text-sm sm:text-md md:text-lg font-semibold hover:underline hover:underline-offset-8 hover:decoration-2">
+              <p className="text-shadow-sea text-sm sm:text-md md:text-lg font-semibold hover:underline hover:underline-offset-8 hover:decoration-2">
                 <span className="tracking-wide"> Source</span> |{" "}
                 <span className="text-emerald-400">2023 - 2024 </span>
               </p>

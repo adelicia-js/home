@@ -25,3 +25,4 @@ dist-ssr
 
 # Personal files
 personal/*
+src/routes/testing/*

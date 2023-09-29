@@ -11,4 +11,8 @@
   .border-projects-boxes {
     border-radius: 2px 15px 2px 7px;
   }
+
+  .text-shadow-sea {
+    text-shadow: 1px 0.1px 0.1px #04fcc266;
+  }
 }
