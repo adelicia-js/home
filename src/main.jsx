@@ -6,7 +6,6 @@ import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
 import AboutMe from "./routes/about.jsx";
 import Projects from "./routes/projects.jsx";
-import TestingProjects from "./routes/testing/projects.jsx";
 import Resume from "./routes/resume.jsx";
 import "./index.css";
 
@@ -27,10 +26,6 @@ const router = createBrowserRouter([
   {
     path: "/resume",
     element: <Resume />,
-  },
-  {
-    path: "/testing/projects",
-    element:<TestingProjects/>,
   }
 ]);
 
