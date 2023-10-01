@@ -110,7 +110,7 @@ export default function Root() {
         <div
           className={`text-shadow-sea sm:hover:tracking-[0.08rem] uppercase text-emerald-900 hover:text-emerald-200 hover:font-semibold min-[500px]:hover:underline min-[500px]:hover:underline-offset-[10px] min-[500px]:hover:decoration-2 row-start-3 `}
         >
-          <a href="./ady-resume.pdf">My Resume</a>
+          <a href="./ady-resume.pdf" target="_blank">My Resume</a>
         </div>
         <div
           className={`text-emerald-900 row-start-4 flex flex-col gap-16 items-center`}
