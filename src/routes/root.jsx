@@ -115,7 +115,7 @@ export default function Root() {
         <div
           className={`text-emerald-900 row-start-4 flex flex-col gap-16 items-center`}
         >
-          <a href="/">
+          <a href="#home">
             <ArrowUpwardRoundedIcon
               sx={{ fontSize: 45 }}
               className={`absolute scroll-down`}
