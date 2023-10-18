@@ -7,6 +7,7 @@ import ErrorPage from "./error-page.jsx";
 import AboutMe from "./routes/about.jsx";
 import Projects from "./routes/projects.jsx";
 import Resume from "./routes/resume.jsx";
+import TestPrj from "./routes/prjtest.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/resume",
     element: <Resume />,
+  },
+  {
+    path: "/testing",
+    element: <TestPrj/>
   }
 ]);
 
