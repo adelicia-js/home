@@ -39,7 +39,7 @@ export default function Projects() {
           To-do App
         </a>
         <a
-          href="https://milestone-monitor.vercel.appx/"
+          href="https://milestone-monitor.vercel.app/"
           target="_blank"
           rel="noreferrer"
           className={`shadow-md shadow-teal-500/50 hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wide hover:border-emerald-700 hover:text-emerald-700 px-4 py-8 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-4 col-start-2 lg:row-start-4 lg:col-start-2`}
