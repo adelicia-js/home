@@ -8,7 +8,7 @@ export default function Root() {
   return (
     <div
       id="home"
-      className={`text-center bg-gradient-to-b from-teal-500 via-emerald-300 to-cyan-600`}
+      className={`text-center bg-gradient-to-b from-teal-500 via-emerald-400 to-cyan-600`}
     >
       <header
         id="header"
@@ -29,13 +29,13 @@ export default function Root() {
             </h2>
             <h2
               // className={`tracking-widest font-normal font-mono max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs text-emerald-600 pb-4`}
-              className={`text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-emerald-600 pb-4`}
+              className={`text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-[#065F46] pb-4`}
             >
               React | Next.js | Tailwind | Vite | Node.js | Figma
             </h2>
             <ul
               id="socials"
-              className={`flex flex-col justify-center text-emerald-800`}
+              className={`flex flex-col justify-center text-[#065F46]`}
             >
               <div className={`flex flex-row justify-center gap-5`}>
                 <li>
@@ -88,7 +88,7 @@ export default function Root() {
           <a href="#menu">
             <KeyboardDoubleArrowDownRoundedIcon
               sx={{ fontSize: 50 }}
-              className={`scroll-down absolute top-3/4 text-emerald-900`}
+              className={`scroll-down absolute top-3/4 text-[#065F46]`}
             />
           </a>
         </section>

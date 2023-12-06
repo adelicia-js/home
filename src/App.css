@@ -135,34 +135,34 @@
 
 @keyframes who {
   0% {
-    color: #085c5c;
+    color: #065F46;
     content: "I'm a web developer. I love coding.";
   }
   20% {
-    color: #085c5c2a;
+    color: #065F462a;
   }
   30% {
-    color: #085c5c84;
+    color: #065F4684;
   }
   40% {
-    color: #085c5c;
+    color: #065F46;
     content: "I'm a designer. I frequent Pinterest.";
   }
   60% {
-    color: #085c5c2a;
+    color: #065F462a;
   }
   70% {
-    color: #085c5c84;
+    color: #065F4684;
   }
   80% {
-    color: #085c5c;
+    color: #065F46;
     content: "I'm an artist. I craft jewellery.";
   }
   90% {
-    color: #085c5c2a;
+    color: #065F462a;
   }
   100% {
-    color: #085c5c84;
+    color: #065F4684;
   }
 }
 
