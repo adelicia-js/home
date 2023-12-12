@@ -57,13 +57,13 @@ export default function Projects() {
             <p>Official registration website for Syntaxia 2023.</p>
             <p>
               Built with{" "}
-              <span className="font-bold underline underline-offset-4">
+              <span className="font-bold underline underline-offset-4 tracking-[0.05em]">
                 HTML, CSS, JavaScript & Bootstrap
               </span>
               .
             </p>
             <p>
-              Hosted with <span className="font-bold">Firebase</span>.
+              Hosted with <span className="font-bold tracking-[0.05em]">Firebase</span>.
             </p>
           </div>
         )}
@@ -87,13 +87,13 @@ export default function Projects() {
             <p>Redesigned website for Loyola Degree College.</p>
             <p>
               Built with{" "}
-              <span className="font-bold underline underline-offset-4">
+              <span className="font-bold underline underline-offset-4 tracking-[0.05em]">
                 Next.js, React & Tailwind CSS
               </span>
               .
             </p>
             <p>
-              Hosted with <span className="font-bold">Vercel</span>.
+              Hosted with <span className="font-bold tracking-[0.05em]">Vercel</span>.
             </p>
           </div>
         )}
@@ -117,13 +117,13 @@ export default function Projects() {
             <p>Simple To-Do app.</p>
             <p>
               Built with{" "}
-              <span className="font-bold underline underline-offset-4">
+              <span className="font-bold underline underline-offset-4 tracking-[0.05em]">
                 React & Tailwind CSS
               </span>
               .
             </p>
             <p>
-              Hosted with <span className="font-bold">Cloudflare Pages</span>.
+              Hosted with <span className="font-bold tracking-[0.05em]">Cloudflare Pages</span>.
             </p>
           </div>
         )}
@@ -147,10 +147,10 @@ export default function Projects() {
             <p>A cataloguing app for university faculty.</p>
             <p>
               Built with{" "}
-              <span className="font-bold underline underline-offset-4">
+              <span className="font-bold underline underline-offset-4 tracking-[0.05em]">
                 Next.js, Supabase & Tailwind CSS
               </span>
-              . Hosted with <span className="font-bold">Vercel</span>.
+              . Hosted with <span className="font-bold tracking-[0.05em]">Vercel</span>.
             </p>
           </div>
         )}
@@ -165,7 +165,7 @@ export default function Projects() {
         <div className="row-start-5 col-span-3 -mt-6 pb-4 lg:mt-0 lg:pb-0 lg:row-start-6 lg:col-span-1 lg:col-start-2 text-xs text-center normal-case tracking-[0.01em]">
           <p>
             This website was built with{" "}
-            <span className="font-bold whitespace-pre lg:whitespace-normal">
+            <span className="font-bold whitespace-pre lg:whitespace-normal tracking-[0.03em]">
               Vite, React & Tailwind CSS.
             </span>
           </p>
