@@ -23,16 +23,16 @@ export default function Root() {
           </h1>
           <div id="profile-description">
             <h2
-              className={`max-[370px]:text-sm max-[300px]:text-xs text-md md:text-xl sm:text-md font-bold text-emerald-800 pb-2`}
+              className={`lg:text-left max-[370px]:text-sm max-[300px]:text-xs text-md lg:text-[1.35rem] md:text-xl sm:text-md font-bold text-emerald-800 pb-2`}
             >
               <span id="personal-description" className="italic changing-me"></span>
             </h2>
             <h2
               id="tech-stack"
               // className={`tracking-widest font-normal font-mono max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs text-emerald-600 pb-4`}
-              className={`text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-[#065F46] pb-4`}
+              className={`text-center text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-[#065F46] pb-4`}
             >
-              React | Next.js | Tailwind | Vite | Node.js | Figma
+              React | Next.js | Tailwind | Vite | Node.js | Figma <span className="hidden sm:inline text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-[#065F46] pb-4">| Vercel</span>
             </h2>
             <ul
               id="socials-list"

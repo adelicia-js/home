@@ -129,39 +129,76 @@
 }
 
 .changing-me::before {
-  content: "I'm a web developer. I love coding.";
-  animation: who 8s linear infinite;
+  content: "I'm a web developer.";
+  animation: who 30s linear infinite;
 }
 
 @keyframes who {
   0% {
     color: #065F46;
-    content: "I'm a web developer. I love coding.";
+    content: "I'm a web developer.";
   }
-  20% {
-    color: #065F462a;
-  }
-  30% {
+  10%{
     color: #065F4684;
   }
-  40% {
+  15% {
+    color: #065F462a;
+  }
+  20% {
     color: #065F46;
-    content: "I'm a designer. I frequent Pinterest.";
+    content: "I'm a graduate student.";
+  }
+  25% {
+    color: #065F4684;
+  }
+  30% {
+    color: #065F462a;
+  }
+  35% {
+    color: #065F46;
+    content: "I'm a UI/UX designer.";
+  }
+  40% {
+    color: #065F4684;
+  }
+  45%{
+    color: #065F462a;
+  }
+  50% {
+    color: #065F46;
+    content: "I'm a jewellery artist.";
+  }
+  55% {
+    color: #065F4684;
   }
   60% {
     color: #065F462a;
   }
+  65% {
+    color: #065F46;
+    content: "I'm a musician.";
+  }
   70% {
     color: #065F4684;
   }
-  80% {
-    color: #065F46;
-    content: "I'm an artist. I craft jewellery.";
-  }
-  90% {
+  75% {
     color: #065F462a;
   }
-  100% {
+  80% {
+    color: #065F46;
+    content: "I'm a poet.";
+  }
+  85%{
+    color: #065F4684;
+  }
+  90%{
+    color: #065F462a;
+  }
+  95%{
+    color: #065F46;
+    content: "I'm a gym rat.";
+  }
+  100%{
     color: #065F4684;
   }
 }
