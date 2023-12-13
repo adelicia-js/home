@@ -45,11 +45,11 @@
 .animated {
   background-image: linear-gradient(
     -210deg,
-    #07ffff 0%,
-    #04ff9b 40%,
-    #ffee52 60%,
-    #04ff9b 80%,
-    #07ffff 100%
+    #17ac07 0%,
+    #04cb7b 40%,
+    #8c58b0 60%,
+    #04cb7b 80%,
+    #17ac07 100%
   );
   background-size: 200% auto;
   color: #fff;
@@ -58,7 +58,7 @@
   -webkit-text-fill-color: transparent;
   animation: textclip 5s ease infinite;
   display: inline-block;
-  text-shadow: 1px 1px 5px #043c2c2e;
+  text-shadow: 1px 1px 5px rgba(25, 61, 2, 0.279);
 }
 
 /* I'm still sane I swear :) */

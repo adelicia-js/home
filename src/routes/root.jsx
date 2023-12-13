@@ -8,7 +8,7 @@ export default function Root() {
   return (
     <div
       id="home"
-      className={`text-center bg-gradient-to-b from-teal-500 via-emerald-400 to-cyan-600`}
+      className={`text-center bg-gradient-to-b from-yellow-300 via-emerald-500 to-cyan-600`}
     >
       <header
         id="header"
@@ -21,23 +21,24 @@ export default function Root() {
           >
             Hi, I{`'`}m Adelicia.
           </h1>
-          <div>
+          <div id="profile-description">
             <h2
               className={`max-[370px]:text-sm max-[300px]:text-xs text-md md:text-xl sm:text-md font-bold text-emerald-800 pb-2`}
             >
-              <span id="intro-line" className="italic changing-me"></span>
+              <span id="personal-description" className="italic changing-me"></span>
             </h2>
             <h2
+              id="tech-stack"
               // className={`tracking-widest font-normal font-mono max-[400px]:text-[0.70rem] max-[370px]:text-[0.65rem] max-[300px]:text-[0.60rem] text-sm md:text-md sm:text-xs text-emerald-600 pb-4`}
               className={`text-shadow-sea tracking-wider font-normal font-mono max-[400px]:text-[0.65rem] max-[370px]:text-[0.60rem] max-[300px]:text-[0.55rem] text-xs lg:text-[0.9rem] md:text-sm sm:text-xs text-[#065F46] pb-4`}
             >
               React | Next.js | Tailwind | Vite | Node.js | Figma
             </h2>
             <ul
-              id="socials"
+              id="socials-list"
               className={`flex flex-col justify-center text-[#065F46]`}
             >
-              <div className={`flex flex-row justify-center gap-5`}>
+              <div id="socials-list-wrapper" className={`flex flex-row justify-center gap-5`}>
                 <li>
                   <a
                     id="github-link"
@@ -48,7 +49,7 @@ export default function Root() {
                     <GitHubIcon
                       id="github-icon"
                       sx={{ fontSize: 37 }}
-                      className={`hover:text-emerald-200`}
+                      className={`hover:text-white`}
                     />
                   </a>
                 </li>
@@ -62,7 +63,7 @@ export default function Root() {
                     <LinkedInIcon
                       id="linkedin-icon"
                       sx={{ fontSize: 40 }}
-                      className={`hover:text-emerald-200`}
+                      className={`hover:text-blue-700`}
                     />
                   </a>
                 </li>
@@ -76,7 +77,7 @@ export default function Root() {
                     <AlternateEmailRoundedIcon
                       id="email-icon"
                       sx={{ fontSize: 39 }}
-                      className={`hover:text-emerald-200`}
+                      className={`hover:text-red-700`}
                     />
                   </a>
                 </li>
