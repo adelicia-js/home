@@ -25,17 +25,9 @@ export default function Projects() {
       id="projects-wrapper"
       className={`px-8 text-center min-h-screen bg-gradient-to-b from-teal-400 via-teal-200 to-teal-400 flex flex-col justify-center`}
     >
-      {/* Back to Home - Small Screens */}
-      <a
-        id="home-link-small"
-        className={`text-3xl text-emerald-900 hover:text-emerald-500 pt-4 pb-8 md:py-4 lg:hidden`}
-        href="/"
-      >
-        <CottageRoundedIcon sx={{ fontSize: 40 }} />
-      </a>{" "}
       <div
         id="project-list-wrapper"
-        className={`text-emerald-900 uppercase grid gap-12 grid-cols-3 grid-rows-7 items-center justify-center sm:justify-evenly justify-items-center text-l sm:text-xl md:text-2xl`}
+        className={`pt-8 lg:pt-0 text-emerald-900 uppercase grid gap-6 lg:gap-12 grid-cols-3 grid-rows-11 lg:grid-rows-7 items-center justify-center sm:justify-evenly justify-items-center text-l sm:text-xl md:text-2xl`}
       >
         {/* Syntaxia 2023's Website */}
         <a
@@ -43,7 +35,7 @@ export default function Projects() {
           href="https://syntaxia2023.web.app/"
           target="_blank"
           rel="noreferrer"
-          className={`shadow-md shadow-teal-500/50 hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wide hover:border-emerald-700 hover:text-emerald-700 px-4 py-10 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-1 col-start-2 lg:row-start-1 lg:col-start-2`}
+          className={`shadow-md shadow-teal-500/50 hover:bg-teal-500 lg:hover:bg-transparent hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wider hover:border-emerald-200 lg:hover:border-emerald-700 hover:text-emerald-200 lg:hover:text-emerald-700 px-4 py-10 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-1 col-start-2 lg:row-start-1 lg:col-start-2`}
           onMouseEnter={() => handleMouseEnter("syntaxia")}
           onMouseLeave={() => handleMouseLeave("syntaxia")}
         >
@@ -52,7 +44,7 @@ export default function Projects() {
         {anchorStates.syntaxia && (
           <div
             id="syntaxia-description"
-            className="row-start-1 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] hidden lg:block border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
+            className="row-start-1 col-start-1 lg:col-start-3 hidden lg:block lg:text-[0.9rem] text-center normal-case tracking-[0.01em] lg:border lg:border-b-4 lg:border-description-boxes lg:border-emerald-900 lg:bg-teal-500 lg:text-emerald-200 lg:px-4"
           >
             <p>Official registration website for Syntaxia 2023.</p>
             <p>
@@ -68,13 +60,24 @@ export default function Projects() {
             </p>
           </div>
         )}
+        <div className="block lg:hidden row-start-2 col-start-1 col-span-3 -mt-4 text-[0.65rem] text-center normal-case tracking-[0.01em] ">
+          <p>Official registration website for Syntaxia 2023.</p>
+          <p>
+            Built with{" "}
+            <span className="font-bold tracking-[0.05em] text-[0.7rem] text-shadow-sea">
+              JavaScript, Bootstrap & Firebase
+            </span>
+            .
+          </p>
+        </div>
+
         {/* Loyola Degree College's Website */}
         <a
           id="loyola-link"
           href="https://loyola-website.vercel.app/"
           target="_blank"
           rel="noreferrer"
-          className={`shadow-md shadow-teal-500/50 hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wide hover:border-emerald-700 hover:text-emerald-700 px-4 py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-2 col-start-2 lg:row-start-2 lg:col-start-2`}
+          className={`shadow-md shadow-teal-500/50 hover:bg-teal-500 lg:hover:bg-transparent hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wider hover:border-emerald-200 lg:hover:border-emerald-700 hover:text-emerald-200 lg:hover:text-emerald-700 px-4 py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-3 col-start-2 lg:row-start-2 lg:col-start-2`}
           onMouseEnter={() => handleMouseEnter("loyola")}
           onMouseLeave={() => handleMouseLeave("loyola")}
         >
@@ -99,13 +102,24 @@ export default function Projects() {
             </p>
           </div>
         )}
+        <div className="block lg:hidden row-start-4 col-start-1 col-span-3 -mt-4 text-[0.65rem] text-center normal-case tracking-[0.01em] ">
+          <p>Redesigned website for Loyola Degree College.</p>
+          <p>
+            Built with{" "}
+            <span className="font-bold tracking-[0.05em] text-[0.7rem] text-shadow-sea">
+              Next.js, Tailwind CSS & Vercel
+            </span>
+            .
+          </p>
+        </div>
+
         {/* Simple To-Do Web App */}
         <a
           id="todo-link"
           href="https://todo-cra.pages.dev/"
           target="_blank"
           rel="noreferrer"
-          className={`shadow-md shadow-teal-500/50 hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wide hover:border-emerald-700 hover:text-emerald-700 px-4 py-10 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-3 col-start-2 lg:row-start-3 lg:col-start-2`}
+          className={`shadow-md shadow-teal-500/50 hover:bg-teal-500 lg:hover:bg-transparent hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wider hover:border-emerald-200 lg:hover:border-emerald-700 hover:text-emerald-200 lg:hover:text-emerald-700 px-4 py-10 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-5 col-start-2 lg:row-start-3 lg:col-start-2`}
           onMouseEnter={() => handleMouseEnter("todo")}
           onMouseLeave={() => handleMouseLeave("todo")}
         >
@@ -133,13 +147,24 @@ export default function Projects() {
             </p>
           </div>
         )}
+        <div className="block lg:hidden row-start-6 col-start-1 col-span-3 -mt-4 text-[0.65rem] text-center normal-case tracking-[0.01em] ">
+          <p>Simple To-Do app.</p>
+          <p>
+            Built with{" "}
+            <span className="font-bold tracking-[0.05em] text-[0.7rem] text-shadow-sea">
+              React, Tailwind CSS & CloudFlare
+            </span>
+            .
+          </p>
+        </div>
+
         {/* Milestone Monitor*/}
         <a
           id="milestone-monitor-link"
           href="https://milestone-monitor.vercel.app/"
           target="_blank"
           rel="noreferrer"
-          className={`shadow-md shadow-teal-500/50 hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wide hover:border-emerald-700 hover:text-emerald-700 px-4 py-8 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-4 col-start-2 lg:row-start-4 lg:col-start-2`}
+          className={`shadow-md shadow-teal-500/50 hover:bg-teal-500 lg:hover:bg-transparent hover:shadow-lg hover:shadow-emerald-700/60 hover:cursor-pointer border border-b-4 border-projects-boxes border-emerald-900 hover:tracking-wider hover:border-emerald-200 lg:hover:border-emerald-700 hover:text-emerald-200 lg:hover:text-emerald-700 px-4 py-8 sm:py-8 w-50vw lg:w-full sm:h-full lg:h-fit hover:font-bold row-start-7 col-start-2 lg:row-start-4 lg:col-start-2`}
           onMouseEnter={() => handleMouseEnter("milestone")}
           onMouseLeave={() => handleMouseLeave("milestone")}
         >
@@ -161,20 +186,29 @@ export default function Projects() {
             </p>
           </div>
         )}
+        <div className="block lg:hidden row-start-8 col-start-1 col-span-3 -mt-4 text-[0.65rem] text-center normal-case tracking-[0.01em] ">
+          <p>A cataloguing app for university faculty.</p>
+          <p className="text-[0.6rem]">
+            Built with{" "}
+            <span className="font-bold tracking-[0.05em]  text-[0.7rem] text-shadow-sea">
+              Next.js, Supabase, Tailwind CSS & Vercel</span>.
+          </p>
+        </div>
+        
         {/* Back to Home - Large Screens*/}
         <a
-          className={`text-emerald-900 hover:text-emerald-600 invisible lg:visible lg:row-start-5 lg:col-start-2`}
+          className={`row-start-9 text-emerald-900 hover:text-emerald-600 lg:row-start-5 col-start-2`}
           href="/"
         >
           <CottageRoundedIcon sx={{ fontSize: 50 }} />
         </a>{" "}
         {/* A description of this website's tech stack.*/}
-        <div className="row-start-5 col-span-3 -mt-6 pb-4 lg:mt-0 lg:pb-0 lg:row-start-6 lg:col-span-1 lg:col-start-2 text-xs text-center normal-case tracking-[0.01em]">
+        <div className="row-start-10 col-start-1 col-span-3 -mt-6 pb-4 lg:pb-0 lg:row-start-6 lg:col-span-1 lg:col-start-2 text-[0.5rem] lg:text-xs text-center normal-case tracking-[0.01em]">
           <p>
             This website was built with{" "}
             <span className="font-bold whitespace-pre lg:whitespace-normal tracking-[0.03em]">
-              Vite, React & Tailwind CSS.
-            </span>
+              Vite, React & Tailwind CSS
+            </span>! :{`)`}
           </p>
         </div>
       </div>
