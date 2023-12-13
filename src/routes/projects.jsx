@@ -52,7 +52,7 @@ export default function Projects() {
         {anchorStates.syntaxia && (
           <div
             id="syntaxia-description"
-            className="row-start-1 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] invisible lg:visible border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
+            className="row-start-1 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] hidden lg:block border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
           >
             <p>Official registration website for Syntaxia 2023.</p>
             <p>
@@ -63,7 +63,8 @@ export default function Projects() {
               .
             </p>
             <p>
-              Hosted with <span className="font-bold tracking-[0.05em]">Firebase</span>.
+              Hosted with{" "}
+              <span className="font-bold tracking-[0.05em]">Firebase</span>.
             </p>
           </div>
         )}
@@ -82,7 +83,7 @@ export default function Projects() {
         {anchorStates.loyola && (
           <div
             id="loyola-description"
-            className="row-start-2 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] invisible lg:visible border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
+            className="row-start-2 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] hidden lg:block border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
           >
             <p>Redesigned website for Loyola Degree College.</p>
             <p>
@@ -93,7 +94,8 @@ export default function Projects() {
               .
             </p>
             <p>
-              Hosted with <span className="font-bold tracking-[0.05em]">Vercel</span>.
+              Hosted with{" "}
+              <span className="font-bold tracking-[0.05em]">Vercel</span>.
             </p>
           </div>
         )}
@@ -112,7 +114,7 @@ export default function Projects() {
         {anchorStates.todo && (
           <div
             id="todo-description"
-            className="row-start-3 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] invisible lg:visible border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
+            className="row-start-3 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] hidden lg:block border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
           >
             <p>Simple To-Do app.</p>
             <p>
@@ -123,7 +125,11 @@ export default function Projects() {
               .
             </p>
             <p>
-              Hosted with <span className="font-bold tracking-[0.05em]">Cloudflare Pages</span>.
+              Hosted with{" "}
+              <span className="font-bold tracking-[0.05em]">
+                Cloudflare Pages
+              </span>
+              .
             </p>
           </div>
         )}
@@ -142,7 +148,7 @@ export default function Projects() {
         {anchorStates.milestone && (
           <div
             id="milestone-monitor-description"
-            className="row-start-4 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] invisible lg:visible border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
+            className="row-start-4 col-start-3 text-[0.9rem] text-center normal-case tracking-[0.01em] hidden lg:block border border-b-4 border-description-boxes border-emerald-900 bg-teal-500 text-emerald-200 px-4"
           >
             <p>A cataloguing app for university faculty.</p>
             <p>
@@ -150,7 +156,8 @@ export default function Projects() {
               <span className="font-bold underline underline-offset-4 tracking-[0.05em]">
                 Next.js, Supabase & Tailwind CSS
               </span>
-              . Hosted with <span className="font-bold tracking-[0.05em]">Vercel</span>.
+              . Hosted with{" "}
+              <span className="font-bold tracking-[0.05em]">Vercel</span>.
             </p>
           </div>
         )}
