@@ -17,7 +17,7 @@ Run the app:
 
 Open the app in your browser:
 
-`localhost:5173`
+[localhost:5173](http://localhost:5173/)
 
 Thanks for visiting. Cheers. :D
 
