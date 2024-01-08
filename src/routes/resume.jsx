@@ -1,4 +1,4 @@
-import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
+// import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 // import { useState } from "react";
 // import { pdfjs, Document, Page } from "react-pdf";
 // import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -66,7 +66,7 @@ export default function Resume() {
       </div>
     </div> */}
       <a className={`text-3xl text-emerald-900 hover:text-emerald-500`} href="/">
-        <CottageRoundedIcon sx={{ fontSize: 40 }} />
+        {/* <CottageRoundedIcon sx={{ fontSize: 40 }} /> */}
       </a>{" "}
     </div>
   );

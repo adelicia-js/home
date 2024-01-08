@@ -1,4 +1,4 @@
-import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
+// import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import { useState } from "react";
 
 export default function Projects() {
@@ -200,7 +200,7 @@ export default function Projects() {
           className={`row-start-9 text-emerald-900 hover:text-emerald-600 lg:row-start-5 col-start-2`}
           href="/"
         >
-          <CottageRoundedIcon sx={{ fontSize: 50 }} />
+          {/* <CottageRoundedIcon sx={{ fontSize: 50 }} /> */}
         </a>{" "}
         {/* A description of this website's tech stack.*/}
         <div className="row-start-10 col-start-1 col-span-3 -mt-6 pb-4 lg:pb-0 lg:row-start-6 lg:col-span-1 lg:col-start-2 text-[0.5rem] lg:text-xs text-center normal-case tracking-[0.01em]">
