@@ -4,10 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
-import AboutMe from "./routes/about.jsx";
 import Projects from "./routes/projects.jsx";
 import Resume from "./routes/resume.jsx";
-import TestPrj from "./routes/prjtest.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,10 +15,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/me",
-    element: <AboutMe />,
-  },
-  {
     path: "/projects",
     element: <Projects />,
   },
@@ -28,10 +22,6 @@ const router = createBrowserRouter([
     path: "/resume",
     element: <Resume />,
   },
-  {
-    path: "/testing",
-    element: <TestPrj/>
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
