@@ -7,14 +7,14 @@ export default function Header() {
   };
 
   return (
-    <header id="small-navigation-menu" className="z-30 block sm:hidden absolute text-white">
+    <header id="small-navigation-menu" className="z-30 block sm:hidden fixed text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-8 h-8 absolute top-8 left-6"
+        className="w-[1.5rem] h-[1.5rem] absolute top-8 left-6"
         onClick={toggleNav}
       >
         <path
@@ -32,7 +32,7 @@ export default function Header() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-8 h-8 absolute top-8 left-6"
+            className="w-[1.5rem] h-[1.5rem] absolute top-8 left-6"
             onClick={toggleNav}
           >
             <path
@@ -42,10 +42,10 @@ export default function Header() {
             />
           </svg>
 
-          <ul className="flex flex-col items-center justify-between p-8 gap-32 text-3xl uppercase">
+          <ul className="flex flex-col items-center justify-between p-8 gap-20 font-fosterama text-3xl tracking-[0.1rem]">
             <li>Skills</li>
             <li>Projects</li>
-            <li>Resume</li>
+            <li><a href="./ady-resume.pdf" target="_blank">Resume</a></li>
             <li>Contact</li>
             <li>Blog</li>
           </ul>

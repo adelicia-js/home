@@ -9,7 +9,7 @@ export default function Description() {
     >
       <ul
         id="social-links-list"
-        className="flex flex-row justify-evenly items-center w-full h-full p-12"
+        className="grid grid-rows-2 grid-cols-2 justify-items-center sm:flex sm:flex-row sm:justify-evenly items-center w-full h-full p-4 sm:p-12"
       >
         <li>
           <FaLinkedin size={50} />
