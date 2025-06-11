@@ -27,53 +27,7 @@ export const groovy = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
-export const who = keyframes`
-  0% {
-    color: #065F46;
-    content: "I'm a web developer.";
-  }
-  10% { color: #065F4684; }
-  15% { color: #065F462a; }
-  20% {
-    color: #065F46;
-    content: "I'm a graduate student.";
-  }
-  25% { color: #065F4684; }
-  30% { color: #065F462a; }
-  35% {
-    color: #065F46;
-    content: "I'm a UI/UX designer.";
-  }
-  40% { color: #065F4684; }
-  45% { color: #065F462a; }
-  50% {
-    color: #065F46;
-    content: "I'm a jewellery artist.";
-  }
-  55% { color: #065F4684; }
-  60% { color: #065F462a; }
-  65% {
-    color: #065F46;
-    content: "I'm a musician.";
-  }
-  70% { color: #065F4684; }
-  75% { color: #065F462a; }
-  80% {
-    color: #065F46;
-    content: "I'm a poet.";
-  }
-  85% { color: #065F4684; }
-  90% { color: #065F462a; }
-  95% {
-    color: #065F46;
-    content: "I'm a gym rat.";
-  }
-  100% { color: #065F4684; }
-`;
-
 export const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
-
   * {
     font-family: ${(props) => props.theme.fonts.primary};
     margin: 0;
@@ -104,8 +58,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-fill-color: transparent;
     animation: ${textclip} 5s ease infinite;
     display: inline-block;
-  text-shadow: 1px 0.1px 3px #07463a4c;
-
+    text-shadow: rgba(25, 61, 2, 0.28) 1px 1px 5px;
   }
 
   .scroll-down {
@@ -122,11 +75,6 @@ export const GlobalStyle = createGlobalStyle`
     background-size: 200% auto;
     animation: ${groovy} 30s ease-in-out infinite;
     text-shadow: 1px 0.1px 3px #07463a4c;
-  }
-
-  .changing-me::before {
-    content: "I'm a web developer.";
-    animation: ${who} 30s linear infinite;
   }
 
   .icons :visited {

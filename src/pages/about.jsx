@@ -3,6 +3,23 @@ import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import { theme } from '../styles/theme';
 import { GlobalStyle } from '../styles/globalStyles';
 
+export default function AboutMe() {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <AboutContainer className="animated-background">
+        <MainTitle>Hi! I&apos;m Ady. :) </MainTitle>
+        <SubTitle>A graduate student from Bengaluru, India.</SubTitle>
+        <SubTitleWithMargin>Also a frontend web developer, artist & cat enthusiast.</SubTitleWithMargin>
+        <WorkInProgress>[This page is currently still being worked on.]</WorkInProgress>
+        <HomeLink href="/">
+          <CottageRoundedIcon sx={{ fontSize: 40 }} />
+        </HomeLink>
+      </AboutContainer>
+    </ThemeProvider>
+  );
+}
+
 const AboutContainer = styled.div`
   color: ${props => props.theme.colors.fuchsia[200]};
   padding: 0 1rem;
@@ -49,19 +66,3 @@ const HomeLink = styled.a`
   }
 `;
 
-export default function AboutMe() {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AboutContainer className="animated-background">
-        <MainTitle>Hi! I&apos;m Ady. :) </MainTitle>
-        <SubTitle>A graduate student from Bengaluru, India.</SubTitle>
-        <SubTitleWithMargin>Also a frontend web developer, artist & cat enthusiast.</SubTitleWithMargin>
-        <WorkInProgress>[This page is currently still being worked on.]</WorkInProgress>
-        <HomeLink href="/">
-          <CottageRoundedIcon sx={{ fontSize: 40 }} />
-        </HomeLink>
-      </AboutContainer>
-    </ThemeProvider>
-  );
-}

@@ -4,192 +4,6 @@ import { useState } from "react";
 import { theme } from '../styles/theme';
 import { GlobalStyle } from '../styles/globalStyles';
 
-const ProjectsContainer = styled.div`
-  padding: 0 2rem;
-  text-align: center;
-  min-height: 100vh;
-  background: ${props => props.theme.gradients.teal};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const ProjectListWrapper = styled.div`
-  padding-top: 2rem;
-  color: ${props => props.theme.colors.emerald[900]};
-  text-transform: uppercase;
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(11, auto);
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  font-size: 1rem;
-  
-  @media (min-width: ${props => props.theme.breakpoints.sm}) {
-    font-size: 1.25rem;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.md}) {
-    font-size: 1.5rem;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    padding-top: 0;
-    gap: 3rem;
-    grid-template-rows: repeat(7, auto);
-  }
-`;
-
-const ProjectLink = styled.a`
-  box-shadow: ${props => props.theme.shadows.boxMd};
-  border: 1px solid ${props => props.theme.colors.emerald[900]};
-  border-bottom-width: 4px;
-  border-radius: 2px 15px 2px 7px;
-  padding: 1rem;
-  width: 50vw;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-  
-  &:hover {
-    background-color: ${props => props.theme.colors.teal[500]};
-    box-shadow: ${props => props.theme.shadows.boxLg};
-    letter-spacing: 0.05em;
-    border-color: ${props => props.theme.colors.emerald[200]};
-    color: ${props => props.theme.colors.emerald[200]};
-    font-weight: bold;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.sm}) {
-    padding: 2rem 1rem;
-    height: 100%;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    width: 100%;
-    height: fit-content;
-    
-    &:hover {
-      background-color: transparent;
-      border-color: ${props => props.theme.colors.emerald[700]};
-      color: ${props => props.theme.colors.emerald[700]};
-    }
-  }
-  
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: ${props => props.colStart};
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    grid-row-start: ${props => props.lgRowStart};
-    grid-column-start: ${props => props.lgColStart};
-  }
-`;
-
-const ProjectDescription = styled.div`
-  font-size: 0.9rem;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  border: 1px solid ${props => props.theme.colors.emerald[900]};
-  border-bottom-width: 4px;
-  border-radius: 7px 2px 15px 2px;
-  background-color: ${props => props.theme.colors.teal[500]};
-  color: ${props => props.theme.colors.emerald[200]};
-  padding: 1rem;
-  
-  display: none;
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    display: block;
-  }
-  
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: ${props => props.colStart};
-  
-  span.bold {
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    letter-spacing: 0.05em;
-  }
-  
-  span.bold-simple {
-    font-weight: bold;
-    letter-spacing: 0.05em;
-  }
-`;
-
-const MobileDescription = styled.div`
-  display: block;
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: 1;
-  grid-column-end: 4;
-  margin-top: -1rem;
-  font-size: 0.65rem;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    display: none;
-  }
-  
-  span.bold {
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    font-size: 0.7rem;
-    text-shadow: ${props => props.theme.shadows.textSea};
-  }
-`;
-
-const HomeIcon = styled.a`
-  grid-row-start: 9;
-  grid-column-start: 2;
-  color: ${props => props.theme.colors.emerald[900]};
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: ${props => props.theme.colors.emerald[600]};
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    grid-row-start: 5;
-  }
-`;
-
-const TechStackNote = styled.div`
-  grid-row-start: 10;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  margin-top: -1.5rem;
-  padding-bottom: 1rem;
-  font-size: 0.5rem;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    padding-bottom: 0;
-    grid-row-start: 6;
-    grid-column-end: 2;
-    grid-column-start: 2;
-    font-size: 0.75rem;
-  }
-  
-  span.bold {
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    white-space: pre;
-    
-    @media (min-width: ${props => props.theme.breakpoints.lg}) {
-      white-space: normal;
-    }
-  }
-`;
-
 export default function Projects() {
   const [anchorStates, setAnchorStates] = useState({});
 
@@ -409,16 +223,202 @@ export default function Projects() {
           </HomeIcon>
           
           {/* Tech stack note */}
-          <TechStackNote>
+          {/* <TechStackNote>
             <p>
               This website was built with{" "}
               <span className="bold">
                 Vite, React & Styled-Components
               </span>! :)
             </p>
-          </TechStackNote>
+          </TechStackNote> */}
         </ProjectListWrapper>
       </ProjectsContainer>
     </ThemeProvider>
   );
 }
+
+const ProjectsContainer = styled.div`
+  padding: 0 2rem;
+  text-align: center;
+  min-height: 100vh;
+  background: ${props => props.theme.gradients.teal};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ProjectListWrapper = styled.div`
+  padding-top: 2rem;
+  color: ${props => props.theme.colors.emerald[900]};
+  text-transform: uppercase;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(11, auto);
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  font-size: 1rem;
+  
+  @media (min-width: ${props => props.theme.breakpoints.sm}) {
+    font-size: 1.25rem;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.md}) {
+    font-size: 1.5rem;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    padding-top: 0;
+    gap: 3rem;
+    grid-template-rows: repeat(7, auto);
+  }
+`;
+
+const ProjectLink = styled.a`
+  box-shadow: ${props => props.theme.shadows.boxMd};
+  border: 1px solid ${props => props.theme.colors.emerald[900]};
+  border-bottom-width: 4px;
+  border-radius: 2px 15px 2px 7px;
+  padding: 1rem;
+  width: 50vw;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: ${props => props.theme.colors.teal[500]};
+    box-shadow: ${props => props.theme.shadows.boxLg};
+    letter-spacing: 0.05em;
+    border-color: ${props => props.theme.colors.emerald[200]};
+    color: ${props => props.theme.colors.emerald[200]};
+    font-weight: bold;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.sm}) {
+    padding: 2rem 1rem;
+    height: 100%;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    width: 100%;
+    height: fit-content;
+    
+    &:hover {
+      background-color: transparent;
+      border-color: ${props => props.theme.colors.emerald[700]};
+      color: ${props => props.theme.colors.emerald[700]};
+    }
+  }
+  
+  grid-row-start: ${props => props.rowStart};
+  grid-column-start: ${props => props.colStart};
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    grid-row-start: ${props => props.lgRowStart};
+    grid-column-start: ${props => props.lgColStart};
+  }
+`;
+
+const ProjectDescription = styled.div`
+  font-size: 0.9rem;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  border: 1px solid ${props => props.theme.colors.emerald[900]};
+  border-bottom-width: 4px;
+  border-radius: 7px 2px 15px 2px;
+  background-color: ${props => props.theme.colors.teal[500]};
+  color: ${props => props.theme.colors.emerald[200]};
+  padding: 1rem;
+  
+  display: none;
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    display: block;
+  }
+  
+  grid-row-start: ${props => props.rowStart};
+  grid-column-start: ${props => props.colStart};
+  
+  span.bold {
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    letter-spacing: 0.05em;
+  }
+  
+  span.bold-simple {
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+`;
+
+const MobileDescription = styled.div`
+  display: block;
+  grid-row-start: ${props => props.rowStart};
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin-top: -1rem;
+  font-size: 0.65rem;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    display: none;
+  }
+  
+  span.bold {
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+    text-shadow: ${props => props.theme.shadows.textSea};
+  }
+`;
+
+const HomeIcon = styled.a`
+  grid-row-start: 9;
+  grid-column-start: 2;
+  color: ${props => props.theme.colors.emerald[900]};
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: ${props => props.theme.colors.emerald[600]};
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    grid-row-start: 5;
+  }
+`;
+
+// const TechStackNote = styled.div`
+//   grid-row-start: 10;
+//   grid-column-start: 1;
+//   grid-column-end: 4;
+//   margin-top: -1.5rem;
+//   padding-bottom: 1rem;
+//   font-size: 0.5rem;
+//   text-align: center;
+//   text-transform: none;
+//   letter-spacing: 0.01em;
+  
+//   @media (min-width: ${props => props.theme.breakpoints.lg}) {
+//     padding-bottom: 0;
+//     grid-row-start: 6;
+//     grid-column-end: 2;
+//     grid-column-start: 2;
+//     font-size: 0.75rem;
+//   }
+  
+//   span.bold {
+//     font-weight: bold;
+//     letter-spacing: 0.03em;
+//     white-space: pre;
+    
+//     @media (min-width: ${props => props.theme.breakpoints.lg}) {
+//       white-space: normal;
+//     }
+//   }
+// `;

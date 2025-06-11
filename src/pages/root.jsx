@@ -18,9 +18,6 @@ export default function Root() {
               Hi, I&apos;m Adelicia.
             </WelcomeText>
             <div id="profile-description">
-              {/* <ProfileDescription>
-                <span className="changing-me"></span>
-              </ProfileDescription> */}
               <TechStack>
                 React | Next.js | Vite | Node.js | Figma{" "}
                 <HiddenOnMobile>| Vercel</HiddenOnMobile>
@@ -57,8 +54,8 @@ export default function Root() {
           </ProfileSection>
           <ScrollSection>
             <ScrollDownLink href="#menu">
-              <KeyboardDoubleArrowDownRoundedIcon 
-                sx={{ fontSize: 50 }} 
+              <KeyboardDoubleArrowDownRoundedIcon
+                sx={{ fontSize: 50 }}
                 className="scroll-down"
               />
             </ScrollDownLink>
@@ -96,7 +93,7 @@ export default function Root() {
                 rel="noreferrer"
               >
                 <span className="tracking-wide">Source</span> |{" "}
-                <span className="highlight">2023 - 2024</span>
+                <span className="highlight">2025 - 2026</span>
               </SourceLink>
             </div>
           </FooterSection>
@@ -153,32 +150,6 @@ const WelcomeText = styled.h1`
     font-size: 3.75rem;
   }
 `;
-
-// Description text
-// const ProfileDescription = styled.h2`
-//   font-weight: bold;
-//   color: ${(props) => props.theme.colors.emerald[800]};
-//   padding-bottom: 0.5rem;
-//   font-style: italic;
-
-//   font-size: 1rem;
-//   @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
-//     font-size: 1rem;
-//   }
-//   @media (min-width: ${(props) => props.theme.breakpoints.md}) {
-//     font-size: 1.25rem;
-//   }
-//   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
-//     font-size: 1.35rem;
-//     text-align: left;
-//   }
-//   @media (max-width: 370px) {
-//     font-size: 0.875rem;
-//   }
-//   @media (max-width: 300px) {
-//     font-size: 0.75rem;
-//   }
-// `;
 
 // Tech stack text
 const TechStack = styled.h2`
@@ -250,14 +221,14 @@ const SocialLink = styled.a`
 
   &:hover {
     transform: scale(1.1);
-    
+
     @media (min-width: 500px) {
       transform: scale(1.15);
     }
-    
+
     .MuiSvgIcon-root {
       color: ${(props) => props.hoverColor || props.theme.colors.white};
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(2px 2px 4px rgba(222, 240, 237, 0.3));
     }
   }
 `;
@@ -266,15 +237,15 @@ const SocialLink = styled.a`
 const ScrollSection = styled.section`
   grid-row-start: 3;
   position: relative;
-  height: 100%
+  height: 100%;
 `;
 
 const ScrollDownLink = styled.a`
   color: ${(props) => props.theme.colors.emerald[800]};
-  
+
   .MuiSvgIcon-root {
     position: absolute;
-    top: 75%;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -339,7 +310,7 @@ const FooterSection = styled.div`
 
 const ScrollUpLink = styled.a`
   color: ${(props) => props.theme.colors.emerald[900]};
-  
+
   .MuiSvgIcon-root {
     position: absolute;
     left: 50%;
@@ -378,7 +349,7 @@ const ThankYouText = styled.p`
 
 const SourceLink = styled.a`
   text-shadow: ${(props) => props.theme.shadows.textSea};
-  font-weight: 600;
+  font-weight: 400;
   transition: all 0.3s ease;
   color: inherit;
   text-decoration: none;
@@ -393,13 +364,15 @@ const SourceLink = styled.a`
   }
 
   &:hover {
-    font-weight: bold;
     text-decoration: underline;
     text-underline-offset: 0.5rem;
     text-decoration-thickness: 2px;
-    
+
     @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
-      letter-spacing: 0.08rem;
+      letter-spacing: 0.06rem;
+    }
+    .hightlight {
+      color: ${(props) => props.theme.colors.emerald[300]};
     }
   }
 
