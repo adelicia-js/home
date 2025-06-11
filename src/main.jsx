@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
-import Root from "./routes/root.jsx";
+import Root from "./pages/root.jsx";
 import ErrorPage from "./error-page.jsx";
-import AboutMe from "./routes/about.jsx";
-import Projects from "./routes/projects.jsx";
-import Resume from "./routes/resume.jsx";
-import TestPrj from "./routes/prjtest.jsx";
-import "./index.css";
+import AboutMe from "./pages/about.jsx";
+import Projects from "./pages/projects.jsx";
+import Resume from "./pages/resume.jsx";
+import TestPrj from "./pages/prjtest.jsx";
+import './styles/index.css'
 
 const router = createBrowserRouter([
   {
@@ -36,7 +35,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
