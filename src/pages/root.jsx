@@ -127,15 +127,6 @@ const ProfileSection = styled.section`
 
 // Welcome text with animated gradient
 const WelcomeText = styled.h1`
-  background-image: ${(props) => props.theme.gradients.animated};
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 5s ease infinite;
-  display: inline-block;
-  text-shadow: ${(props) => props.theme.shadows.text};
   font-weight: bold;
   padding-bottom: 0.5rem;
 
