@@ -100,7 +100,7 @@ export default function Projects() {
               <p>
                 Built with{" "}
                 <span className="bold">
-                  Next.js, React & Styled-Components
+                  Next.js, React & Tailwind CSS
                 </span>
                 .
               </p>
@@ -116,7 +116,7 @@ export default function Projects() {
             <p>
               Built with{" "}
               <span className="bold">
-                Next.js, Styled-Components & Vercel
+                Next.js, Tailwind CSS & Vercel
               </span>
               .
             </p>
@@ -148,7 +148,7 @@ export default function Projects() {
               <p>
                 Built with{" "}
                 <span className="bold">
-                  React & Styled-Components
+                  React & Tailwind CSS
                 </span>
                 .
               </p>
@@ -167,7 +167,7 @@ export default function Projects() {
             <p>
               Built with{" "}
               <span className="bold">
-                React, Styled-Components & CloudFlare
+                React, Tailwind CSS & CloudFlare
               </span>
               .
             </p>
@@ -199,7 +199,7 @@ export default function Projects() {
               <p>
                 Built with{" "}
                 <span className="bold">
-                  Next.js, Supabase & Styled-Components
+                  Next.js, Supabase & Tailwind CSS
                 </span>
                 . Hosted with{" "}
                 <span className="bold-simple">Vercel</span>.
@@ -212,7 +212,7 @@ export default function Projects() {
             <p style={{ fontSize: '0.6rem' }}>
               Built with{" "}
               <span className="bold">
-                Next.js, Supabase, Styled-Components & Vercel
+                Next.js, Supabase, Tailwind CSS & Vercel
               </span>.
             </p>
           </MobileDescription>
