@@ -132,29 +132,3 @@ export const GridContainer = styled.div`
   justify-content: ${(props) => props.justify || "center"};
 `;
 
-export const AnimatedText = styled.h1`
-  background-image: ${(props) => props.theme.gradients.animated};
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: ${textclip} 5s ease infinite;
-  display: inline-block;
-  text-shadow: ${(props) => props.theme.shadows.text};
-  font-weight: bold;
-  padding-bottom: 0.5rem;
-  font-size: ${(props) => props.size || "2rem"};
-
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
-    font-size: ${(props) => props.smSize || "2.5rem"};
-  }
-
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
-    font-size: ${(props) => props.mdSize || "3rem"};
-  }
-
-  @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
-    font-size: ${(props) => props.lgSize || "3.75rem"};
-  }
-`;

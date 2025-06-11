@@ -5,13 +5,13 @@ import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoub
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import { theme } from "../styles/theme";
-import { GlobalStyle } from "../styles/globalStyles";
+import { GlobalStyle, GradientContainer } from "../styles/globalStyles";
 
 export default function Root() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <HomeContainer id="home">
+      <GradientContainer gradient={theme.gradients.primary} id="home">
         <HeaderSection id="header">
           <ProfileSection>
             <WelcomeText className="animated">
@@ -98,17 +98,10 @@ export default function Root() {
             </div>
           </FooterSection>
         </MainMenu>
-      </HomeContainer>
+      </GradientContainer>
     </ThemeProvider>
   );
 }
-
-// Main container with full background gradient
-const HomeContainer = styled.div`
-  min-height: 100vh;
-  text-align: center;
-  background: ${(props) => props.theme.gradients.primary};
-`;
 
 // Header section - full screen height, centered content
 const HeaderSection = styled.header`
@@ -127,15 +120,6 @@ const ProfileSection = styled.section`
 
 // Welcome text with animated gradient
 const WelcomeText = styled.h1`
-  background-image: ${(props) => props.theme.gradients.animated};
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 5s ease infinite;
-  display: inline-block;
-  text-shadow: ${(props) => props.theme.shadows.text};
   font-weight: bold;
   padding-bottom: 0.5rem;
 
@@ -349,9 +333,9 @@ const ThankYouText = styled.p`
 
 const SourceLink = styled.a`
   text-shadow: ${(props) => props.theme.shadows.textSea};
+  color: ${(props) => props.theme.colors.emerald[300]};
   font-weight: 400;
   transition: all 0.3s ease;
-  color: inherit;
   text-decoration: none;
   font-size: 0.875rem;
 
@@ -364,23 +348,12 @@ const SourceLink = styled.a`
   }
 
   &:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.5rem;
-    text-decoration-thickness: 2px;
-
     @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
       letter-spacing: 0.06rem;
-    }
-    .hightlight {
-      color: ${(props) => props.theme.colors.emerald[300]};
     }
   }
 
   .tracking-wide {
     letter-spacing: 0.05em;
-  }
-
-  .highlight {
-    color: ${(props) => props.theme.colors.emerald[400]};
   }
 `;
