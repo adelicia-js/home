@@ -2,7 +2,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import { useState } from "react";
 import { theme } from '../styles/theme';
-import { GlobalStyle } from '../styles/globalStyles';
+import { GlobalStyle, GradientContainer, GridContainer } from '../styles/globalStyles';
 
 export default function Projects() {
   const [anchorStates, setAnchorStates] = useState({});
@@ -24,8 +24,13 @@ export default function Projects() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ProjectsContainer id="projects-wrapper">
-        <ProjectListWrapper id="project-list-wrapper">
+      <ProjectsWrapper gradient={theme.gradients.teal} id="projects-wrapper">
+        <ProjectListWrapper
+          id="project-list-wrapper"
+          columns="repeat(3, 1fr)"
+          rows="repeat(11, auto)"
+          gap="1.5rem"
+        >
           {/* Syntaxia 2023's Website */}
           <ProjectLink
             id="syntaxia-link"
@@ -232,31 +237,22 @@ export default function Projects() {
             </p>
           </TechStackNote> */}
         </ProjectListWrapper>
-      </ProjectsContainer>
+      </ProjectsWrapper>
     </ThemeProvider>
   );
 }
 
-const ProjectsContainer = styled.div`
+const ProjectsWrapper = styled(GradientContainer)`
   padding: 0 2rem;
-  text-align: center;
-  min-height: 100vh;
-  background: ${props => props.theme.gradients.teal};
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const ProjectListWrapper = styled.div`
+const ProjectListWrapper = styled(GridContainer)`
   padding-top: 2rem;
   color: ${props => props.theme.colors.emerald[900]};
   text-transform: uppercase;
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(11, auto);
-  align-items: center;
-  justify-content: center;
   justify-items: center;
   font-size: 1rem;
   
