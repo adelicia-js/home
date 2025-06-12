@@ -1,9 +1,11 @@
 import styled, { ThemeProvider } from "styled-components";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
-import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
-import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
+import {
+  GitHub,
+  LinkedIn,
+  KeyboardDoubleArrowDownRounded,
+  ArrowUpwardRounded,
+  AlternateEmailRounded
+} from "@mui/icons-material";
 import { theme } from "../styles/theme";
 import { GlobalStyle, GradientContainer } from "../styles/globalStyles";
 
@@ -30,7 +32,7 @@ export default function Root() {
                     rel="noreferrer"
                     hoverColor={theme.colors.white}
                   >
-                    <GitHubIcon sx={{ fontSize: 37 }} />
+                    <GitHub sx={{ fontSize: 37 }} />
                   </SocialLink>
                   <SocialLink
                     href="https://www.linkedin.com/in/adelicia"
@@ -38,7 +40,7 @@ export default function Root() {
                     rel="noreferrer"
                     hoverColor="#1976d2"
                   >
-                    <LinkedInIcon sx={{ fontSize: 40 }} />
+                    <LinkedIn sx={{ fontSize: 40 }} />
                   </SocialLink>
                   <SocialLink
                     href="mailto:a.seq@gmail.com"
@@ -46,7 +48,7 @@ export default function Root() {
                     rel="noreferrer"
                     hoverColor="#d32f2f"
                   >
-                    <AlternateEmailRoundedIcon sx={{ fontSize: 39 }} />
+                    <AlternateEmailRounded sx={{ fontSize: 39 }} />
                   </SocialLink>
                 </SocialsWrapper>
               </SocialsList>
@@ -54,7 +56,7 @@ export default function Root() {
           </ProfileSection>
           <ScrollSection>
             <ScrollDownLink href="#menu">
-              <KeyboardDoubleArrowDownRoundedIcon
+              <KeyboardDoubleArrowDownRounded
                 sx={{ fontSize: 50 }}
                 className="scroll-down"
               />
@@ -76,7 +78,7 @@ export default function Root() {
           </MenuLink>
           <FooterSection>
             <ScrollUpLink href="#home">
-              <ArrowUpwardRoundedIcon
+              <ArrowUpwardRounded
                 sx={{ fontSize: 45 }}
                 className="scroll-down"
               />
@@ -196,7 +198,11 @@ const SocialsWrapper = styled.div`
   gap: 1.25rem;
 `;
 
-const SocialLink = styled.a`
+interface SocialLinkProps {
+  hoverColor?: string;
+}
+
+const SocialLink = styled.a<SocialLinkProps>`
   color: inherit;
   transition: all 0.3s ease;
 
@@ -253,7 +259,11 @@ const MainMenu = styled.main`
   }
 `;
 
-const MenuLink = styled.div`
+interface MenuLinkProps {
+  row: number;
+}
+
+const MenuLink = styled.div<MenuLinkProps>`
   text-shadow: ${(props) => props.theme.shadows.textSea};
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.emerald[900]};

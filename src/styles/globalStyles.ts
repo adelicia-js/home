@@ -111,11 +111,22 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-export const GradientContainer = styled(Container)`
+interface GradientContainerProps {
+  gradient?: string;
+}
+
+export const GradientContainer = styled(Container)<GradientContainerProps>`
   background: ${(props) => props.gradient || props.theme.gradients.primary};
 `;
 
-export const FlexContainer = styled.div`
+interface FlexContainerProps {
+  direction?: string;
+  justify?: string;
+  align?: string;
+  gap?: string;
+}
+
+export const FlexContainer = styled.div<FlexContainerProps>`
   display: flex;
   flex-direction: ${(props) => props.direction || "row"};
   justify-content: ${(props) => props.justify || "center"};
@@ -123,7 +134,15 @@ export const FlexContainer = styled.div`
   gap: ${(props) => props.gap || "1rem"};
 `;
 
-export const GridContainer = styled.div`
+interface GridContainerProps {
+  columns?: string;
+  rows?: string;
+  gap?: string;
+  align?: string;
+  justify?: string;
+}
+
+export const GridContainer = styled.div<GridContainerProps>`
   display: grid;
   grid-template-columns: ${(props) => props.columns || "repeat(3, 1fr)"};
   grid-template-rows: ${(props) => props.rows || "auto"};
