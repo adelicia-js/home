@@ -4,17 +4,37 @@ import { useState } from "react";
 import { theme } from '../styles/theme';
 import { GlobalStyle, GradientContainer, GridContainer } from '../styles/globalStyles';
 
-export default function Projects() {
-  const [anchorStates, setAnchorStates] = useState({});
+interface AnchorStates {
+  [key: string]: boolean;
+}
 
-  const handleMouseEnter = (anchorKey) => {
+interface ProjectLinkProps {
+  rowStart: number;
+  colStart: number;
+  lgRowStart?: number;
+  lgColStart?: number;
+}
+
+interface ProjectDescriptionProps {
+  rowStart: number;
+  colStart: number;
+}
+
+interface MobileDescriptionProps {
+  rowStart: number;
+}
+
+export default function Projects() {
+  const [anchorStates, setAnchorStates] = useState<AnchorStates>({});
+
+  const handleMouseEnter = (anchorKey: string) => {
     setAnchorStates((prevStates) => ({
       ...prevStates,
       [anchorKey]: true,
     }));
   };
 
-  const handleMouseLeave = (anchorKey) => {
+  const handleMouseLeave = (anchorKey: string) => {
     setAnchorStates((prevStates) => ({
       ...prevStates,
       [anchorKey]: false,
@@ -24,7 +44,7 @@ export default function Projects() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ProjectsWrapper gradient={theme.gradients.teal} id="projects-wrapper">
+      <ProjectsContainer gradient={theme.gradients.teal} id="projects-wrapper">
         <ProjectListWrapper
           id="project-list-wrapper"
           columns="repeat(3, 1fr)"
@@ -227,12 +247,12 @@ export default function Projects() {
             <CottageRoundedIcon sx={{ fontSize: 50 }} />
           </HomeIcon>
         </ProjectListWrapper>
-      </ProjectsWrapper>
+      </ProjectsContainer>
     </ThemeProvider>
   );
 }
 
-const ProjectsWrapper = styled(GradientContainer)`
+const ProjectsContainer = styled(GradientContainer)`
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
@@ -261,7 +281,7 @@ const ProjectListWrapper = styled(GridContainer)`
   }
 `;
 
-const ProjectLink = styled.a`
+const ProjectLink = styled.a<ProjectLinkProps>`
   box-shadow: ${props => props.theme.shadows.boxMd};
   border: 1px solid ${props => props.theme.colors.emerald[900]};
   border-bottom-width: 4px;
@@ -307,7 +327,7 @@ const ProjectLink = styled.a`
   }
 `;
 
-const ProjectDescription = styled.div`
+const ProjectDescription = styled.div<ProjectDescriptionProps>`
   font-size: 0.9rem;
   text-align: center;
   text-transform: none;
@@ -341,7 +361,7 @@ const ProjectDescription = styled.div`
   }
 `;
 
-const MobileDescription = styled.div`
+const MobileDescription = styled.div<MobileDescriptionProps>`
   display: block;
   grid-row-start: ${props => props.rowStart};
   grid-column-start: 1;

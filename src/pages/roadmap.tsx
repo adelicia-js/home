@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactElement} from "react";
 import {
   CheckCircle,
   Circle,
@@ -12,11 +12,49 @@ import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../styles/theme";
 import { GlobalStyle } from "../styles/globalStyles";
 
-const CreativeCodingRoadmap = () => {
-  const [completedItems, setCompletedItems] = useState(new Set());
-  const [activeTrack, setActiveTrack] = useState("foundations");
+interface RoadmapItem {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+  resources: string[];
+}
 
-  const toggleComplete = (itemId) => {
+interface Track {
+  title: string;
+  icon: ReactElement;
+  color: string;
+  description: string;
+  items: RoadmapItem[];
+}
+
+interface TrackCardProps {
+  isActive: boolean;
+}
+
+interface TrackIconProps {
+  bgColor: string;
+}
+
+interface SectionIconProps {
+  bgColor: string;
+}
+
+interface ItemCardProps {
+  isCompleted: boolean;
+}
+
+interface ItemTitleProps {
+  isCompleted: boolean;
+}
+
+type TrackKey = 'foundations' | 'gamedev' | 'creative' | 'advanced';
+
+const CreativeCodingRoadmap = () => {
+  const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
+  const [activeTrack, setActiveTrack] = useState<TrackKey>("foundations");
+
+  const toggleComplete = (itemId: string) => {
     const newCompleted = new Set(completedItems);
     if (newCompleted.has(itemId)) {
       newCompleted.delete(itemId);
@@ -26,7 +64,7 @@ const CreativeCodingRoadmap = () => {
     setCompletedItems(newCompleted);
   };
 
-  const tracks = {
+  const tracks: Record<TrackKey, Track> = {
     foundations: {
       title: "Programming",
       icon: <Code className="w-5 h-5" />,
@@ -240,7 +278,7 @@ const CreativeCodingRoadmap = () => {
     },
   };
 
-  const getCompletionPercentage = (track) => {
+  const getCompletionPercentage = (track: TrackKey) => {
     const trackItems = tracks[track].items;
     const completed = trackItems.filter((item) =>
       completedItems.has(item.id)
@@ -266,7 +304,7 @@ const CreativeCodingRoadmap = () => {
             <TrackCard
               key={key}
               isActive={activeTrack === key}
-              onClick={() => setActiveTrack(key)}
+              onClick={() => setActiveTrack(key as TrackKey)}
             >
               <TrackCardContent>
                 <TrackIcon bgColor={track.color}>{track.icon}</TrackIcon>
@@ -274,7 +312,7 @@ const CreativeCodingRoadmap = () => {
                   <TrackCardTitle>{track.title}</TrackCardTitle>
                 </div>
                 <TrackCardPercentage>
-                  {getCompletionPercentage(key)}%
+                  {getCompletionPercentage(key as TrackKey)}%
                 </TrackCardPercentage>
               </TrackCardContent>
               <TrackCardDescription>{track.description}</TrackCardDescription>
@@ -422,7 +460,7 @@ const TrackGrid = styled.div`
   }
 `;
 
-const TrackCard = styled.button`
+const TrackCard = styled.button<TrackCardProps>`
   padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s;
@@ -476,7 +514,7 @@ const TrackCardPercentage = styled.span`
   font-family: ${(props) => props.theme.fonts.secondary};
 `;
 
-const TrackIcon = styled.div`
+const TrackIcon = styled.div<TrackIconProps>`
   padding: 0.5rem;
   border-radius: 9999px;
   color: white;
@@ -500,7 +538,7 @@ const SectionHeader = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const SectionIcon = styled.div`
+const SectionIcon = styled.div<SectionIconProps>`
   padding: 0.75rem;
   border-radius: 9999px;
   color: white;
@@ -531,7 +569,7 @@ const ItemsContainer = styled.div`
   gap: 1rem;
 `;
 
-const ItemCard = styled.div`
+const ItemCard = styled.div<ItemCardProps>`
   padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s;
@@ -578,7 +616,7 @@ const ItemHeader = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const ItemTitle = styled.h3`
+const ItemTitle = styled.h3<ItemTitleProps>`
   font-weight: 500;
   color: ${(props) => (props.isCompleted ? "#166534" : "#1f2937")};
   letter-spacing: -0.01em;

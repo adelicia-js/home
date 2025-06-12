@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./pages/root.jsx";
-import ErrorPage from "./error-page.jsx";
-import AboutMe from "./pages/about.jsx";
-import Projects from "./pages/projects.jsx";
-import Roadmap from "./pages/roadmap.jsx";
+import Root from "./pages/root";
+import ErrorPage from "./error-page";
+import AboutMe from "./pages/about";
+import Projects from "./pages/projects";
+import Roadmap from "./pages/roadmap";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   }
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

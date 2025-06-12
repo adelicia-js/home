@@ -1,5 +1,24 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 
+interface GradientContainerProps {
+  gradient?: string;
+}
+
+interface FlexContainerProps {
+  direction?: string;
+  justify?: string;
+  align?: string;
+  gap?: string;
+}
+
+interface GridContainerProps {
+  columns?: string;
+  rows?: string;
+  gap?: string;
+  align?: string;
+  justify?: string;
+}
+
 export const textclip = keyframes`
   to {
     background-position: 200% top;
@@ -111,11 +130,11 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-export const GradientContainer = styled(Container)`
+export const GradientContainer = styled(Container)<GradientContainerProps>`
   background: ${(props) => props.gradient || props.theme.gradients.primary};
 `;
 
-export const FlexContainer = styled.div`
+export const FlexContainer = styled.div<FlexContainerProps>`
   display: flex;
   flex-direction: ${(props) => props.direction || "row"};
   justify-content: ${(props) => props.justify || "center"};
@@ -123,7 +142,7 @@ export const FlexContainer = styled.div`
   gap: ${(props) => props.gap || "1rem"};
 `;
 
-export const GridContainer = styled.div`
+export const GridContainer = styled.div<GridContainerProps>`
   display: grid;
   grid-template-columns: ${(props) => props.columns || "repeat(3, 1fr)"};
   grid-template-rows: ${(props) => props.rows || "auto"};
@@ -131,4 +150,3 @@ export const GridContainer = styled.div`
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
 `;
-
