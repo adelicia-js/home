@@ -28,6 +28,26 @@ interface Track {
   items: RoadmapItem[];
 }
 
+interface TrackCardProps {
+  isActive: boolean;
+}
+
+interface TrackIconProps {
+  bgColor: string;
+}
+
+interface SectionIconProps {
+  bgColor: string;
+}
+
+interface ItemCardProps {
+  isCompleted: boolean;
+}
+
+interface ItemTitleProps {
+  isCompleted: boolean;
+}
+
 type TrackKey = 'foundations' | 'gamedev' | 'creative' | 'advanced';
 
 const CreativeCodingRoadmap = () => {
@@ -440,10 +460,6 @@ const TrackGrid = styled.div`
   }
 `;
 
-interface TrackCardProps {
-  isActive: boolean;
-}
-
 const TrackCard = styled.button<TrackCardProps>`
   padding: 1rem;
   border-radius: 0.5rem;
@@ -498,10 +514,6 @@ const TrackCardPercentage = styled.span`
   font-family: ${(props) => props.theme.fonts.secondary};
 `;
 
-interface TrackIconProps {
-  bgColor: string;
-}
-
 const TrackIcon = styled.div<TrackIconProps>`
   padding: 0.5rem;
   border-radius: 9999px;
@@ -525,10 +537,6 @@ const SectionHeader = styled.div`
   align-items: center;
   margin-bottom: 1.5rem;
 `;
-
-interface SectionIconProps {
-  bgColor: string;
-}
 
 const SectionIcon = styled.div<SectionIconProps>`
   padding: 0.75rem;
@@ -560,10 +568,6 @@ const ItemsContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
 `;
-
-interface ItemCardProps {
-  isCompleted: boolean;
-}
 
 const ItemCard = styled.div<ItemCardProps>`
   padding: 1rem;
@@ -611,10 +615,6 @@ const ItemHeader = styled.div`
   justify-content: space-between;
   margin-bottom: 0.5rem;
 `;
-
-interface ItemTitleProps {
-  isCompleted: boolean;
-}
 
 const ItemTitle = styled.h3<ItemTitleProps>`
   font-weight: 500;

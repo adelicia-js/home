@@ -9,6 +9,14 @@ import {
 import { theme } from "../styles/theme";
 import { GlobalStyle, GradientContainer } from "../styles/globalStyles";
 
+interface SocialLinkProps {
+  hoverColor?: string;
+}
+
+interface MenuLinkProps {
+  row: number;
+}
+
 export default function Root() {
   return (
     <ThemeProvider theme={theme}>
@@ -198,10 +206,6 @@ const SocialsWrapper = styled.div`
   gap: 1.25rem;
 `;
 
-interface SocialLinkProps {
-  hoverColor?: string;
-}
-
 const SocialLink = styled.a<SocialLinkProps>`
   color: inherit;
   transition: all 0.3s ease;
@@ -258,10 +262,6 @@ const MainMenu = styled.main`
     font-size: 1.5rem;
   }
 `;
-
-interface MenuLinkProps {
-  row: number;
-}
 
 const MenuLink = styled.div<MenuLinkProps>`
   text-shadow: ${(props) => props.theme.shadows.textSea};
