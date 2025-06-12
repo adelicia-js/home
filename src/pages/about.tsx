@@ -1,13 +1,13 @@
 import styled, { ThemeProvider } from 'styled-components';
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import { theme } from '../styles/theme';
-import { GlobalStyle, GradientContainer } from '../styles/globalStyles';
+import { GlobalStyle, GradientContainer, groovy } from '../styles/globalStyles';
 
 export default function AboutMe() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <AboutWrapper gradient={theme.gradients.cyan} className="animated-background">
+      <AboutWrapper>
         <MainTitle>Hi! I&apos;m Ady. :) </MainTitle>
         <SubTitle>A graduate student from Bengaluru, India.</SubTitle>
         <SubTitleWithMargin>Also a frontend web developer, artist & cat enthusiast.</SubTitleWithMargin>
@@ -21,12 +21,16 @@ export default function AboutMe() {
 }
 
 const AboutWrapper = styled(GradientContainer)`
+  background: ${props => props.theme.gradients.animatedBackground};
+  background-size: 200% auto;
+  animation: ${groovy} 30s ease-in-out infinite;
   color: ${props => props.theme.colors.fuchsia[200]};
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-shadow: 1px 0.1px 3px #07463a4c;
 `;
 
 const MainTitle = styled.h1`
