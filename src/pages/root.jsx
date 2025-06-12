@@ -11,7 +11,7 @@ export default function Root() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <GradientContainer gradient={theme.gradients.primary} id="home">
+      <GradientContainer id="home">
         <HeaderSection id="header">
           <ProfileSection>
             <WelcomeText className="animated">
@@ -19,7 +19,7 @@ export default function Root() {
             </WelcomeText>
             <div id="profile-description">
               <TechStack>
-                React | Next.js | Vite | Node.js | Figma{" "}
+                React | Next.js | Vite | Node.js | Figma 
                 <HiddenOnMobile>| Vercel</HiddenOnMobile>
               </TechStack>
               <SocialsList>
@@ -92,7 +92,8 @@ export default function Root() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="tracking-wide">Source</span> |{" "}
+                <span className="tracking-wide">$source</span>
+                {" "}|{" "} 
                 <span className="highlight">2025 - 2026</span>
               </SourceLink>
             </div>

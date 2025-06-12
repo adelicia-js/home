@@ -12,314 +12,6 @@ import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../styles/theme";
 import { GlobalStyle } from "../styles/globalStyles";
 
-const Container = styled.div`
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 1.5rem;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const Header = styled.div`
-  text-align: center;
-  margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const Title = styled.h1`
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #fff, #f0f8ff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: -0.02em;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.125rem;
-  max-width: 42rem;
-  margin: 0 auto;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  font-weight: 400;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TrackGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
-
-const TrackCard = styled.button`
-  padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  transform: scale(1);
-  background: ${(props) =>
-    props.isActive
-      ? "linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))"
-      : "rgba(255, 255, 255, 0.1)"};
-  backdrop-filter: blur(10px);
-  border: ${(props) =>
-    props.isActive
-      ? "2px solid rgba(255,255,255,0.4)"
-      : "1px solid rgba(255,255,255,0.2)"};
-  box-shadow: ${(props) =>
-    props.isActive
-      ? "0 8px 32px rgba(0,0,0,0.1)"
-      : "0 4px 16px rgba(0,0,0,0.05)"};
-  color: white;
-  font-family: ${(props) => props.theme.fonts.secondary};
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const TrackCardContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-`;
-
-const TrackCardTitle = styled.h3`
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TrackCardDescription = styled.p`
-  font-size: 0.875rem;
-  opacity: 0.9;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TrackCardPercentage = styled.span`
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TrackIcon = styled.div`
-  padding: 0.5rem;
-  border-radius: 9999px;
-  color: white;
-  background: ${(props) =>
-    `linear-gradient(135deg, ${props.bgColor}, ${props.bgColor}dd)`};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-`;
-
-const MainContent = styled.div`
-  border-radius: 0.75rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-`;
-
-const SectionHeader = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-`;
-
-const SectionIcon = styled.div`
-  padding: 0.75rem;
-  border-radius: 9999px;
-  color: white;
-  margin-right: 1rem;
-  background: ${(props) =>
-    `linear-gradient(135deg, ${props.bgColor}, ${props.bgColor}dd)`};
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1f2937;
-  letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const SectionDescription = styled.p`
-  color: #4b5563;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const ItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const ItemCard = styled.div`
-  padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  background: ${(props) =>
-    props.isCompleted
-      ? "linear-gradient(135deg, #d4edda, #c3e6cb)"
-      : "linear-gradient(135deg, #f8f9fa, #e9ecef)"};
-  border: ${(props) =>
-    props.isCompleted ? "2px solid #28a745" : "1px solid #dee2e6"};
-  transform: ${(props) => (props.isCompleted ? "scale(1.02)" : "scale(1)")};
-
-  &:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const ItemCardContent = styled.div`
-  display: flex;
-  align-items: flex-start;
-`;
-
-const CheckButton = styled.button`
-  margin-right: 1rem;
-  margin-top: 0.25rem;
-  flex-shrink: 0;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  border: none;
-  background: none;
-`;
-
-const ItemContent = styled.div`
-  flex-grow: 1;
-`;
-
-const ItemHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-`;
-
-const ItemTitle = styled.h3`
-  font-weight: 500;
-  color: ${(props) => (props.isCompleted ? "#166534" : "#1f2937")};
-  letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const ItemDescription = styled.p`
-  color: #4b5563;
-  margin-bottom: 0.75rem;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TimeTag = styled.span`
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  background: linear-gradient(135deg, #6c757d, #495057);
-  color: white;
-  font-weight: 500;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const ResourceContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const ResourceTag = styled.span`
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  font-weight: 400;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TipsCard = styled.div`
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 123, 255, 0.1),
-    rgba(0, 86, 179, 0.05)
-  );
-  border: 1px solid rgba(0, 123, 255, 0.2);
-  backdrop-filter: blur(5px);
-`;
-
-const TipsTitle = styled.h3`
-  font-weight: 500;
-  color: #1e40af;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TipsList = styled.ul`
-  font-size: 0.875rem;
-  color: #1d4ed8;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-weight: 400;
-  line-height: 1.6;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const TipsItem = styled.li`
-  margin-bottom: 0.25rem;
-  font-family: ${(props) => props.theme.fonts.secondary};
-`;
-
-const StyledCheckCircle = styled(CheckCircle)`
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #22c55e;
-  filter: drop-shadow(0 2px 4px rgba(40, 167, 69, 0.3));
-`;
-
-const StyledCircle = styled(Circle)`
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #9ca3af;
-`;
-
 const CreativeCodingRoadmap = () => {
   const [completedItems, setCompletedItems] = useState(new Set());
   const [activeTrack, setActiveTrack] = useState("foundations");
@@ -671,5 +363,313 @@ const CreativeCodingRoadmap = () => {
     </ThemeProvider>
   );
 };
+
+const Container = styled.div`
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const Title = styled.h1`
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #fff, #f0f8ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.125rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TrackGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
+const TrackCard = styled.button`
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  transform: scale(1);
+  background: ${(props) =>
+    props.isActive
+      ? "linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))"
+      : "rgba(255, 255, 255, 0.1)"};
+  backdrop-filter: blur(10px);
+  border: ${(props) =>
+    props.isActive
+      ? "2px solid rgba(255,255,255,0.4)"
+      : "1px solid rgba(255,255,255,0.2)"};
+  box-shadow: ${(props) =>
+    props.isActive
+      ? "0 8px 32px rgba(0,0,0,0.1)"
+      : "0 4px 16px rgba(0,0,0,0.05)"};
+  color: white;
+  font-family: ${(props) => props.theme.fonts.secondary};
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const TrackCardContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+`;
+
+const TrackCardTitle = styled.h3`
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TrackCardDescription = styled.p`
+  font-size: 0.875rem;
+  opacity: 0.9;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TrackCardPercentage = styled.span`
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TrackIcon = styled.div`
+  padding: 0.5rem;
+  border-radius: 9999px;
+  color: white;
+  background: ${(props) =>
+    `linear-gradient(135deg, ${props.bgColor}, ${props.bgColor}dd)`};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
+const MainContent = styled.div`
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+`;
+
+const SectionIcon = styled.div`
+  padding: 0.75rem;
+  border-radius: 9999px;
+  color: white;
+  margin-right: 1rem;
+  background: ${(props) =>
+    `linear-gradient(135deg, ${props.bgColor}, ${props.bgColor}dd)`};
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: -0.01em;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const SectionDescription = styled.p`
+  color: #4b5563;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ItemCard = styled.div`
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  background: ${(props) =>
+    props.isCompleted
+      ? "linear-gradient(135deg, #d4edda, #c3e6cb)"
+      : "linear-gradient(135deg, #f8f9fa, #e9ecef)"};
+  border: ${(props) =>
+    props.isCompleted ? "2px solid #28a745" : "1px solid #dee2e6"};
+  transform: ${(props) => (props.isCompleted ? "scale(1.02)" : "scale(1)")};
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ItemCardContent = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
+const CheckButton = styled.button`
+  margin-right: 1rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  border: none;
+  background: none;
+`;
+
+const ItemContent = styled.div`
+  flex-grow: 1;
+`;
+
+const ItemHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+`;
+
+const ItemTitle = styled.h3`
+  font-weight: 500;
+  color: ${(props) => (props.isCompleted ? "#166534" : "#1f2937")};
+  letter-spacing: -0.01em;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const ItemDescription = styled.p`
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TimeTag = styled.span`
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+  font-weight: 500;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const ResourceContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const ResourceTag = styled.span`
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  font-weight: 400;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TipsCard = styled.div`
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 123, 255, 0.1),
+    rgba(0, 86, 179, 0.05)
+  );
+  border: 1px solid rgba(0, 123, 255, 0.2);
+  backdrop-filter: blur(5px);
+`;
+
+const TipsTitle = styled.h3`
+  font-weight: 500;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  letter-spacing: -0.01em;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TipsList = styled.ul`
+  font-size: 0.875rem;
+  color: #1d4ed8;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const TipsItem = styled.li`
+  margin-bottom: 0.25rem;
+  font-family: ${(props) => props.theme.fonts.secondary};
+`;
+
+const StyledCheckCircle = styled(CheckCircle)`
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #22c55e;
+  filter: drop-shadow(0 2px 4px rgba(40, 167, 69, 0.3));
+`;
+
+const StyledCircle = styled(Circle)`
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #9ca3af;
+`;
 
 export default CreativeCodingRoadmap;

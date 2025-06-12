@@ -55,14 +55,14 @@ export default function Projects() {
             >
               <p>Official registration website for Syntaxia 2023.</p>
               <p>
-                Built with{" "}
+                Built with
                 <span className="bold">
                   HTML, CSS, JavaScript & Bootstrap
                 </span>
                 .
               </p>
               <p>
-                Hosted with{" "}
+                Hosted with
                 <span className="bold-simple">Firebase</span>.
               </p>
             </ProjectDescription>
@@ -71,7 +71,7 @@ export default function Projects() {
           <MobileDescription rowStart={2}>
             <p>Official registration website for Syntaxia 2023.</p>
             <p>
-              Built with{" "}
+              Built with
               <span className="bold">
                 JavaScript, Bootstrap & Firebase
               </span>
@@ -103,14 +103,14 @@ export default function Projects() {
             >
               <p>Redesigned website for Loyola Degree College.</p>
               <p>
-                Built with{" "}
+                Built with
                 <span className="bold">
                   Next.js, React & Tailwind CSS
                 </span>
                 .
               </p>
               <p>
-                Hosted with{" "}
+                Hosted with
                 <span className="bold-simple">Vercel</span>.
               </p>
             </ProjectDescription>
@@ -119,7 +119,7 @@ export default function Projects() {
           <MobileDescription rowStart={4}>
             <p>Redesigned website for Loyola Degree College.</p>
             <p>
-              Built with{" "}
+              Built with
               <span className="bold">
                 Next.js, Tailwind CSS & Vercel
               </span>
@@ -151,14 +151,14 @@ export default function Projects() {
             >
               <p>Simple To-Do app.</p>
               <p>
-                Built with{" "}
+                Built with
                 <span className="bold">
                   React & Tailwind CSS
                 </span>
                 .
               </p>
               <p>
-                Hosted with{" "}
+                Hosted with
                 <span className="bold-simple">
                   Cloudflare Pages
                 </span>
@@ -170,7 +170,7 @@ export default function Projects() {
           <MobileDescription rowStart={6}>
             <p>Simple To-Do app.</p>
             <p>
-              Built with{" "}
+              Built with
               <span className="bold">
                 React, Tailwind CSS & CloudFlare
               </span>
@@ -202,11 +202,11 @@ export default function Projects() {
             >
               <p>A cataloguing app for university faculty.</p>
               <p>
-                Built with{" "}
+                Built with
                 <span className="bold">
                   Next.js, Supabase & Tailwind CSS
                 </span>
-                . Hosted with{" "}
+                . Hosted with
                 <span className="bold-simple">Vercel</span>.
               </p>
             </ProjectDescription>
@@ -215,7 +215,7 @@ export default function Projects() {
           <MobileDescription rowStart={8}>
             <p>A cataloguing app for university faculty.</p>
             <p style={{ fontSize: '0.6rem' }}>
-              Built with{" "}
+              Built with
               <span className="bold">
                 Next.js, Supabase, Tailwind CSS & Vercel
               </span>.
@@ -226,16 +226,6 @@ export default function Projects() {
           <HomeIcon href="/">
             <CottageRoundedIcon sx={{ fontSize: 50 }} />
           </HomeIcon>
-          
-          {/* Tech stack note */}
-          {/* <TechStackNote>
-            <p>
-              This website was built with{" "}
-              <span className="bold">
-                Vite, React & Styled-Components
-              </span>! :)
-            </p>
-          </TechStackNote> */}
         </ProjectListWrapper>
       </ProjectsWrapper>
     </ThemeProvider>
@@ -388,33 +378,3 @@ const HomeIcon = styled.a`
     grid-row-start: 5;
   }
 `;
-
-// const TechStackNote = styled.div`
-//   grid-row-start: 10;
-//   grid-column-start: 1;
-//   grid-column-end: 4;
-//   margin-top: -1.5rem;
-//   padding-bottom: 1rem;
-//   font-size: 0.5rem;
-//   text-align: center;
-//   text-transform: none;
-//   letter-spacing: 0.01em;
-  
-//   @media (min-width: ${props => props.theme.breakpoints.lg}) {
-//     padding-bottom: 0;
-//     grid-row-start: 6;
-//     grid-column-end: 2;
-//     grid-column-start: 2;
-//     font-size: 0.75rem;
-//   }
-  
-//   span.bold {
-//     font-weight: bold;
-//     letter-spacing: 0.03em;
-//     white-space: pre;
-    
-//     @media (min-width: ${props => props.theme.breakpoints.lg}) {
-//       white-space: normal;
-//     }
-//   }
-// `;
