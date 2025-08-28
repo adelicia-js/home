@@ -28,7 +28,7 @@ export default function ErrorPage() {
 
 const ErrorPageContainer = styled.div`
   min-height: 100vh;
-  background: ${(props) => props.theme.gradients.cyan};
+  background: ${(props) => props.theme?.gradients?.cyan || 'linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ const ErrorContainer = styled.div`
 `;
 
 const ErrorTitle = styled.h1`
-  background-image: ${(props) => props.theme.gradients.animated};
+  background-image: ${(props) => props.theme?.gradients?.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
   background-size: 200% auto;
   color: #fff;
   background-clip: text;
@@ -58,7 +58,7 @@ const ErrorTitle = styled.h1`
 `;
 
 const ErrorSubtitle = styled.h2`
-  background-image: ${(props) => props.theme.gradients.animated};
+  background-image: ${(props) => props.theme?.gradients?.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
   background-size: 200% auto;
   color: #fff;
   background-clip: text;
@@ -72,7 +72,7 @@ const ErrorSubtitle = styled.h2`
 
 const HomeLink = styled.a`
   font-size: 1.875rem;
-  color: ${(props) => props.theme.colors.emerald[900]};
+  color: ${(props) => props.theme?.colors?.emerald?.[900] || '#064e3b'};
   transition: color 0.3s ease;
 
   &:hover {

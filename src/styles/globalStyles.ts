@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes, DefaultTheme } from "styled-components";
 
 interface GradientContainerProps {
   gradient?: string;
@@ -46,16 +46,43 @@ export const groovy = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
-export const GlobalStyle = createGlobalStyle`
+export const subtleFloat = keyframes`
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+`;
+
+export const slideInFromBottom = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const zoomInFromCenter = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   * {
-    font-family: ${(props) => props.theme.fonts.primary};
+    font-family: ${(props) => props.theme?.fonts.primary || '"Unbounded", sans-serif'};
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
   body {
-    font-family: ${(props) => props.theme.fonts.primary};
+    font-family: ${(props) => props.theme?.fonts.primary || '"Unbounded", sans-serif'};
   }
 
   html, body {
@@ -69,7 +96,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .animated {
-    background-image: ${(props) => props.theme.gradients.animated};
+    background-image: ${(props) => props.theme?.gradients.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
     background-size: 200% auto;
     color: #fff;
     background-clip: text;
@@ -90,7 +117,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .animated-background {
-    background-image: ${(props) => props.theme.gradients.animatedBackground};
+    background-image: ${(props) => props.theme?.gradients.animatedBackground || 'linear-gradient(-90deg, #6170f8c9, #1026f0c9, #581fdec2, #8f65f0d0, #c265f0d0, #eb65f0c9, #ff88f9a4)'};
     background-size: 200% auto;
     animation: ${groovy} 30s ease-in-out infinite;
     text-shadow: 1px 0.1px 3px #07463a4c;
@@ -123,6 +150,46 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     overflow-x: auto;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #164e634c, #134e4a);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme?.gradients.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      -210deg,
+      #22ac07 0%,
+      #06cb7b 40%,
+      #9c58b0 60%,
+      #06cb7b 80%,
+      #22ac07 100%
+    );
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: linear-gradient(180deg, #164e63, #134e4a);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #14b8a6 #134e4a;
+  }
 `;
 
 export const Container = styled.div`
@@ -131,7 +198,7 @@ export const Container = styled.div`
 `;
 
 export const GradientContainer = styled(Container)<GradientContainerProps>`
-  background: ${(props) => props.gradient || props.theme.gradients.primary};
+  background: ${(props) => props.gradient || props.theme?.gradients.primary || 'linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))'};
 `;
 
 export const FlexContainer = styled.div<FlexContainerProps>`
@@ -149,4 +216,21 @@ export const GridContainer = styled.div<GridContainerProps>`
   gap: ${(props) => props.gap || "1rem"};
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
+`;
+
+export const GlassBox = styled.div`
+  background: linear-gradient(
+    -120deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
 `;

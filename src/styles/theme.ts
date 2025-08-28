@@ -56,6 +56,7 @@ export const theme: DefaultTheme = {
   },
   gradients: {
     primary: 'linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))',
+    secondary: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
     teal: 'linear-gradient(to bottom, #2dd4bf, #99f6e4, #2dd4bf)',
     cyan: 'linear-gradient(to bottom, #67e8f9, #a5f3fc, #22d3ee)',
     animated: `linear-gradient(

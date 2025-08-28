@@ -1,4 +1,4 @@
-import { useState, ReactElement} from "react";
+import React, { useState, ReactElement, useEffect} from "react";
 import {
   CheckCircle,
   Circle,
@@ -7,6 +7,9 @@ import {
   Gamepad2,
   Code,
   Sparkles,
+  Lock,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../styles/theme";
@@ -53,6 +56,35 @@ type TrackKey = 'foundations' | 'gamedev' | 'creative' | 'advanced';
 const CreativeCodingRoadmap = () => {
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
   const [activeTrack, setActiveTrack] = useState<TrackKey>("foundations");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+
+  const CORRECT_PASSWORD = import.meta.env.VITE_ROADMAP_PASSWORD;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const savedAuth = window.localStorage.getItem("roadmapAuth");
+      if (savedAuth === "true") {
+        setIsAuthenticated(true);
+      }
+    }
+  }, []);
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === CORRECT_PASSWORD) {
+      setIsAuthenticated(true);
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem("roadmapAuth", "true");
+      }
+      setError("");
+    } else {
+      setError("Incorrect password");
+      setPassword("");
+    }
+  };
 
   const toggleComplete = (itemId: string) => {
     const newCompleted = new Set(completedItems);
@@ -286,6 +318,47 @@ const CreativeCodingRoadmap = () => {
     return Math.round((completed / trackItems.length) * 100);
   };
 
+  if (!isAuthenticated) {
+    return (
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <PasswordContainer>
+          <PasswordModal>
+            <PasswordHeader>
+              <Lock size={32} />
+              <PasswordTitle>Protected Content</PasswordTitle>
+              <PasswordSubtitle>Enter password to access the roadmap</PasswordSubtitle>
+            </PasswordHeader>
+            
+            <PasswordForm onSubmit={handlePasswordSubmit}>
+              <PasswordInputWrapper>
+                <PasswordInput
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter password"
+                  hasError={!!error}
+                />
+                <PasswordToggle 
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </PasswordToggle>
+              </PasswordInputWrapper>
+              
+              {error && <ErrorMessage>{error}</ErrorMessage>}
+              
+              <PasswordButton type="submit">
+                Unlock Roadmap
+              </PasswordButton>
+            </PasswordForm>
+          </PasswordModal>
+        </PasswordContainer>
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -408,7 +481,7 @@ const Container = styled.div`
   padding: 1.5rem;
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const Header = styled.div`
@@ -419,7 +492,7 @@ const Header = styled.div`
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const Title = styled.h1`
@@ -432,7 +505,7 @@ const Title = styled.h1`
   -webkit-text-fill-color: transparent;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: -0.02em;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const Subtitle = styled.p`
@@ -442,7 +515,7 @@ const Subtitle = styled.p`
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   font-weight: 400;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TrackGrid = styled.div`
@@ -479,7 +552,7 @@ const TrackCard = styled.button<TrackCardProps>`
       ? "0 8px 32px rgba(0,0,0,0.1)"
       : "0 4px 16px rgba(0,0,0,0.05)"};
   color: white;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 
   &:hover {
     transform: scale(1.05);
@@ -497,7 +570,7 @@ const TrackCardTitle = styled.h3`
   font-weight: 500;
   margin-bottom: 0.25rem;
   letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TrackCardDescription = styled.p`
@@ -505,13 +578,13 @@ const TrackCardDescription = styled.p`
   opacity: 0.9;
   font-weight: 400;
   line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TrackCardPercentage = styled.span`
   font-size: 0.875rem;
   font-weight: 500;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TrackIcon = styled.div<TrackIconProps>`
@@ -553,14 +626,14 @@ const SectionTitle = styled.h2`
   font-weight: 600;
   color: #1f2937;
   letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const SectionDescription = styled.p`
   color: #4b5563;
   font-weight: 400;
   line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const ItemsContainer = styled.div`
@@ -620,7 +693,7 @@ const ItemTitle = styled.h3<ItemTitleProps>`
   font-weight: 500;
   color: ${(props) => (props.isCompleted ? "#166534" : "#1f2937")};
   letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const ItemDescription = styled.p`
@@ -628,7 +701,7 @@ const ItemDescription = styled.p`
   margin-bottom: 0.75rem;
   font-weight: 400;
   line-height: 1.5;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TimeTag = styled.span`
@@ -638,7 +711,7 @@ const TimeTag = styled.span`
   background: linear-gradient(135deg, #6c757d, #495057);
   color: white;
   font-weight: 500;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const ResourceContainer = styled.div`
@@ -654,7 +727,7 @@ const ResourceTag = styled.span`
   background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
   font-weight: 400;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TipsCard = styled.div`
@@ -678,7 +751,7 @@ const TipsTitle = styled.h3`
   align-items: center;
   gap: 0.2rem;
   letter-spacing: -0.01em;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TipsList = styled.ul`
@@ -689,12 +762,12 @@ const TipsList = styled.ul`
   margin: 0;
   font-weight: 400;
   line-height: 1.6;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const TipsItem = styled.li`
   margin-bottom: 0.25rem;
-  font-family: ${(props) => props.theme.fonts.secondary};
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
 `;
 
 const StyledCheckCircle = styled(CheckCircle)`
@@ -708,6 +781,125 @@ const StyledCircle = styled(Circle)`
   width: 1.5rem;
   height: 1.5rem;
   color: #9ca3af;
+`;
+
+const PasswordContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+`;
+
+const PasswordModal = styled.div`
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem;
+`;
+
+const PasswordHeader = styled.div`
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  svg {
+    color: #667eea;
+    margin-bottom: 1rem;
+  }
+`;
+
+const PasswordTitle = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+`;
+
+const PasswordSubtitle = styled.p`
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+`;
+
+const PasswordForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const PasswordInputWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+interface PasswordInputProps {
+  hasError: boolean;
+}
+
+const PasswordInput = styled.input<PasswordInputProps>`
+  width: 100%;
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  border: 2px solid ${props => props.hasError ? '#ef4444' : '#e5e7eb'};
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  background: white;
+  
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+`;
+
+const PasswordToggle = styled.button`
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    color: #374151;
+  }
+`;
+
+const ErrorMessage = styled.div`
+  color: #ef4444;
+  font-size: 0.875rem;
+  text-align: center;
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+`;
+
+const PasswordButton = styled.button`
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  }
 `;
 
 export default CreativeCodingRoadmap;

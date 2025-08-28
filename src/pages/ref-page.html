@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me Cards Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 50px;
+        }
+
+        .cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 25px;
+            grid-template-areas: 
+                "photo story"
+                "photo skills"
+                "photo current";
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-card {
+            grid-area: photo;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .photo-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-info h3 {
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .photo-info p {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .story-card {
+            grid-area: story;
+        }
+
+        .skills-card {
+            grid-area: skills;
+        }
+
+        .current-card {
+            grid-area: current;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 1.8em;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .card-content {
+            color: rgba(0, 0, 0, 0.7);
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .skill-icon {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .skill-name {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .current-focus {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #ff6b9d;
+        }
+
+        .current-focus h4 {
+            color: rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .current-focus p {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .fun-facts {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .fun-facts li {
+            padding: 8px 0;
+            color: rgba(0, 0, 0, 0.7);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .fun-facts li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .alternative-layout {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .alternative-title {
+            text-align: center;
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .alt-cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            grid-template-areas: 
+                "photo story skills"
+                "photo current current";
+        }
+
+        .alt-photo-card {
+            grid-area: photo;
+        }
+
+        .alt-story-card {
+            grid-area: story;
+        }
+
+        .alt-skills-card {
+            grid-area: skills;
+        }
+
+        .alt-current-card {
+            grid-area: current;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container, .alt-cards-container {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "photo"
+                    "story"
+                    "skills"
+                    "current";
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .photo-placeholder {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5em;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 class="section-title">About Me</h2>
+    
+    <div class="cards-container">
+        <div class="card photo-card">
+            <div class="photo-placeholder">📸</div>
+            <div class="photo-info">
+                <h3>Adelicia</h3>
+                <p>Frontend Developer<br>& Design Enthusiast</p>
+            </div>
+        </div>
+        
+        <div class="card story-card">
+            <div class="card-header">
+                <span class="card-icon">💫</span>
+                <h3 class="card-title">My Story</h3>
+            </div>
+            <div class="card-content">
+                <p>Hey there! I'm a <span class="highlight">passionate developer</span> who discovered the magic of coding through building my first React app. What started as curiosity evolved into a love for creating digital experiences that users genuinely enjoy.</p>
+                
+                <ul class="fun-facts">
+                    <li>I code best with good coffee & lo-fi beats</li>
+                    <li>Always exploring the latest web technologies</li>
+                    <li>Believe great code should tell a story</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card skills-card">
+            <div class="card-header">
+                <span class="card-icon">🛠️</span>
+                <h3 class="card-title">Tech Stack</h3>
+            </div>
+            <div class="card-content">
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-icon">⚛️</span>
+                        <span class="skill-name">React</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">📱</span>
+                        <span class="skill-name">Next.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">⚡</span>
+                        <span class="skill-name">Vite</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">🟢</span>
+                        <span class="skill-name">Node.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">🎨</span>
+                        <span class="skill-name">Figma</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-icon">☁️</span>
+                        <span class="skill-name">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card current-card">
+            <div class="card-header">
+                <span class="card-icon">🚀</span>
+                <h3 class="card-title">Currently</h3>
+            </div>
+            <div class="card-content">
+                <p>Deep diving into <span class="highlight">advanced React patterns</span> and exploring serverless architecture. Always looking for ways to make apps faster and more delightful to use!</p>
+                
+                <div class="current-focus">
+                    <h4>🎯 This Month's Focus</h4>
+                    <p>Learning Three.js to add some 3D magic to web experiences</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alternative-layout">
+        <h3 class="alternative-title">Alternative Layout Option</h3>
+        <div class="alt-cards-container">
+            <div class="card alt-photo-card photo-card">
+                <div class="photo-placeholder">📸</div>
+                <div class="photo-info">
+                    <h3>Adelicia</h3>
+                    <p>Frontend Developer</p>
+                </div>
+            </div>
+            
+            <div class="card alt-story-card">
+                <div class="card-header">
+                    <span class="card-icon">💫</span>
+                    <h3 class="card-title">My Journey</h3>
+                </div>
+                <div class="card-content">
+                    <p>Passionate about crafting <span class="highlight">beautiful, functional</span> web experiences. Started with curiosity, now it's my passion!</p>
+                </div>
+            </div>
+            
+            <div class="card alt-skills-card">
+                <div class="card-header">
+                    <span class="card-icon">🛠️</span>
+                    <h3 class="card-title">Skills</h3>
+                </div>
+                <div class="card-content">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">⚛️</span>
+                            <span class="skill-name">React</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">📱</span>
+                            <span class="skill-name">Next.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">⚡</span>
+                            <span class="skill-name">Vite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card alt-current-card">
+                <div class="card-header">
+                    <span class="card-icon">🚀</span>
+                    <h3 class="card-title">What I'm Up To</h3>
+                </div>
+                <div class="card-content">
+                    <p>Currently exploring <span class="highlight">Three.js and serverless architecture</span>. Always learning, always building something new!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

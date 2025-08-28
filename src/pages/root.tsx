@@ -121,7 +121,7 @@ const HeaderSection = styled.header`
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme?.colors?.black || '#000000'};
 `;
 
 // Profile content section - middle of header
@@ -135,13 +135,13 @@ const WelcomeText = styled.h1`
   padding-bottom: 0.5rem;
 
   font-size: 1.875rem;
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     font-size: 2.25rem;
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.md || '768px'}) {
     font-size: 3rem;
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.lg || '1024px'}) {
     font-size: 3.75rem;
   }
 `;
@@ -149,21 +149,21 @@ const WelcomeText = styled.h1`
 // Tech stack text
 const TechStack = styled.h2`
   text-align: center;
-  text-shadow: ${(props) => props.theme.shadows.textSea};
+  text-shadow: ${(props) => props.theme?.shadows?.textSea || '1px 0.1px 1px #258989'};
   letter-spacing: 0.05em;
   font-weight: normal;
-  font-family: ${(props) => props.theme.fonts.mono};
-  color: ${(props) => props.theme.colors.emerald[800]};
+  font-family: ${(props) => props.theme?.fonts?.mono || '"Unbounded", sans-serif'};
+  color: ${(props) => props.theme?.colors?.emerald?.[800] || '#065f46'};
   padding-bottom: 1rem;
 
   font-size: 0.75rem;
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     font-size: 0.75rem;
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.md || '768px'}) {
     font-size: 0.875rem;
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.lg || '1024px'}) {
     font-size: 0.9rem;
   }
   @media (max-width: 400px) {
@@ -179,14 +179,14 @@ const TechStack = styled.h2`
 
 const HiddenOnMobile = styled.span`
   display: none;
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     display: inline;
     text-align: center;
-    text-shadow: ${(props) => props.theme.shadows.textSea};
+    text-shadow: ${(props) => props.theme?.shadows?.textSea || '1px 0.1px 1px #258989'};
     letter-spacing: 0.05em;
     font-weight: normal;
-    font-family: ${(props) => props.theme.fonts.mono};
-    color: ${(props) => props.theme.colors.emerald[800]};
+    font-family: ${(props) => props.theme?.fonts?.mono || '"Unbounded", sans-serif'};
+    color: ${(props) => props.theme?.colors?.emerald?.[800] || '#065f46'};
     padding-bottom: 1rem;
   }
 `;
@@ -196,7 +196,7 @@ const SocialsList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: ${(props) => props.theme.colors.emerald[800]};
+  color: ${(props) => props.theme?.colors?.emerald?.[800] || '#065f46'};
 `;
 
 const SocialsWrapper = styled.div`
@@ -222,7 +222,7 @@ const SocialLink = styled.a<SocialLinkProps>`
     }
 
     .MuiSvgIcon-root {
-      color: ${(props) => props.hoverColor || props.theme.colors.white};
+      color: ${(props) => props.hoverColor || props.theme?.colors?.white || '#ffffff'};
       filter: drop-shadow(2px 2px 4px rgba(222, 240, 237, 0.3));
     }
   }
@@ -236,7 +236,7 @@ const ScrollSection = styled.section`
 `;
 
 const ScrollDownLink = styled.a`
-  color: ${(props) => props.theme.colors.emerald[800]};
+  color: ${(props) => props.theme?.colors?.emerald?.[800] || '#065f46'};
 
   .MuiSvgIcon-root {
     position: absolute;
@@ -255,18 +255,18 @@ const MainMenu = styled.main`
   grid-template-rows: repeat(4, 1fr);
   align-items: center;
   justify-content: space-around;
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme?.colors?.black || '#000000'};
   font-size: 1rem;
 
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     font-size: 1.5rem;
   }
 `;
 
 const MenuLink = styled.div<MenuLinkProps>`
-  text-shadow: ${(props) => props.theme.shadows.textSea};
+  text-shadow: ${(props) => props.theme?.shadows?.textSea || '1px 0.1px 1px #258989'};
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.emerald[900]};
+  color: ${(props) => props.theme?.colors?.emerald?.[900] || '#064e3b'};
   transition: all 0.3s ease;
 
   a {
@@ -275,10 +275,10 @@ const MenuLink = styled.div<MenuLinkProps>`
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors.emerald[200]};
+    color: ${(props) => props.theme?.colors?.emerald?.[200] || '#a7f3d0'};
     font-weight: 600;
 
-    @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
       letter-spacing: 0.08rem;
     }
 
@@ -295,7 +295,7 @@ const MenuLink = styled.div<MenuLinkProps>`
 `;
 
 const FooterSection = styled.div`
-  color: ${(props) => props.theme.colors.emerald[900]};
+  color: ${(props) => props.theme?.colors?.emerald?.[900] || '#064e3b'};
   grid-row-start: 4;
   display: flex;
   flex-direction: column;
@@ -304,7 +304,7 @@ const FooterSection = styled.div`
 `;
 
 const ScrollUpLink = styled.a`
-  color: ${(props) => props.theme.colors.emerald[900]};
+  color: ${(props) => props.theme?.colors?.emerald?.[900] || '#064e3b'};
 
   .MuiSvgIcon-root {
     position: absolute;
@@ -319,12 +319,12 @@ const ThankYouText = styled.p`
   padding-bottom: 0.25rem;
   font-size: 1rem;
 
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     font-size: 1.125rem;
     padding-bottom: 0.5rem;
   }
 
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.md || '768px'}) {
     font-size: 1.25rem;
   }
 
@@ -332,34 +332,34 @@ const ThankYouText = styled.p`
     font-style: normal;
     font-size: 1.125rem;
 
-    @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
       font-size: 1.25rem;
     }
 
-    @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+    @media (min-width: ${(props) => props.theme?.breakpoints?.md || '768px'}) {
       font-size: 1.5rem;
     }
   }
 `;
 
 const SourceLink = styled.a`
-  text-shadow: ${(props) => props.theme.shadows.textSea};
-  color: ${(props) => props.theme.colors.emerald[300]};
+  text-shadow: ${(props) => props.theme?.shadows?.textSea || '1px 0.1px 1px #258989'};
+  color: ${(props) => props.theme?.colors?.emerald?.[300] || '#6ee7b7'};
   font-weight: 400;
   transition: all 0.3s ease;
   text-decoration: none;
   font-size: 0.875rem;
 
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
     font-size: 1rem;
   }
 
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+  @media (min-width: ${(props) => props.theme?.breakpoints?.md || '768px'}) {
     font-size: 1.125rem;
   }
 
   &:hover {
-    @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    @media (min-width: ${(props) => props.theme?.breakpoints?.sm || '640px'}) {
       letter-spacing: 0.06rem;
     }
   }

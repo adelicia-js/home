@@ -57,6 +57,7 @@ declare module 'styled-components' {
     };
     gradients: {
       primary: string;
+      secondary: string;
       teal: string;
       cyan: string;
       animated: string;

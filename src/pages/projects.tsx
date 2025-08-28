@@ -1,400 +1,676 @@
-import styled, { ThemeProvider } from 'styled-components';
-import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import { useState } from "react";
-import { theme } from '../styles/theme';
-import { GlobalStyle, GradientContainer, GridContainer } from '../styles/globalStyles';
-
-interface AnchorStates {
-  [key: string]: boolean;
-}
-
-interface ProjectLinkProps {
-  rowStart: number;
-  colStart: number;
-  lgRowStart?: number;
-  lgColStart?: number;
-}
-
-interface ProjectDescriptionProps {
-  rowStart: number;
-  colStart: number;
-}
-
-interface MobileDescriptionProps {
-  rowStart: number;
-}
+import styled, { ThemeProvider } from "styled-components";
+import { X } from "lucide-react";
+import { theme } from "../styles/theme";
+import {
+  GlobalStyle,
+  GradientContainer,
+  GlassBox,
+  GridContainer,
+  groovy,
+  subtleFloat,
+  slideInFromBottom,
+  zoomInFromCenter,
+} from "../styles/globalStyles";
+import { ProjectData, projectsData, techConfig } from "../utils";
+import { Milestone } from "lucide-react";
 
 export default function Projects() {
-  const [anchorStates, setAnchorStates] = useState<AnchorStates>({});
-
-  const handleMouseEnter = (anchorKey: string) => {
-    setAnchorStates((prevStates) => ({
-      ...prevStates,
-      [anchorKey]: true,
-    }));
-  };
-
-  const handleMouseLeave = (anchorKey: string) => {
-    setAnchorStates((prevStates) => ({
-      ...prevStates,
-      [anchorKey]: false,
-    }));
-  };
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ProjectsContainer gradient={theme.gradients.teal} id="projects-wrapper">
-        <ProjectListWrapper
-          id="project-list-wrapper"
-          columns="repeat(3, 1fr)"
-          rows="repeat(11, auto)"
-          gap="1.5rem"
-        >
-          {/* Syntaxia 2023's Website */}
-          <ProjectLink
-            id="syntaxia-link"
-            href="https://syntaxia2023.web.app/"
-            target="_blank"
-            rel="noreferrer"
-            rowStart={1}
-            colStart={2}
-            lgRowStart={1}
-            lgColStart={2}
-            onMouseEnter={() => handleMouseEnter("syntaxia")}
-            onMouseLeave={() => handleMouseLeave("syntaxia")}
-          >
-            Syntaxia 2023
-          </ProjectLink>
-          
-          {anchorStates.syntaxia && (
-            <ProjectDescription
-              id="syntaxia-description"
-              rowStart={1}
-              colStart={3}
-            >
-              <p>Official registration website for Syntaxia 2023.</p>
-              <p>
-                Built with
-                <span className="bold">
-                  HTML, CSS, JavaScript & Bootstrap
-                </span>
-                .
-              </p>
-              <p>
-                Hosted with
-                <span className="bold-simple">Firebase</span>.
-              </p>
-            </ProjectDescription>
-          )}
-          
-          <MobileDescription rowStart={2}>
-            <p>Official registration website for Syntaxia 2023.</p>
-            <p>
-              Built with
-              <span className="bold">
-                JavaScript, Bootstrap & Firebase
-              </span>
-              .
-            </p>
-          </MobileDescription>
+      <ProjectsWrapper id="projects">
+        <ProjectsGrid>
+          {projectsData.map((project) => (
+            <ProjectBoxContainer
+              key={project.id}
+              project={project}
+              onProjectSelect={() => setSelectedProject(project.id)}
+            />
+          ))}
+        </ProjectsGrid>
+        {selectedProject !== null && (
+          <ProjectDetail onClick={() => setSelectedProject(null)}>
+            <DetailContent onClick={(e) => e.stopPropagation()}>
+              {(() => {
+                const project = projectsData.find(
+                  (p) => p.id === selectedProject
+                );
+                if (!project) return null;
 
-          {/* Loyola Degree College's Website */}
-          <ProjectLink
-            id="loyola-link"
-            href="https://loyola-website.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            rowStart={3}
-            colStart={2}
-            lgRowStart={2}
-            lgColStart={2}
-            onMouseEnter={() => handleMouseEnter("loyola")}
-            onMouseLeave={() => handleMouseLeave("loyola")}
-          >
-            LDC College Website
-          </ProjectLink>
-          
-          {anchorStates.loyola && (
-            <ProjectDescription
-              id="loyola-description"
-              rowStart={2}
-              colStart={3}
-            >
-              <p>Redesigned website for Loyola Degree College.</p>
-              <p>
-                Built with
-                <span className="bold">
-                  Next.js, React & Tailwind CSS
-                </span>
-                .
-              </p>
-              <p>
-                Hosted with
-                <span className="bold-simple">Vercel</span>.
-              </p>
-            </ProjectDescription>
-          )}
-          
-          <MobileDescription rowStart={4}>
-            <p>Redesigned website for Loyola Degree College.</p>
-            <p>
-              Built with
-              <span className="bold">
-                Next.js, Tailwind CSS & Vercel
-              </span>
-              .
-            </p>
-          </MobileDescription>
-
-          {/* Simple To-Do Web App */}
-          <ProjectLink
-            id="todo-link"
-            href="https://todo-cra.pages.dev/"
-            target="_blank"
-            rel="noreferrer"
-            rowStart={5}
-            colStart={2}
-            lgRowStart={3}
-            lgColStart={2}
-            onMouseEnter={() => handleMouseEnter("todo")}
-            onMouseLeave={() => handleMouseLeave("todo")}
-          >
-            To-do App
-          </ProjectLink>
-          
-          {anchorStates.todo && (
-            <ProjectDescription
-              id="todo-description"
-              rowStart={3}
-              colStart={3}
-            >
-              <p>Simple To-Do app.</p>
-              <p>
-                Built with
-                <span className="bold">
-                  React & Tailwind CSS
-                </span>
-                .
-              </p>
-              <p>
-                Hosted with
-                <span className="bold-simple">
-                  Cloudflare Pages
-                </span>
-                .
-              </p>
-            </ProjectDescription>
-          )}
-          
-          <MobileDescription rowStart={6}>
-            <p>Simple To-Do app.</p>
-            <p>
-              Built with
-              <span className="bold">
-                React, Tailwind CSS & CloudFlare
-              </span>
-              .
-            </p>
-          </MobileDescription>
-
-          {/* Milestone Monitor*/}
-          <ProjectLink
-            id="milestone-monitor-link"
-            href="https://milestone-monitor.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            rowStart={7}
-            colStart={2}
-            lgRowStart={4}
-            lgColStart={2}
-            onMouseEnter={() => handleMouseEnter("milestone")}
-            onMouseLeave={() => handleMouseLeave("milestone")}
-          >
-            Milestone Monitor
-          </ProjectLink>
-          
-          {anchorStates.milestone && (
-            <ProjectDescription
-              id="milestone-monitor-description"
-              rowStart={4}
-              colStart={3}
-            >
-              <p>A cataloguing app for university faculty.</p>
-              <p>
-                Built with
-                <span className="bold">
-                  Next.js, Supabase & Tailwind CSS
-                </span>
-                . Hosted with
-                <span className="bold-simple">Vercel</span>.
-              </p>
-            </ProjectDescription>
-          )}
-          
-          <MobileDescription rowStart={8}>
-            <p>A cataloguing app for university faculty.</p>
-            <p style={{ fontSize: '0.6rem' }}>
-              Built with
-              <span className="bold">
-                Next.js, Supabase, Tailwind CSS & Vercel
-              </span>.
-            </p>
-          </MobileDescription>
-          
-          {/* Back to Home */}
-          <HomeIcon href="/">
-            <CottageRoundedIcon sx={{ fontSize: 50 }} />
-          </HomeIcon>
-        </ProjectListWrapper>
-      </ProjectsContainer>
+                return (
+                  <ProjectDetailLayout>
+                    <ProjectDetailLeft>
+                      <ProjectDetailHeader>{project.title}</ProjectDetailHeader>
+                      {project.status !== "completed" && (
+                        <StatusBadge status={project.status}>
+                          {project.status}
+                        </StatusBadge>
+                      )}
+                      <ProjectDetailDescription>
+                        {project.longDescription}
+                      </ProjectDetailDescription>
+                      <TechStack>
+                        {project.technologies.map((tech, index) => (
+                          <TechTag key={index}>{tech}</TechTag>
+                        ))}
+                      </TechStack>
+                      <ButtonGroup>
+                        {project.githubUrl && (
+                          <ProjectButton
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            GitHub
+                          </ProjectButton>
+                        )}
+                        {project.demoUrl && (
+                          <ProjectButton
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View App
+                          </ProjectButton>
+                        )}
+                      </ButtonGroup>
+                    </ProjectDetailLeft>
+                    <ProjectDetailRight>
+                      {project.screenshotUrl && (
+                        <ScreenshotContainer>
+                          <ProjectScreenshot
+                            src={project.screenshotUrl}
+                            alt={`${project.title} screenshot`}
+                          />
+                        </ScreenshotContainer>
+                      )}
+                    </ProjectDetailRight>
+                  </ProjectDetailLayout>
+                );
+              })()}
+              <CloseButton onClick={() => setSelectedProject(null)}>
+                <X size={20} />
+              </CloseButton>
+            </DetailContent>
+          </ProjectDetail>
+        )}
+        <HomeLink href="/" id="home-link" aria-label="Home">
+          <HomeLinkIcon>
+            <Milestone size={18} style={{ transform: "scaleX(-1)" }} />
+          </HomeLinkIcon>
+          <HomeLinkText>Back to Home</HomeLinkText>
+        </HomeLink>
+      </ProjectsWrapper>
     </ThemeProvider>
   );
 }
 
-const ProjectsContainer = styled(GradientContainer)`
-  padding: 0 2rem;
+interface ProjectBoxContainerProps {
+  project: ProjectData;
+  onProjectSelect: () => void;
+}
+
+function ProjectBoxContainer({
+  project,
+  onProjectSelect,
+}: ProjectBoxContainerProps) {
+  const handleClick = () => {
+    onProjectSelect();
+  };
+
+  return (
+    <ProjectBox
+      style={{
+        marginBottom: project.id < 3 ? "-2rem" : "0",
+        marginTop: project.id >= 3 ? "-2rem" : "0",
+      }}
+      onClick={handleClick}
+    >
+      <ProjectHeader>{project.title}</ProjectHeader>
+      <ProjectDescription>{project.description}</ProjectDescription>
+      <CardTechBadges>
+        <BadgeRow>
+          {project.technologies.slice(0, 3).map((tech, index) => {
+            const config = techConfig[tech] || {
+              color: "#ffffff",
+              bgColor: "#6B7280",
+              icon: "🔧",
+            };
+            return (
+              <CardTechBadge
+                key={index}
+                color={config.color}
+                bgColor={config.bgColor}
+              >
+                <span className="icon">{config.icon}</span>
+                {tech}
+              </CardTechBadge>
+            );
+          })}
+        </BadgeRow>
+        {project.technologies.length > 3 && (
+          <BadgeRow>
+            {project.technologies.slice(3, 5).map((tech, index) => {
+              const config = techConfig[tech] || {
+                color: "#ffffff",
+                bgColor: "#6B7280",
+                icon: "🔧",
+              };
+              return (
+                <CardTechBadge
+                  key={index + 3}
+                  color={config.color}
+                  bgColor={config.bgColor}
+                >
+                  <span className="icon">{config.icon}</span>
+                  {tech}
+                </CardTechBadge>
+              );
+            })}
+            {project.technologies.length > 5 && (
+              <MoreBadge>+{project.technologies.length - 5}</MoreBadge>
+            )}
+          </BadgeRow>
+        )}
+      </CardTechBadges>
+    </ProjectBox>
+  );
+}
+
+const ProjectsWrapper = styled(GradientContainer)`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: ${(props) =>
+    props.theme?.gradients?.secondary ||
+    "linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))"};
+  background-size: 200% auto;
+  animation: ${groovy} 30s ease-in-out infinite;
+  background-size: 200% auto;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+const ProjectHeader = styled.h1`
+  background: linear-gradient(45deg, #07b589ff, #c44569);
+  color: #d91556ff;
+  font-size: 1.5rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  font-family: ${(props) =>
+    props.theme?.fonts.secondary || '"Inter", sans-serif'};
+`;
+
+const ProjectDescription = styled.p`
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #7d0829b4;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  font-family: ${(props) =>
+    props.theme?.fonts.secondary || '"Inter", sans-serif'};
+`;
+
+const CardTechBadges = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  max-width: 100%;
+`;
+
+const BadgeRow = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardTechBadge = styled.div<{ color: string; bgColor: string }>`
+  display: flex;
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  align-items: center;
+  gap: 0.3rem;
+  background: ${(props) => props.bgColor};
+  color: ${(props) =>
+    props.color === "#ffffff"
+      ? "#ffffff"
+      : props.bgColor === "#F7DF1E"
+      ? "#000000"
+      : props.color};
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+  transition: all 0.2s ease;
+
+  .icon {
+    font-size: 0.8rem;
+    filter: ${(props) =>
+      props.bgColor === "#ffffff" ? "none" : "brightness(1.1)"};
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0 rgba(255, 255, 255, 0.15) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+  }
+`;
+
+const MoreBadge = styled.div`
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+`;
+
+const ProjectsGrid = styled(GridContainer)`
+  width: 100%;
+  height: 100%;
+`;
+
+const ProjectBox = styled(GlassBox)`
+  width: 30vw;
+  height: 30vh;
+  animation: ${subtleFloat} 6s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &:nth-child(2n) {
+    animation-delay: -2s;
+  }
+
+  &:nth-child(3n) {
+    animation-delay: -4s;
+  }
+`;
+
+const ProjectDetail = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: ${slideInFromBottom} 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    forwards;
+`;
+
+const DetailContent = styled.div`
+  background: linear-gradient(
+    -120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 1200px;
+  width: 95%;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: white;
+  position: relative;
+  cursor: default;
+  animation: ${zoomInFromCenter} 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    0.2s backwards;
+  transform-origin: center center;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: scale(1.1);
+  }
+`;
+
+const ProjectDetailLayout = styled.div`
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ProjectDetailLeft = styled.div`
+  flex: 1;
+  text-align: left;
+`;
+
+const ProjectDetailRight = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 
-const ProjectListWrapper = styled(GridContainer)`
-  padding-top: 2rem;
-  color: ${props => props.theme.colors.emerald[900]};
-  text-transform: uppercase;
-  justify-items: center;
-  font-size: 1rem;
-  
-  @media (min-width: ${props => props.theme.breakpoints.sm}) {
-    font-size: 1.25rem;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.md}) {
-    font-size: 1.5rem;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    padding-top: 0;
-    gap: 3rem;
-    grid-template-rows: repeat(7, auto);
+const ScreenshotContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+`;
+
+const ProjectScreenshot = styled.img`
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
   }
 `;
 
-const ProjectLink = styled.a<ProjectLinkProps>`
-  box-shadow: ${props => props.theme.shadows.boxMd};
-  border: 1px solid ${props => props.theme.colors.emerald[900]};
-  border-bottom-width: 4px;
-  border-radius: 2px 15px 2px 7px;
-  padding: 1rem;
-  width: 50vw;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-  
-  &:hover {
-    background-color: ${props => props.theme.colors.teal[500]};
-    box-shadow: ${props => props.theme.shadows.boxLg};
-    letter-spacing: 0.05em;
-    border-color: ${props => props.theme.colors.emerald[200]};
-    color: ${props => props.theme.colors.emerald[200]};
-    font-weight: bold;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.sm}) {
-    padding: 2rem 1rem;
-    height: 100%;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    width: 100%;
-    height: fit-content;
-    
-    &:hover {
-      background-color: transparent;
-      border-color: ${props => props.theme.colors.emerald[700]};
-      color: ${props => props.theme.colors.emerald[700]};
+const StatusBadge = styled.div<{
+  status: "completed" | "in-progress" | "planned";
+}>`
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0.5rem 0 1rem 0;
+  background: ${(props) => {
+    switch (props.status) {
+      case "completed":
+        return "linear-gradient(45deg, #10b981, #34d399)";
+      case "in-progress":
+        return "linear-gradient(45deg, #f59e0b, #fbbf24)";
+      case "planned":
+        return "linear-gradient(45deg, #6366f1, #8b5cf6)";
+      default:
+        return "#6b7280";
+    }
+  }};
+  color: white;
+`;
+
+const ProjectDetailHeader = styled.h2`
+  text-align: center;
+  text-transform: uppercase !important;
+  font-size: 2.5rem;
+  font-weight: 100;
+  margin-bottom: 1rem;
+  background: ${(props) =>
+    props.theme?.gradients?.animated ||
+    "linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)"};
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 0.5s forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-  
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: ${props => props.colStart};
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    grid-row-start: ${props => props.lgRowStart};
-    grid-column-start: ${props => props.lgColStart};
+`;
+
+const ProjectDetailDescription = styled.p`
+  text-align: center;
+  font-family: ${(props) =>
+    props.theme?.fonts.secondary || '"Inter", sans-serif'} !important;
+  font-weight: 200;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 0.7s forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
   }
 `;
 
-const ProjectDescription = styled.div<ProjectDescriptionProps>`
+const TechStack = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+`;
+
+const TechTag = styled.span`
+  font-family: ${(props) =>
+    props.theme?.fonts.secondary || '"Inter", sans-serif'} !important;
+  font-weight: 200;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
+const ProjectButton = styled.a`
+  font-family: ${(props) =>
+    props.theme?.fonts.secondary || '"Inter", sans-serif'} !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: ${(props) => props.theme?.gradients?.secondary};
+  color: #000000;
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
   font-size: 0.9rem;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  border: 1px solid ${props => props.theme.colors.emerald[900]};
-  border-bottom-width: 4px;
-  border-radius: 7px 2px 15px 2px;
-  background-color: ${props => props.theme.colors.teal[500]};
-  color: ${props => props.theme.colors.emerald[200]};
-  padding: 1rem;
-  
-  display: none;
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    display: block;
-  }
-  
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: ${props => props.colStart};
-  
-  span.bold {
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    letter-spacing: 0.05em;
-  }
-  
-  span.bold-simple {
-    font-weight: bold;
-    letter-spacing: 0.05em;
-  }
-`;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
-const MobileDescription = styled.div<MobileDescriptionProps>`
-  display: block;
-  grid-row-start: ${props => props.rowStart};
-  grid-column-start: 1;
-  grid-column-end: 4;
-  margin-top: -1rem;
-  font-size: 0.65rem;
-  text-align: center;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    display: none;
-  }
-  
-  span.bold {
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    font-size: 0.7rem;
-    text-shadow: ${props => props.theme.shadows.textSea};
-  }
-`;
-
-const HomeIcon = styled.a`
-  grid-row-start: 9;
-  grid-column-start: 2;
-  color: ${props => props.theme.colors.emerald[900]};
-  transition: color 0.3s ease;
-  
   &:hover {
-    color: ${props => props.theme.colors.emerald[600]};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
   }
+`;
+
+const HomeLink = styled.a`
+  text-decoration: none;
+  position: absolute;
+  bottom: 3%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.15) 0%,
+    rgba(59, 130, 246, 0.15) 50%,
+    rgba(139, 69, 19, 0.15) 100%
+  );
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
   
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    grid-row-start: 5;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    padding: 1.5px;
+    background: linear-gradient(
+      135deg,
+      rgba(16, 185, 129, 0.5),
+      rgba(59, 130, 246, 0.5),
+      rgba(139, 69, 19, 0.5)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px) scale(1.03);
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 
+      0 15px 30px rgba(16, 185, 129, 0.2),
+      0 8px 15px rgba(59, 130, 246, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+`;
+
+const HomeLinkIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  transition: all 0.3s ease;
+  
+  ${HomeLink}:hover & {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  }
+`;
+
+const HomeLinkText = styled.span`
+  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: linear-gradient(
+    135deg,
+    #10b981,
+    #3b82f6,
+    #8b4513
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+  
+  ${HomeLink}:hover & {
+    background: linear-gradient(
+      135deg,
+      #34d399,
+      #60a5fa,
+      #a0522d
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 `;
