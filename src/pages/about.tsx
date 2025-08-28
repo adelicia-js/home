@@ -1,7 +1,15 @@
 import styled, { ThemeProvider } from "styled-components";
-import { Milestone } from "lucide-react";
 import { theme } from "../styles/theme";
-import { GlobalStyle, GradientContainer, GlassBox, groovy, HomeLink, HomeLinkIcon, HomeLinkText, HomeLinkGradientIcon } from "../styles/globalStyles";
+import {
+  GlobalStyle,
+  GradientContainer,
+  GlassBox,
+  groovy,
+  HomeLink,
+  HomeLinkIcon,
+  HomeLinkText,
+  HomeLinkGradientIcon,
+} from "../styles/globalStyles";
 
 export default function AboutMe() {
   return (
@@ -84,10 +92,35 @@ export default function AboutMe() {
         <HomeLink href="/" id="home-link" aria-label="Home">
           <HomeLinkIcon>
             <HomeLinkGradientIcon>
-              <Milestone size={18} style={{ transform: "scaleX(-1)" }} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="url(#milestoneGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <defs>
+                  <linearGradient
+                    id="milestoneGradient"
+                    gradientTransform="rotate(45)"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0%" stopColor="#10b981" />
+                    <stop offset="50%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#8b4513" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 13v8" />
+                <path d="M12 3v3" />
+                <path d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z" />
+              </svg>
             </HomeLinkGradientIcon>
           </HomeLinkIcon>
-          <HomeLinkText>Home</HomeLinkText>
+          <HomeLinkText>Back to Home</HomeLinkText>
         </HomeLink>
       </AboutWrapper>
     </ThemeProvider>
@@ -96,7 +129,9 @@ export default function AboutMe() {
 
 const AboutWrapper = styled(GradientContainer)`
   position: relative;
-  background: ${props => props.theme?.gradients?.secondary || 'linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))'};
+  background: ${(props) =>
+    props.theme?.gradients?.secondary ||
+    "linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))"};
   background-size: 200% auto;
   animation: ${groovy} 30s ease-in-out infinite;
   background-size: 200% auto;
@@ -105,7 +140,12 @@ const AboutWrapper = styled(GradientContainer)`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  `;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+`;
 
 const Container1 = styled.div`
   width: 90vw;
@@ -113,6 +153,12 @@ const Container1 = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 95vw;
+  }
 `;
 
 const Container2 = styled.div`
@@ -121,6 +167,11 @@ const Container2 = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 95vw;
+  }
 `;
 
 const ProfilePicBox = styled(GlassBox)`
@@ -130,6 +181,13 @@ const ProfilePicBox = styled(GlassBox)`
   justify-content: flex-start;
   padding: 1.5rem;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+    min-height: 300px;
+    padding: 1rem;
+  }
 `;
 
 const ProfileImageContainer = styled.div`
@@ -146,7 +204,7 @@ const ProfileImage = styled.img`
   object-fit: cover;
   object-position: center;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.05);
   }
@@ -154,7 +212,8 @@ const ProfileImage = styled.img`
 
 const CardHeader = styled.h2`
   display: flex;
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   font-weight: 300;
   font-size: 1.5rem;
   flex-direction: row;
@@ -162,6 +221,11 @@ const CardHeader = styled.h2`
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    justify-content: center;
+  }
 `;
 
 const BioBox = styled(GlassBox)`
@@ -169,6 +233,12 @@ const BioBox = styled(GlassBox)`
   height: 20vw;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+    min-height: 250px;
+  }
 `;
 
 const DetailsBox = styled(GlassBox)`
@@ -176,6 +246,12 @@ const DetailsBox = styled(GlassBox)`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+    min-height: 300px;
+  }
 `;
 
 const CardIcon = styled.span`
@@ -197,14 +273,21 @@ const CardTextBox = styled.ul`
 `;
 
 const CardText = styled.li`
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   font-weight: 200;
   text-align: left;
   list-style-type: circle;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const ProjectsLink = styled.a`
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   color: #ff6b9d;
   text-decoration: none;
   font-weight: 600;

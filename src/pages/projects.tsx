@@ -17,7 +17,6 @@ import {
   HomeLinkGradientIcon,
 } from "../styles/globalStyles";
 import { ProjectData, projectsData, techConfig } from "../utils";
-import { Milestone } from "lucide-react";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -104,7 +103,32 @@ export default function Projects() {
         <HomeLink href="/" id="home-link" aria-label="Home">
           <HomeLinkIcon>
             <HomeLinkGradientIcon>
-              <Milestone size={18} style={{ transform: "scaleX(-1)" }} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="url(#milestoneGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <defs>
+                  <linearGradient
+                    id="milestoneGradient"
+                    gradientTransform="rotate(45)"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0%" stopColor="#10b981" />
+                    <stop offset="50%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#8b4513" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 13v8" />
+                <path d="M12 3v3" />
+                <path d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z" />
+              </svg>
             </HomeLinkGradientIcon>
           </HomeLinkIcon>
           <HomeLinkText>Back to Home</HomeLinkText>
@@ -201,6 +225,13 @@ const ProjectsWrapper = styled(GradientContainer)`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    justify-content: flex-start;
+    gap: 2rem;
+    min-height: 100vh;
+  }
 `;
 
 const ProjectHeader = styled.h1`
@@ -216,6 +247,11 @@ const ProjectHeader = styled.h1`
   margin-bottom: 0.5rem;
   font-family: ${(props) =>
     props.theme?.fonts.secondary || '"Inter", sans-serif'};
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -229,6 +265,12 @@ const ProjectDescription = styled.p`
   margin-bottom: 1rem;
   font-family: ${(props) =>
     props.theme?.fonts.secondary || '"Inter", sans-serif'};
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+  }
 `;
 
 const CardTechBadges = styled.div`
@@ -304,6 +346,16 @@ const MoreBadge = styled.div`
 const ProjectsGrid = styled(GridContainer)`
   width: 100%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    height: auto;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ProjectBox = styled(GlassBox)`
@@ -328,6 +380,19 @@ const ProjectBox = styled(GlassBox)`
 
   &:nth-child(3n) {
     animation-delay: -4s;
+  }
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+    min-height: 280px;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 42vw;
+    height: 35vh;
   }
 `;
 
@@ -369,6 +434,13 @@ const DetailContent = styled.div`
   animation: ${zoomInFromCenter} 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     0.2s backwards;
   transform-origin: center center;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    width: 95%;
+    max-height: 90vh;
+    border-radius: 0.75rem;
+  }
 
   @keyframes fadeInUp {
     0% {
@@ -492,6 +564,11 @@ const ProjectDetailHeader = styled.h2`
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.5s forwards;
 
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
   @keyframes fadeInUp {
     0% {
       opacity: 0;
@@ -512,6 +589,11 @@ const ProjectDetailDescription = styled.p`
   font-size: 1.2rem;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.7s forwards;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 
   @keyframes fadeInUp {
     0% {

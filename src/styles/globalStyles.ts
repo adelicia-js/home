@@ -1,4 +1,8 @@
-import styled, { createGlobalStyle, keyframes, DefaultTheme } from "styled-components";
+import styled, {
+  createGlobalStyle,
+  keyframes,
+  DefaultTheme,
+} from "styled-components";
 
 interface GradientContainerProps {
   gradient?: string;
@@ -75,14 +79,16 @@ export const zoomInFromCenter = keyframes`
 
 export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   * {
-    font-family: ${(props) => props.theme?.fonts.primary || '"Unbounded", sans-serif'};
+    font-family: ${(props) =>
+      props.theme?.fonts.primary || '"Unbounded", sans-serif'};
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
   body {
-    font-family: ${(props) => props.theme?.fonts.primary || '"Unbounded", sans-serif'};
+    font-family: ${(props) =>
+      props.theme?.fonts.primary || '"Unbounded", sans-serif'};
   }
 
   html, body {
@@ -96,7 +102,9 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   }
 
   .animated {
-    background-image: ${(props) => props.theme?.gradients.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
+    background-image: ${(props) =>
+      props.theme?.gradients.animated ||
+      "linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)"};
     background-size: 200% auto;
     color: #fff;
     background-clip: text;
@@ -117,7 +125,9 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   }
 
   .animated-background {
-    background-image: ${(props) => props.theme?.gradients.animatedBackground || 'linear-gradient(-90deg, #6170f8c9, #1026f0c9, #581fdec2, #8f65f0d0, #c265f0d0, #eb65f0c9, #ff88f9a4)'};
+    background-image: ${(props) =>
+      props.theme?.gradients.animatedBackground ||
+      "linear-gradient(-90deg, #6170f8c9, #1026f0c9, #581fdec2, #8f65f0d0, #c265f0d0, #eb65f0c9, #ff88f9a4)"};
     background-size: 200% auto;
     animation: ${groovy} 30s ease-in-out infinite;
     text-shadow: 1px 0.1px 3px #07463a4c;
@@ -163,7 +173,9 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme?.gradients.animated || 'linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)'};
+    background: ${(props) =>
+      props.theme?.gradients.animated ||
+      "linear-gradient(-210deg, #17ac07 0%, #04cb7b 40%, #8c58b0 60%, #04cb7b 80%, #17ac07 100%)"};
     border-radius: 10px;
     border: 2px solid transparent;
     background-clip: padding-box;
@@ -198,7 +210,10 @@ export const Container = styled.div`
 `;
 
 export const GradientContainer = styled(Container)<GradientContainerProps>`
-  background: ${(props) => props.gradient || props.theme?.gradients.primary || 'linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))'};
+  background: ${(props) =>
+    props.gradient ||
+    props.theme?.gradients.primary ||
+    "linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))"};
 `;
 
 export const FlexContainer = styled.div<FlexContainerProps>`
@@ -235,7 +250,6 @@ export const GlassBox = styled.div`
   display: flex;
 `;
 
-
 export const HomeLink = styled.a`
   text-decoration: none;
   position: absolute;
@@ -255,13 +269,32 @@ export const HomeLink = styled.a`
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   border-radius: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    
+    &:hover {
+      transform: translateX(-50%) translateY(-2px) scale(1.03);
+    }
+    
+    &:active {
+      transform: translateX(-50%) translateY(-1px) scale(1.01);
+    }
+  }
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: 1.5rem;
@@ -273,7 +306,8 @@ export const HomeLink = styled.a`
       rgba(139, 69, 19, 0.5)
     );
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     mask-composite: xor;
     -webkit-mask-composite: xor;
     opacity: 0;
@@ -283,11 +317,10 @@ export const HomeLink = styled.a`
   &:hover {
     transform: translateY(-2px) scale(1.03);
     color: rgba(255, 255, 255, 1);
-    box-shadow: 
-      0 15px 30px rgba(16, 185, 129, 0.2),
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2),
       0 8px 15px rgba(59, 130, 246, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    
+
     &::after {
       opacity: 1;
     }
@@ -304,38 +337,28 @@ export const HomeLinkIcon = styled.div`
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
   transition: all 0.3s ease;
   
-  ${HomeLink}:hover & {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  @media (max-width: 768px) {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
 export const HomeLinkText = styled.span`
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
+  font-family: ${(props) =>
+    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  background: linear-gradient(
-    135deg,
-    #10b981,
-    #3b82f6,
-    #8b4513
-  );
+  background: linear-gradient(135deg, #10b981, #3b82f6, #8b4513);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transition: all 0.3s ease;
-  
+
   ${HomeLink}:hover & {
-    background: linear-gradient(
-      135deg,
-      #34d399,
-      #60a5fa,
-      #a0522d
-    );
+    background: linear-gradient(135deg, #34d399, #60a5fa, #a0522d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -344,30 +367,38 @@ export const HomeLinkText = styled.span`
 
 export const HomeLinkGradientIcon = styled.div`
   display: inline-block;
-  background: linear-gradient(
-    135deg,
-    #10b981,
-    #3b82f6,
-    #8b4513
-  );
+  background: linear-gradient(135deg, #10b981, #3b82f6, #8b4513);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: all 0.3s ease;
-  
+  transform: scaleX(-1);
+
+  svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    color: inherit; /* this makes stroke="currentColor" pick up the gradient */
+    
+    @media (max-width: 768px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   ${HomeLink}:hover & {
-    background: linear-gradient(
-      135deg,
-      #34d399,
-      #60a5fa,
-      #a0522d
-    );
+    background: linear-gradient(135deg, #34d399, #60a5fa, #a0522d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  svg {
-    display: block;
+
+    ${HomeLink}:hover & svg linearGradient stop:nth-child(1) {
+    stop-color: #34d399;
+  }
+  ${HomeLink}:hover & svg linearGradient stop:nth-child(2) {
+    stop-color: #60a5fa;
+  }
+  ${HomeLink}:hover & svg linearGradient stop:nth-child(3) {
+    stop-color: #a0522d;
   }
 `;
