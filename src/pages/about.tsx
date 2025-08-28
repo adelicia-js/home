@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import { Milestone } from "lucide-react";
 import { theme } from "../styles/theme";
-import { GlobalStyle, GradientContainer, GlassBox, groovy } from "../styles/globalStyles";
+import { GlobalStyle, GradientContainer, GlassBox, groovy, HomeLink, HomeLinkIcon, HomeLinkText, HomeLinkGradientIcon } from "../styles/globalStyles";
 
 export default function AboutMe() {
   return (
@@ -83,7 +83,9 @@ export default function AboutMe() {
         </Container2>
         <HomeLink href="/" id="home-link" aria-label="Home">
           <HomeLinkIcon>
-            <Milestone size={18} style={{ transform: "scaleX(-1)" }} />
+            <HomeLinkGradientIcon>
+              <Milestone size={18} style={{ transform: "scaleX(-1)" }} />
+            </HomeLinkGradientIcon>
           </HomeLinkIcon>
           <HomeLinkText>Home</HomeLinkText>
         </HomeLink>
@@ -125,7 +127,6 @@ const ProfilePicBox = styled(GlassBox)`
   width: 20vw;
   height: 20vw;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   padding: 1.5rem;
   gap: 1rem;
@@ -159,7 +160,7 @@ const CardHeader = styled.h2`
   flex-direction: row;
   height: fit-content;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
 `;
 
@@ -221,7 +222,7 @@ const ProjectsLink = styled.a`
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(45deg, #06aa81ff, #c44569);
+    background: linear-gradient(45deg, #11dfacff, #ef2c63ff);
     transition: width 0.3s ease;
   }
 
@@ -231,111 +232,5 @@ const ProjectsLink = styled.a`
 
   &:hover {
     transform: translateY(1px);
-  }
-`;
-
-const HomeLink = styled.a`
-  text-decoration: none;
-  position: absolute;
-  bottom: 3%;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  background: linear-gradient(
-    135deg,
-    rgba(16, 185, 129, 0.15) 0%,
-    rgba(59, 130, 246, 0.15) 50%,
-    rgba(139, 69, 19, 0.15) 100%
-  );
-  backdrop-filter: blur(15px) saturate(150%);
-  -webkit-backdrop-filter: blur(15px) saturate(150%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 1.5rem;
-    padding: 1.5px;
-    background: linear-gradient(
-      135deg,
-      rgba(16, 185, 129, 0.5),
-      rgba(59, 130, 246, 0.5),
-      rgba(139, 69, 19, 0.5)
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-2px) scale(1.03);
-    color: rgba(255, 255, 255, 1);
-    box-shadow: 
-      0 15px 30px rgba(16, 185, 129, 0.2),
-      0 8px 15px rgba(59, 130, 246, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  &:active {
-    transform: translateY(-1px) scale(1.01);
-  }
-`;
-
-const HomeLinkIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-  transition: all 0.3s ease;
-  
-  ${HomeLink}:hover & {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
-  }
-`;
-
-const HomeLinkText = styled.span`
-  font-family: ${(props) => props.theme?.fonts?.secondary || '"Inter", sans-serif'};
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  background: linear-gradient(
-    135deg,
-    #10b981,
-    #3b82f6,
-    #8b4513
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: all 0.3s ease;
-  
-  ${HomeLink}:hover & {
-    background: linear-gradient(
-      135deg,
-      #34d399,
-      #60a5fa,
-      #a0522d
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 `;
