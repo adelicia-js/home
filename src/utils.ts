@@ -156,7 +156,7 @@ export const projectsData: ProjectData[] = [
   {
     id: 0,
     title: "Milestone Monitor",
-    description: "Achievement tracking system for university",
+    description: "Achievement tracking system for university use",
     longDescription:
       "Next.js 15.3 application with Supabase backend featuring a three-tier role system (Faculty → Editor → HOD), complex achievement tracking with approval workflows, and export functionality for CSV, Excel, and PDF formats.",
     technologies: [
@@ -173,14 +173,14 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/milestone-monitor",
     demoUrl: "https://milestone-monitor.vercel.app/",
-    screenshotUrl: "/screenshots/milestone-monitor.png",
+    screenshotUrl: "/screenshots/milestone-monitor.webp",
   },
   {
     id: 1,
-    title: "Simple Todo App",
-    description: "Full-stack todo application with authentication",
+    title: "My Todo Notebook",
+    description: "Modern todo app  with auth & a notebook-style UI",
     longDescription:
-      "A comprehensive todo application built with React 19, Vite, TypeScript, and Node.js backend. Features include user authentication with JWT tokens, persistent data storage with Prisma ORM, and a modern glass-morphism UI design.",
+      "A todo application built with React 19, TypeScript, and Node.js. Features secure JWT authentication, inline editing, smart pagination, beautiful notebook-style UI with spiral binding, and real-time CRUD operations with SQLite database.",
     technologies: [
       "React",
       "Vite",
@@ -195,14 +195,14 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/todo-vite-fs",
     demoUrl: "https://todo-vite-fs.vercel.app/",
-    screenshotUrl: "/screenshots/todo-app.png",
+    screenshotUrl: "/screenshots/todo-app.webp",
   },
   {
     id: 2,
     title: "Personal Finance Tracker",
-    description: "Expense tracking and budgeting application",
+    description: "Expenses tracking with data visualization",
     longDescription:
-      "A comprehensive personal finance management application built with React and modern web technologies. Features expense categorization, budget planning, financial goal tracking, and detailed spending analytics with interactive charts and reports.",
+      "A full-stack personal finance application built with React 19, Node.js, and MongoDB. Features secure JWT authentication, transaction management, beautiful Recharts data visualizations, and responsive design for tracking income, expenses, and financial insights.",
     technologies: [
       "React",
       "Vite",
@@ -217,14 +217,14 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/personal-finance-tracker",
     demoUrl: "https://personal-finance-tracker-eta-topaz.vercel.app/",
-    screenshotUrl: "/screenshots/finance-tracker.png",
+    screenshotUrl: "/screenshots/finance-tracker.webp",
   },
   {
     id: 3,
-    title: "Country Info",
-    description: "Interactive world countries information explorer",
+    title: "Country Explorer",
+    description: "Simple country explorer with weather data",
     longDescription:
-      "A React-based application that provides detailed information about countries worldwide. Features include country search and filtering, detailed country profiles with demographics, geography, and economic data, integrated with REST Countries API for real-time data.",
+      "A modern, responsive application for exploring countries worldwide with smart search, detailed country information including capitals and languages, live weather data for capitals via OpenWeatherMap API, and beautiful glassmorphism design with smooth animations.",
     technologies: [
       "React",
       "Vite",
@@ -237,26 +237,26 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/country_info",
     demoUrl: "https://country-info-six-sigma.vercel.app/",
-    screenshotUrl: "/screenshots/country-info.png",
+    screenshotUrl: "/screenshots/country-info.webp",
   },
   {
     id: 4,
     title: "Syntaxia 2023",
     description: "Technical symposium event management platform",
     longDescription:
-      "Event management and registration platform for Syntaxia 2023 technical symposium. Features event registration, participant management, schedule display, and administrative dashboard for organizing technical competitions and workshops.",
+      "Official website for Syntaxia 2023 programming competition and tech fest. Features interactive timeline for multi-day events, detailed competition modals, responsive Bootstrap design, and comprehensive event information for both undergraduate and postgraduate competitions.",
     technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Firebase"],
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/syntaxia2023",
     demoUrl: "https://syntaxia2023.vercel.app/",
-    screenshotUrl: "/screenshots/syntaxia-2023.png",
+    screenshotUrl: "/screenshots/syntaxia-2023.webp",
   },
   {
     id: 5,
-    title: "Loyola Official Website",
-    description: "Institutional website redesign project",
+    title: "Loyola College Website",
+    description: "Modern institutional website built with Next.js",
     longDescription:
-      "Complete redesign and development of the official Loyola College website featuring modern responsive design, content management system, news and events section, faculty profiles, and student resources with optimized performance and accessibility.",
+      "A collaborative university project for Loyola College built with Next.js 13 and Tailwind CSS. Features component-based architecture, Material-UI integration, DaisyUI components, responsive design, and modern performance optimizations.",
     technologies: [
       "React",
       "Next.js",
@@ -268,6 +268,6 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl: "https://github.com/adelicia-js/LoyolaWebsite",
     demoUrl: "https://loyola-website.vercel.app/",
-    screenshotUrl: "/screenshots/loyola-website.png",
+    screenshotUrl: "/screenshots/loyola-website.webp",
   },
 ];
