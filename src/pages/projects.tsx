@@ -153,10 +153,6 @@ function ProjectBoxContainer({
 
   return (
     <ProjectBox
-      style={{
-        marginBottom: project.id < 3 ? "-2rem" : "0",
-        marginTop: project.id >= 3 ? "-2rem" : "0",
-      }}
       onClick={handleClick}
     >
       <ProjectHeader>{project.title}</ProjectHeader>
@@ -211,7 +207,6 @@ function ProjectBoxContainer({
 }
 
 const ProjectsWrapper = styled(GradientContainer)`
-  height: 100%;
   width: 100%;
   position: relative;
   background: ${(props) =>
@@ -230,7 +225,75 @@ const ProjectsWrapper = styled(GradientContainer)`
     padding: 2rem 1rem;
     justify-content: flex-start;
     gap: 2rem;
-    min-height: 100vh;
+  }
+`;
+
+const ProjectsGrid = styled(GridContainer)`
+  width: 100%;
+  height: 100%;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const ProjectBox = styled(GlassBox)`
+  width: 30vw;
+  height: 30vh;
+  animation: ${subtleFloat} 6s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &:nth-child(2n) {
+    animation-delay: -2s;
+  }
+
+  &:nth-child(3n) {
+    animation-delay: -4s;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  @media (max-width: 500px) {
+    width: 92vw;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 42vw;
+    height: 29vh;
+  }
+`;
+
+const ProjectDetailLayout = styled.div`
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -270,6 +333,64 @@ const ProjectDescription = styled.p`
     font-size: 0.85rem;
     line-height: 1.5;
     padding: 0 0.5rem;
+  }
+`;
+
+const ProjectDetail = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: ${slideInFromBottom} 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    forwards;
+`;
+
+const DetailContent = styled.div`
+  background: linear-gradient(
+    -120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 1200px;
+  width: 95%;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: white;
+  position: relative;
+  cursor: default;
+  animation: ${zoomInFromCenter} 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    0.2s backwards;
+  transform-origin: center center;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    width: 95%;
+    max-height: 90vh;
+    border-radius: 0.75rem;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
   }
 `;
 
@@ -343,117 +464,6 @@ const MoreBadge = styled.div`
   border: 0.1px solid rgba(255, 255, 255, 0.3);
 `;
 
-const ProjectsGrid = styled(GridContainer)`
-  width: 100%;
-  height: 100%;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    height: auto;
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
-const ProjectBox = styled(GlassBox)`
-  width: 30vw;
-  height: 30vh;
-  animation: ${subtleFloat} 6s ease-in-out infinite;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-  }
-
-  &:nth-child(2n) {
-    animation-delay: -2s;
-  }
-
-  &:nth-child(3n) {
-    animation-delay: -4s;
-  }
-
-  @media (max-width: 768px) {
-    width: 90vw;
-    height: auto;
-    min-height: 280px;
-    margin-bottom: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    width: 42vw;
-    height: 35vh;
-  }
-`;
-
-const ProjectDetail = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  cursor: pointer;
-  animation: ${slideInFromBottom} 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    forwards;
-`;
-
-const DetailContent = styled.div`
-  background: linear-gradient(
-    -120deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  backdrop-filter: blur(20px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  padding: 3rem;
-  max-width: 1200px;
-  width: 95%;
-  max-height: 80vh;
-  overflow-y: auto;
-  color: white;
-  position: relative;
-  cursor: default;
-  animation: ${zoomInFromCenter} 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-    0.2s backwards;
-  transform-origin: center center;
-
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
-    width: 95%;
-    max-height: 90vh;
-    border-radius: 0.75rem;
-  }
-
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 0.9;
-      transform: translateY(0);
-    }
-  }
-`;
-
 const CloseButton = styled.button`
   position: absolute;
   top: 1rem;
@@ -474,18 +484,6 @@ const CloseButton = styled.button`
     background: rgba(255, 255, 255, 0.1);
     color: white;
     transform: scale(1.1);
-  }
-`;
-
-const ProjectDetailLayout = styled.div`
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
   }
 `;
 
