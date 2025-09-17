@@ -200,7 +200,7 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #14b8a6 #134e4a;
+    scrollbar-color: #9fd2ccc0 #134e4a8c;
   }
 `;
 
@@ -252,12 +252,13 @@ export const GlassBox = styled.div`
 
 export const HomeLink = styled.a`
   text-decoration: none;
-  position: absolute;
-  bottom: 3%;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem;
   background: linear-gradient(
     135deg,
     rgba(16, 185, 129, 0.15) 0%,
@@ -267,27 +268,27 @@ export const HomeLink = styled.a`
   backdrop-filter: blur(15px) saturate(150%);
   -webkit-backdrop-filter: blur(15px) saturate(150%);
   border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1.5rem;
+  border-radius: 50%;
   color: rgba(255, 255, 255, 0.9);
   font-family: ${(props) =>
     props.theme?.fonts?.secondary || '"Inter", sans-serif'};
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  
+  z-index: 1000;
+  width: 3.5rem;
+  height: 3.5rem;
+  justify-content: center;
+
   @media (max-width: 768px) {
-    position: fixed;
     bottom: 1rem;
-    left: 50%;
+    left: 89%;
     transform: translateX(-50%);
-    z-index: 1000;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-    
+
     &:hover {
       transform: translateX(-50%) translateY(-2px) scale(1.03);
     }
-    
+
     &:active {
       transform: translateX(-50%) translateY(-1px) scale(1.01);
     }
@@ -297,7 +298,7 @@ export const HomeLink = styled.a`
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 1.5rem;
+    border-radius: 50%;
     padding: 1.5px;
     background: linear-gradient(
       135deg,
@@ -331,40 +332,6 @@ export const HomeLink = styled.a`
   }
 `;
 
-export const HomeLinkIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  transition: all 0.3s ease;
-  
-  @media (max-width: 768px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-`;
-
-export const HomeLinkText = styled.span`
-  font-family: ${(props) =>
-    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #10b981, #3b82f6, #8b4513);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: all 0.3s ease;
-
-  ${HomeLink}:hover & {
-    background: linear-gradient(135deg, #34d399, #60a5fa, #a0522d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-`;
-
 export const HomeLinkGradientIcon = styled.div`
   display: inline-block;
   background: linear-gradient(135deg, #10b981, #3b82f6, #8b4513);
@@ -378,7 +345,7 @@ export const HomeLinkGradientIcon = styled.div`
     height: 24px;
     display: block;
     color: inherit; /* this makes stroke="currentColor" pick up the gradient */
-    
+
     @media (max-width: 768px) {
       width: 18px;
       height: 18px;
@@ -392,7 +359,7 @@ export const HomeLinkGradientIcon = styled.div`
     background-clip: text;
   }
 
-    ${HomeLink}:hover & svg linearGradient stop:nth-child(1) {
+  ${HomeLink}:hover & svg linearGradient stop:nth-child(1) {
     stop-color: #34d399;
   }
   ${HomeLink}:hover & svg linearGradient stop:nth-child(2) {

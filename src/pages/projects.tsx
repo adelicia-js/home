@@ -12,8 +12,6 @@ import {
   slideInFromBottom,
   zoomInFromCenter,
   HomeLink,
-  HomeLinkIcon,
-  HomeLinkText,
   HomeLinkGradientIcon,
 } from "../styles/globalStyles";
 import { ProjectData, projectsData, techConfig } from "../utils";
@@ -87,6 +85,7 @@ export default function Projects() {
                           <ProjectScreenshot
                             src={project.screenshotUrl}
                             alt={`${project.title} screenshot`}
+                            $isMobile={project.isMobileApp}
                           />
                         </ScreenshotContainer>
                       )}
@@ -101,7 +100,6 @@ export default function Projects() {
           </ProjectDetail>
         )}
         <HomeLink href="/" id="home-link" aria-label="Home">
-          <HomeLinkIcon>
             <HomeLinkGradientIcon>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,14 +107,14 @@ export default function Projects() {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="url(#milestoneGradient)"
+                stroke="url(#homeGradient)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
                 <defs>
                   <linearGradient
-                    id="milestoneGradient"
+                    id="homeGradient"
                     gradientTransform="rotate(45)"
                     gradientUnits="userSpaceOnUse"
                   >
@@ -125,13 +123,10 @@ export default function Projects() {
                     <stop offset="100%" stopColor="#8b4513" />
                   </linearGradient>
                 </defs>
-                <path d="M12 13v8" />
-                <path d="M12 3v3" />
-                <path d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z" />
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9,22 9,12 15,12 15,22" />
               </svg>
             </HomeLinkGradientIcon>
-          </HomeLinkIcon>
-          <HomeLinkText>Back to Home</HomeLinkText>
         </HomeLink>
       </ProjectsWrapper>
     </ThemeProvider>
@@ -208,6 +203,7 @@ function ProjectBoxContainer({
 
 const ProjectsWrapper = styled(GradientContainer)`
   width: 100%;
+  min-height: 100vh;
   position: relative;
   background: ${(props) =>
     props.theme?.gradients?.secondary ||
@@ -219,7 +215,8 @@ const ProjectsWrapper = styled(GradientContainer)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  overflow-y: auto;
 
   @media (max-width: 768px) {
     padding: 2rem 1rem;
@@ -230,8 +227,10 @@ const ProjectsWrapper = styled(GradientContainer)`
 
 const ProjectsGrid = styled(GridContainer)`
   width: 100%;
-  height: 100%;
+  height: auto;
   gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
 
   @media (max-width: 768px) {
     width: 90%;
@@ -505,15 +504,18 @@ const ScreenshotContainer = styled.div`
   max-width: 500px;
 `;
 
-const ProjectScreenshot = styled.img`
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  border-radius: 12px;
+const ProjectScreenshot = styled.img<{ $isMobile?: boolean }>`
+  width: ${props => props.$isMobile ? 'auto' : '100%'};
+  height: ${props => props.$isMobile ? '100%' : 'auto'};
+  max-height: ${props => props.$isMobile ? '450px' : '400px'};
+  max-width: ${props => props.$isMobile ? '250px' : '100%'};
+  border-radius: ${props => props.$isMobile ? '20px' : '12px'};
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  object-fit: cover;
+  object-fit: ${props => props.$isMobile ? 'contain' : 'cover'};
   transition: all 0.3s ease;
+  margin: ${props => props.$isMobile ? '0 auto' : '0'};
+  display: block;
 
   &:hover {
     transform: scale(1.02);

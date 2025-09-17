@@ -103,6 +103,41 @@ export const techConfig: Record<
     bgColor: "linear-gradient(135deg, #bba3e4ff, #955deaff)",
     icon: "⛓️",
   },
+  "React Native": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #61DAFB, #21759B)",
+    icon: "📱",
+  },
+  Expo: {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #4630EB, #000020)",
+    icon: "🚀",
+  },
+  AsyncStorage: {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #FF6B6B, #C44569)",
+    icon: "💾",
+  },
+  "TanStack Table": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #FF4500, #DC143C)",
+    icon: "📊",
+  },
+  "React Navigation": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #6A0DAD, #4B0082)",
+    icon: "🧭",
+  },
+  "Linear Gradient": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #FF69B4, #DA70D6)",
+    icon: "🎨",
+  },
+  "Gemini API": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #4285F4, #34A853)",
+    icon: "🤖",
+  },
   Firebase: {
     color: "#ffffff",
     bgColor: "linear-gradient(135deg, #FBBF24, #F59E0B)",
@@ -150,6 +185,7 @@ export interface ProjectData {
   githubUrl?: string;
   demoUrl?: string;
   screenshotUrl?: string;
+  isMobileApp?: boolean;
 }
 
 export const projectsData: ProjectData[] = [
@@ -175,8 +211,28 @@ export const projectsData: ProjectData[] = [
     demoUrl: "https://milestone-monitor.vercel.app/",
     screenshotUrl: "/screenshots/milestone-monitor.webp",
   },
+
   {
     id: 1,
+    title: "Pickr AI",
+    description: "AI-powered product recommendation mobile app",
+    longDescription:
+      "A React Native mobile application that leverages Google Gemini AI to provide personalized product recommendations based on natural language queries. Features intelligent product matching, relevance scoring, search history, favorites system, and cross-platform support for iOS, Android, and Web.",
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "Expo",
+      "React Navigation",
+      "Gemini API",
+      "Linear Gradient",
+    ],
+    status: "completed",
+    githubUrl: "https://github.com/adelicia-js/product-advisor",
+    screenshotUrl: "/screenshots/pickr-ai.webp",
+    isMobileApp: true,
+  },
+  {
+    id: 2,
     title: "My Todo Notebook",
     description: "Modern todo app  with auth & a notebook-style UI",
     longDescription:
@@ -198,7 +254,7 @@ export const projectsData: ProjectData[] = [
     screenshotUrl: "/screenshots/todo-app.webp",
   },
   {
-    id: 2,
+    id: 3,
     title: "Personal Finance Tracker",
     description: "Expenses tracking with data visualization",
     longDescription:
@@ -220,7 +276,27 @@ export const projectsData: ProjectData[] = [
     screenshotUrl: "/screenshots/finance-tracker.webp",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Portfolio Dashboard",
+    description: "Real-time stock portfolio tracking with live market data",
+    longDescription:
+      "A dynamic portfolio tracking application built with Next.js 15 and TypeScript that provides real-time market data updates from Yahoo Finance and Google Finance. Features live CMP updates every 15 seconds, comprehensive financial metrics, sector analysis, and responsive design with dark mode support.",
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Axios",
+      "TanStack Table",
+      "Tailwind CSS",
+      "REST API",
+    ],
+    status: "completed",
+    githubUrl:
+      "https://github.com/adelicia-js/investments-portfolio-dashboard-nextjs",
+    screenshotUrl: "/screenshots/portfolio-dashboard.webp",
+  },
+  {
+    id: 5,
     title: "Country Explorer",
     description: "Simple country explorer with weather data",
     longDescription:
@@ -240,7 +316,7 @@ export const projectsData: ProjectData[] = [
     screenshotUrl: "/screenshots/country-info.webp",
   },
   {
-    id: 4,
+    id: 6,
     title: "Syntaxia 2023",
     description: "Technical symposium event management platform",
     longDescription:
@@ -252,7 +328,7 @@ export const projectsData: ProjectData[] = [
     screenshotUrl: "/screenshots/syntaxia-2023.webp",
   },
   {
-    id: 5,
+    id: 7,
     title: "Loyola College Website",
     description: "Modern institutional website built with Next.js",
     longDescription:

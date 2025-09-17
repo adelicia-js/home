@@ -6,8 +6,6 @@ import {
   GlassBox,
   groovy,
   HomeLink,
-  HomeLinkIcon,
-  HomeLinkText,
   HomeLinkGradientIcon,
 } from "../styles/globalStyles";
 
@@ -90,7 +88,6 @@ export default function AboutMe() {
           </DetailsBox>
         </Container2>
         <HomeLink href="/" id="home-link" aria-label="Home">
-          <HomeLinkIcon>
             <HomeLinkGradientIcon>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,14 +95,14 @@ export default function AboutMe() {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="url(#milestoneGradient)"
+                stroke="url(#homeGradient)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
                 <defs>
                   <linearGradient
-                    id="milestoneGradient"
+                    id="homeGradient"
                     gradientTransform="rotate(45)"
                     gradientUnits="userSpaceOnUse"
                   >
@@ -114,13 +111,10 @@ export default function AboutMe() {
                     <stop offset="100%" stopColor="#8b4513" />
                   </linearGradient>
                 </defs>
-                <path d="M12 13v8" />
-                <path d="M12 3v3" />
-                <path d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z" />
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9,22 9,12 15,12 15,22" />
               </svg>
             </HomeLinkGradientIcon>
-          </HomeLinkIcon>
-          <HomeLinkText>Back to Home</HomeLinkText>
         </HomeLink>
       </AboutWrapper>
     </ThemeProvider>
@@ -129,6 +123,7 @@ export default function AboutMe() {
 
 const AboutWrapper = styled(GradientContainer)`
   position: relative;
+  min-height: 100vh;
   background: ${(props) =>
     props.theme?.gradients?.secondary ||
     "linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))"};
@@ -139,8 +134,8 @@ const AboutWrapper = styled(GradientContainer)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-
+  justify-content: space-evenly;
+  overflow-y: auto;
   @media (max-width: 768px) {
     padding: 2rem 1rem;
     gap: 2rem;
