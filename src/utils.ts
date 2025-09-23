@@ -227,7 +227,7 @@ export const projectsData: ProjectData[] = [
       "Linear Gradient",
     ],
     status: "completed",
-    githubUrl: "https://github.com/adelicia-js/product-advisor",
+    githubUrl: "https://github.com/adelicia-js/pickr-ai-product-assistant",
     screenshotUrl: "/screenshots/pickr-ai.webp",
     isMobileApp: true,
   },
@@ -293,6 +293,7 @@ export const projectsData: ProjectData[] = [
     status: "completed",
     githubUrl:
       "https://github.com/adelicia-js/investments-portfolio-dashboard-nextjs",
+    demoUrl: 'https://portfolio-dashboard-three-virid.vercel.app/',
     screenshotUrl: "/screenshots/portfolio-dashboard.webp",
   },
   {
