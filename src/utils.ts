@@ -170,8 +170,18 @@ export const techConfig: Record<
   },
   MongoDB: {
     color: "#ffffff",
-    bgColor: "linear-gradient(135deg, #68D391, #2F855A)",
+    bgColor: "linear-gradient(135deg, #4f685981, #19c16dff)",
     icon: "🍃",
+  },
+  Zod: {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #3B82F6, #1E40AF)",
+    icon: "🔧",
+  },
+  "react-hook-form": {
+    color: "#ffffff",
+    bgColor: "linear-gradient(135deg, #EC4899, #BE185D)",
+    icon: "📝",
   },
 };
 
@@ -289,11 +299,12 @@ export const projectsData: ProjectData[] = [
       "TanStack Table",
       "Tailwind CSS",
       "REST API",
+      "Vercel",
     ],
     status: "completed",
     githubUrl:
       "https://github.com/adelicia-js/investments-portfolio-dashboard-nextjs",
-    demoUrl: 'https://portfolio-dashboard-three-virid.vercel.app/',
+    demoUrl: "https://portfolio-dashboard-three-virid.vercel.app/",
     screenshotUrl: "/screenshots/portfolio-dashboard.webp",
   },
   {
@@ -315,6 +326,27 @@ export const projectsData: ProjectData[] = [
     githubUrl: "https://github.com/adelicia-js/country_info",
     demoUrl: "https://country-info-six-sigma.vercel.app/",
     screenshotUrl: "/screenshots/country-info.webp",
+  },
+  {
+    id: 8,
+    title: "Send A Message",
+    description: "A fun simple form experiment",
+    longDescription:
+      "A frontend case study project for Wind Pioneers built with React 19, TypeScript and Tailwind CSS. Features a quirky but responsive design with form validation using Zod and react-hook-form, and seamless API integration with Axios. ",
+    technologies: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "react-hook-form",
+      "Zod",
+      "Tailwind CSS",
+      "Axios",
+      "Vercel",
+    ],
+    status: "completed",
+    githubUrl: "https://github.com/adelicia-js/wp-frontend-case-study",
+    demoUrl: "https://send-me-a-note-wpcs.vercel.app/",
+    screenshotUrl: "/screenshots/wind-pioneers.webp",
   },
   {
     id: 6,
