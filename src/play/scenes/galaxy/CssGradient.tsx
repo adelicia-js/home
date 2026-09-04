@@ -14,15 +14,15 @@ const CssGradient = styled.div`
   inset: 0;
   background: linear-gradient(
     120deg,
-    #00008b 0%,
-    #3e1c94 12%,
+    #000007 0%,
+    #1b0357 12%,
     #4c1a82 24%,
-    #174c8c 50%,
-    #148176 60%,
+    #024aa1 50%,
+    #03a091 60%,
     #0e6578 68%,
-    #512a58 78%,
-    #551a82 88%,
-    #00008b 100%
+    #40064a 78%,
+    #550691 88%,
+    #000026 100%
   );
   background-size: 260% 100%;
   animation: ${drift} 42s ease-in-out infinite alternate;
