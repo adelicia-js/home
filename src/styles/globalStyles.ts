@@ -78,6 +78,12 @@ export const zoomInFromCenter = keyframes`
 `;
 
 export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
+  :root {
+    /* Swappable title font for the /play world. Drop in real ITC Benguiat later
+       by adding an @font-face and changing only this variable. */
+    --play-title-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  }
+
   * {
     font-family: ${(props) =>
       props.theme?.fonts.primary || '"Unbounded", sans-serif'};

@@ -7,6 +7,10 @@ import AboutMe from "./pages/about";
 import Projects from "./pages/projects";
 import Roadmap from "./pages/roadmap";
 
+// Lazy so three/r3f/framer-motion stay out of the initial bundle for the
+// existing routes.
+const PlayExperience = React.lazy(() => import("./play/PlayExperience"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/roadmap",
     element: <Roadmap />,
+  },
+  {
+    path: "/play",
+    element: (
+      <React.Suspense fallback={null}>
+        <PlayExperience />
+      </React.Suspense>
+    ),
   }
 ]);
 
