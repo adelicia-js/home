@@ -26,7 +26,7 @@ export default function GalaxyScene({ onSelectPlanet, onBack }: GalaxySceneProps
       ))}
 
       <IconNavButton type="button" onClick={onBack} aria-label="Back to the wormhole">
-        <BackIcon src="/spiral-galaxy.svg" alt="" draggable={false} />
+        <BackIcon src="/galaxy/spiral-galaxy.svg" alt="" draggable={false} />
       </IconNavButton>
     </Sky>
   );

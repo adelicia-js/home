@@ -78,12 +78,14 @@ home/
 │   ├── types/             # scene.ts (scene ids + guards + PlanetPlacement)
 │   └── styles/            # theme.ts, styled.d.ts, globalStyles.ts, animations.ts
 ├── public/
-│   ├── objects/          # astronaut.png, rocket.png
-│   ├── planets/          # planet-1..3.png
+│   ├── objects/          # astronaut.webp, rocket.webp
+│   ├── planets/          # planet-1..3.webp
+│   ├── landing/          # wormhole.webp, clutter.webp
+│   ├── galaxy/           # clutter.webp, spiral-galaxy.svg
 │   ├── screenshots/      # Project screenshots (for the future Projects env)
 │   ├── ady-resume.pdf    # Resume document
 │   ├── me.jpg            # Profile photo
-│   └── *.svg             # landing-wormhole, landing-clutter, space-clutter, spiral-galaxy
+│   └── triquetra.ico     # Favicon (+ triquetra.png)
 └── dist/                 # Production build output
 ```
 
