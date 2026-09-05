@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled, { keyframes, css } from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { floatBob } from "../../styles/animations";
 
 interface WormholeSceneProps {
@@ -10,9 +10,21 @@ interface WormholeSceneProps {
 type Phase = "idle" | "asking" | "accepted" | "declined";
 
 // Reveals text one character at a time for a game-dialogue feel. Retypes when
-// `text` changes (each phase passes a new line).
-function Typewriter({ text, speed = 26 }: { text: string; speed?: number }) {
+// `text` changes (each phase passes a new line). Calls `onDone` once the line
+// has fully typed out.
+function Typewriter({
+  text,
+  speed = 26,
+  onDone,
+}: {
+  text: string;
+  speed?: number;
+  onDone?: () => void;
+}) {
   const [n, setN] = useState(0);
+  const onDoneRef = useRef(onDone);
+  onDoneRef.current = onDone;
+
   useEffect(() => {
     setN(0);
     const id = window.setInterval(() => {
@@ -26,63 +38,117 @@ function Typewriter({ text, speed = 26 }: { text: string; speed?: number }) {
     }, speed);
     return () => window.clearInterval(id);
   }, [text, speed]);
+
+  const done = n >= text.length && text.length > 0;
+  useEffect(() => {
+    if (done) onDoneRef.current?.();
+  }, [done]);
+
   return <>{text.slice(0, n)}</>;
 }
 
 // One dialogue line kept to a single row. A hidden full-text copy reserves the
 // box width up front, so the box doesn't grow (or jog the buttons) as the
 // typewriter fills in the visible copy on top of it.
-function TypeLine({ text }: { text: string }) {
+function TypeLine({ text, onDone }: { text: string; onDone?: () => void }) {
   return (
     <Line>
       <Ghost aria-hidden>{text}</Ghost>
       <Typed>
-        <Typewriter text={text} />
+        <Typewriter text={text} onDone={onDone} />
       </Typed>
     </Line>
   );
 }
 
 // Landing: a wormhole portal on a dark, drifting starfield, with the astronaut
-// (Adelicia) as a game-style NPC. Click her to talk; help her home and she
-// points at the wormhole, or decline and get sucked in anyway. No title text.
+// (Adelicia) as a game-style NPC. Click her to talk. Help her home and she
+// becomes draggable — drag her into the wormhole to enter. Decline and the
+// wormhole turns red, shakes, and sucks you in anyway. No title text.
 export default function WormholeScene({ onEnter }: WormholeSceneProps) {
   const [entering, setEntering] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
+  const [angry, setAngry] = useState(false);
 
-  const decline = () => {
-    setPhase("declined");
+  const stageRef = useRef<HTMLDivElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
+  const astronautRef = useRef<HTMLButtonElement>(null);
+  const dropControls = useAnimationControls();
+
+  const decline = () => setPhase("declined");
+
+  // After the "you've made it angry" line finishes, the wormhole goes red +
+  // shakes for a beat, then pulls everything in.
+  const handleDeclinedDone = () => {
+    setAngry(true);
     window.setTimeout(() => setEntering(true), 1400);
+  };
+
+  // Dropped the astronaut: if her centre landed inside the wormhole, she shrinks
+  // into it (no bounce) and the scene zooms in. Otherwise she springs back home.
+  const handleDrop = () => {
+    const a = astronautRef.current?.getBoundingClientRect();
+    const p = portalRef.current?.getBoundingClientRect();
+    if (!a || !p) return;
+    const dist = Math.hypot(
+      a.left + a.width / 2 - (p.left + p.width / 2),
+      a.top + a.height / 2 - (p.top + p.height / 2)
+    );
+    if (dist < p.width / 2) {
+      dropControls.start({
+        scale: 0,
+        opacity: 0,
+        transition: { duration: 0.4, ease: "easeIn" },
+      });
+      setEntering(true);
+    } else {
+      dropControls.start({
+        x: 0,
+        y: 0,
+        transition: { type: "spring", stiffness: 300, damping: 22 },
+      });
+    }
   };
 
   return (
     <Stage
-      animate={entering ? { scale: 1.4, opacity: 0 } : { scale: 1, opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeIn" }}
+      ref={stageRef}
+      animate={
+        entering
+          ? { scale: [1, 3.2, 6], opacity: [1, 1, 0] }
+          : { scale: 1, opacity: 1 }
+      }
+      transition={{ duration: 0.85, ease: "easeIn", times: [0, 0.6, 1] }}
       onAnimationComplete={() => {
         if (entering) onEnter();
       }}
     >
       <Clutter aria-hidden />
 
-      <Portal
-        type="button"
-        disabled={entering}
-        onClick={() => setEntering(true)}
-        aria-label="Enter...?"
-        $highlight={phase === "accepted"}
-      >
-        <Wormhole src="/landing-wormhole.svg" alt="" draggable={false} />
+      <Portal ref={portalRef} aria-hidden $highlight={phase === "accepted"} $angry={angry}>
+        <Wormhole src="/landing/wormhole.webp" alt="" draggable={false} $angry={angry} />
       </Portal>
 
       <Astronaut
+        ref={astronautRef}
         type="button"
-        disabled={phase !== "idle" || entering}
-        onClick={() => setPhase("asking")}
+        disabled={phase === "asking" || phase === "declined" || entering}
+        onClick={() => phase === "idle" && setPhase("asking")}
         aria-label="Talk to the astronaut"
+        $grab={phase === "accepted"}
+        drag={phase === "accepted"}
+        dragConstraints={stageRef}
+        dragElastic={0.15}
+        animate={dropControls}
+        onDragEnd={handleDrop}
       >
         {phase === "idle" && <Marker aria-hidden>!</Marker>}
-        <AstronautImg src="/objects/astronaut.png" alt="Adelicia the astronaut" draggable={false} />
+        <AstronautImg
+          src="/objects/astronaut.webp"
+          alt="Adelicia the astronaut"
+          draggable={false}
+          $still={phase === "accepted"}
+        />
       </Astronaut>
 
       {phase !== "idle" && (
@@ -106,10 +172,10 @@ export default function WormholeScene({ onEnter }: WormholeSceneProps) {
             </>
           )}
           {phase === "accepted" && (
-            <TypeLine text="Thanks a lot! Just click on that swirly thing over there.. er that should help!" />
+            <TypeLine text="Thanks a lot! Just drag me into the swirly thing over there... er that should help!" />
           )}
           {phase === "declined" && (
-            <TypeLine text="Hmph. Ok. You've made *it* angry." />
+            <TypeLine text="Hmph. Ok. You've made *it* angry." onDone={handleDeclinedDone} />
           )}
         </Dialogue>
       )}
@@ -139,7 +205,7 @@ const Clutter = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url("/landing-clutter.svg") repeat;
+  background: url("/landing/clutter.webp") repeat;
   background-size: 1200px 680px;
   opacity: 0.9;
   animation: ${drift} 260s linear infinite;
@@ -155,25 +221,29 @@ const highlightPulse = keyframes`
   50% { filter: drop-shadow(0 0 60px rgba(170, 130, 255, 0.9)); }
 `;
 
-const Portal = styled.button<{ $highlight: boolean }>`
+// Angry shake. Safe to animate `transform` here because the portal is centred
+// with the independent `translate` property, so the two don't fight.
+const shake = keyframes`
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 1px); }
+`;
+
+// Decorative drop target — never clickable (entry is drag-only), so it's a div,
+// not a button. Centred via `translate` so `transform` stays free for the shake.
+const Portal = styled.div<{ $highlight: boolean; $angry: boolean }>`
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
   z-index: 2;
   width: min(54vmin, 560px);
   aspect-ratio: 1;
-  padding: 0;
-  border: none;
   border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  pointer-events: none;
   filter: drop-shadow(0 0 24px rgba(120, 90, 220, 0.35));
-
-  &:hover {
-    filter: drop-shadow(0 0 44px rgba(150, 110, 255, 0.6));
-  }
+  transition: filter 0.4s ease;
 
   ${(p) =>
     p.$highlight &&
@@ -181,24 +251,32 @@ const Portal = styled.button<{ $highlight: boolean }>`
       animation: ${highlightPulse} 1.8s ease-in-out infinite;
     `}
 
-  &:disabled {
-    cursor: default;
-  }
+  ${(p) =>
+    p.$angry &&
+    css`
+      animation: ${shake} 0.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 46px rgba(255, 45, 45, 0.8));
+    `}
 `;
 
-const Wormhole = styled.img`
+const Wormhole = styled.img<{ $angry: boolean }>`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   animation: ${spin} 60s linear infinite;
+  transition: filter 0.5s ease;
+  filter: ${(p) =>
+    p.$angry
+      ? "sepia(1) saturate(6) hue-rotate(320deg) brightness(0.9)"
+      : "none"};
 `;
 
-const Astronaut = styled.button`
+const Astronaut = styled(motion.button)<{ $grab: boolean }>`
   position: absolute;
   left: 70%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
   z-index: 3;
   width: 13vmin;
   min-width: 110px;
@@ -206,11 +284,15 @@ const Astronaut = styled.button`
   padding: 0;
   border: none;
   background: transparent;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  cursor: ${(p) => (p.$grab ? "grab" : "pointer")};
+  transition: scale 0.3s ease;
 
   &:hover:not(:disabled) {
-    transform: translate(-50%, -50%) scale(1.05);
+    scale: 1.05;
+  }
+
+  &:active {
+    cursor: ${(p) => (p.$grab ? "grabbing" : "pointer")};
   }
 
   &:disabled {
@@ -218,13 +300,18 @@ const Astronaut = styled.button`
   }
 `;
 
-const AstronautImg = styled.img`
+const AstronautImg = styled.img<{ $still: boolean }>`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(180, 210, 255, 0.25));
   animation: ${floatBob} 5s ease-in-out infinite;
+  ${(p) =>
+    p.$still &&
+    css`
+      animation: none;
+    `}
 `;
 
 const markerBob = keyframes`
