@@ -13,8 +13,8 @@ export const ENVIRONMENT_IDS = [
 export type EnvironmentId = (typeof ENVIRONMENT_IDS)[number];
 export type SceneId = "landing" | "galaxy" | EnvironmentId;
 
-export const isEnvironment = (scene: SceneId): scene is EnvironmentId =>
-  (ENVIRONMENT_IDS as readonly string[]).includes(scene);
+export const isEnvironment = (value: string): value is EnvironmentId =>
+  (ENVIRONMENT_IDS as readonly string[]).includes(value);
 
 // Config for a navigable object ("planet") in the galaxy scene.
 export interface PlanetPlacement {
