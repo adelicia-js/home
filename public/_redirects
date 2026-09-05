@@ -1,0 +1,2 @@
+# SPA history fallback: serve index.html (200) for any path that isn't a real file
+/*    /index.html    200
