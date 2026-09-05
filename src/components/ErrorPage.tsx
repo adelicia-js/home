@@ -1,8 +1,8 @@
 import styled, { ThemeProvider } from "styled-components";
 import { useRouteError } from "react-router-dom";
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
-import { theme } from "./styles/theme";
-import { GlobalStyle } from "./styles/globalStyles";
+import { theme } from "../styles/theme";
+import { GlobalStyle } from "../styles/globalStyles";
 
 export default function ErrorPage() {
   const error = useRouteError();

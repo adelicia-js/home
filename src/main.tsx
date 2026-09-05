@@ -1,30 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./pages/root";
-import ErrorPage from "./error-page";
-import AboutMe from "./pages/about";
-import Projects from "./pages/projects";
-import Roadmap from "./pages/roadmap";
+import App from "./App";
+import ErrorPage from "./components/ErrorPage";
 
+// App renders the scene machine, which derives the current scene from the URL.
+// The children exist so /explore and /explore/:planet match the App layout
+// (rather than 404ing); their elements are null because App ignores the Outlet.
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: null },
+      { path: "explore", element: null },
+      { path: "explore/:planet", element: null },
+    ],
   },
-  {
-    path: "/me",
-    element: <AboutMe />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/roadmap",
-    element: <Roadmap />,
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

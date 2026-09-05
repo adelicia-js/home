@@ -4,83 +4,16 @@ import styled, {
   DefaultTheme,
 } from "styled-components";
 
-interface GradientContainerProps {
-  gradient?: string;
-}
-
-interface FlexContainerProps {
-  direction?: string;
-  justify?: string;
-  align?: string;
-  gap?: string;
-}
-
-interface GridContainerProps {
-  columns?: string;
-  rows?: string;
-  gap?: string;
-  align?: string;
-  justify?: string;
-}
-
 export const textclip = keyframes`
   to {
     background-position: 200% top;
   }
 `;
 
-export const jump = keyframes`
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-20px);
-  }
-`;
-
-export const pulse = keyframes`
-  0% { scale: 100%; }
-  50% { scale: 105%; }
-  100% { scale: 100%; }
-`;
-
-export const groovy = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 50% 0%; }
-  100% { background-position: 0% 50%; }
-`;
-
-export const subtleFloat = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-`;
-
-export const slideInFromBottom = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(100vh);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-export const zoomInFromCenter = keyframes`
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
 export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   * {
     font-family: ${(props) =>
-      props.theme?.fonts.primary || '"Unbounded", sans-serif'};
+      props.theme?.fonts.primary || '"Inter", sans-serif'};
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -88,7 +21,7 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
 
   body {
     font-family: ${(props) =>
-      props.theme?.fonts.primary || '"Unbounded", sans-serif'};
+      props.theme?.fonts.primary || '"Inter", sans-serif'};
   }
 
   html, body {
@@ -113,52 +46,6 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
     animation: ${textclip} 5s ease infinite;
     display: inline-block;
     text-shadow: rgba(25, 61, 2, 0.28) 1px 1px 5px;
-  }
-
-  .scroll-down {
-    transform: translateX(-50%);
-    animation: ${jump} 1.7s infinite;
-  }
-
-  .beat {
-    animation: ${pulse} 7s linear infinite;
-  }
-
-  .animated-background {
-    background-image: ${(props) =>
-      props.theme?.gradients.animatedBackground ||
-      "linear-gradient(-90deg, #6170f8c9, #1026f0c9, #581fdec2, #8f65f0d0, #c265f0d0, #eb65f0c9, #ff88f9a4)"};
-    background-size: 200% auto;
-    animation: ${groovy} 30s ease-in-out infinite;
-    text-shadow: 1px 0.1px 3px #07463a4c;
-  }
-
-  .icons :visited {
-    color: #085c5c;
-  }
-
-  .icons :hover {
-    color: #1cab91;
-    text-shadow: 1px 0.1px 15px #99e2f6;
-  }
-
-  .pdf-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pdf-controls {
-    margin-bottom: 1rem;
-  }
-
-  .pdf-controls button {
-    margin: 0 0.5rem;
-  }
-
-  .pdf-content {
-    max-width: 100%;
-    overflow-x: auto;
   }
 
   /* Custom Scrollbar */
@@ -204,168 +91,39 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
   }
 `;
 
-export const Container = styled.div`
-  min-height: 100vh;
-  text-align: center;
-`;
-
-export const GradientContainer = styled(Container)<GradientContainerProps>`
-  background: ${(props) =>
-    props.gradient ||
-    props.theme?.gradients.primary ||
-    "linear-gradient(rgb(253, 224, 71), rgb(16, 185, 129), rgb(8, 145, 178))"};
-`;
-
-export const FlexContainer = styled.div<FlexContainerProps>`
-  display: flex;
-  flex-direction: ${(props) => props.direction || "row"};
-  justify-content: ${(props) => props.justify || "center"};
-  align-items: ${(props) => props.align || "center"};
-  gap: ${(props) => props.gap || "1rem"};
-`;
-
-export const GridContainer = styled.div<GridContainerProps>`
-  display: grid;
-  grid-template-columns: ${(props) => props.columns || "repeat(3, 1fr)"};
-  grid-template-rows: ${(props) => props.rows || "auto"};
-  gap: ${(props) => props.gap || "1rem"};
-  align-items: ${(props) => props.align || "center"};
-  justify-content: ${(props) => props.justify || "center"};
-`;
-
-export const GlassBox = styled.div`
-  background: linear-gradient(
-    -120deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  backdrop-filter: blur(10px) saturate(120%);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  display: flex;
-`;
-
-export const HomeLink = styled.a`
-  text-decoration: none;
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: linear-gradient(
-    135deg,
-    rgba(16, 185, 129, 0.15) 0%,
-    rgba(59, 130, 246, 0.15) 50%,
-    rgba(139, 69, 19, 0.15) 100%
-  );
-  backdrop-filter: blur(15px) saturate(150%);
-  -webkit-backdrop-filter: blur(15px) saturate(150%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: ${(props) =>
-    props.theme?.fonts?.secondary || '"Inter", sans-serif'};
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+// Top-level wrapper for the whole experience.
+export const AppRoot = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
-  z-index: 1000;
-  width: 3.5rem;
-  height: 3.5rem;
+  background: ${(props) => props.theme?.play.night || "#070a18"};
+`;
+
+// Circular glass icon button for scene navigation (back-to-landing, back-to-galaxy).
+// Corner-anchored; override position via inline style/styled when needed.
+export const IconNavButton = styled.button`
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-
-  @media (max-width: 768px) {
-    bottom: 1rem;
-    left: 89%;
-    transform: translateX(-50%);
-
-    &:hover {
-      transform: translateX(-50%) translateY(-2px) scale(1.03);
-    }
-
-    &:active {
-      transform: translateX(-50%) translateY(-1px) scale(1.01);
-    }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    padding: 1.5px;
-    background: linear-gradient(
-      135deg,
-      rgba(16, 185, 129, 0.5),
-      rgba(59, 130, 246, 0.5),
-      rgba(139, 69, 19, 0.5)
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  color: ${(props) => props.theme?.play.goldSoft || "#f4e7c1"};
+  background: rgba(10, 14, 30, 0.55);
+  border: 2px solid ${(props) => props.theme?.play.gold || "#e6b84c"};
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    transform: translateY(-2px) scale(1.03);
-    color: rgba(255, 255, 255, 1);
-    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2),
-      0 8px 15px rgba(59, 130, 246, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  &:active {
-    transform: translateY(-1px) scale(1.01);
-  }
-`;
-
-export const HomeLinkGradientIcon = styled.div`
-  display: inline-block;
-  background: linear-gradient(135deg, #10b981, #3b82f6, #8b4513);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transform: scaleX(-1);
-
-  svg {
-    width: 24px;
-    height: 24px;
-    display: block;
-    color: inherit; /* this makes stroke="currentColor" pick up the gradient */
-
-    @media (max-width: 768px) {
-      width: 18px;
-      height: 18px;
-    }
-  }
-
-  ${HomeLink}:hover & {
-    background: linear-gradient(135deg, #34d399, #60a5fa, #a0522d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  ${HomeLink}:hover & svg linearGradient stop:nth-child(1) {
-    stop-color: #34d399;
-  }
-  ${HomeLink}:hover & svg linearGradient stop:nth-child(2) {
-    stop-color: #60a5fa;
-  }
-  ${HomeLink}:hover & svg linearGradient stop:nth-child(3) {
-    stop-color: #a0522d;
+    background: rgba(20, 26, 48, 0.82);
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(230, 184, 76, 0.45);
   }
 `;

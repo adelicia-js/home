@@ -6,6 +6,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
+  { ignores: ['dist', 'build', 'node_modules', 'scribble'] },
   js.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
@@ -32,6 +33,9 @@ export default [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      // TypeScript checks for undefined identifiers itself; the base rule gives
+      // false positives on type-only references (e.g. HTMLDivElement) and DOM globals.
+      'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',

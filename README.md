@@ -1,16 +1,15 @@
 # Adelicia's Portfolio 🧜🏽‍♀️
 
-A modern, responsive portfolio website showcasing my journey as a full-stack developer. Built with React, Vite, TypeScript, and styled-components, featuring smooth animations and an elegant gradient design.
+An interactive portfolio reimagined as a little space adventure: a wormhole landing with a stranded-astronaut NPC, a galaxy hub of object-portals, and navigable environments. Built with React, Vite, TypeScript, and styled-components.
 
 ## 🌟 Features
 
-- **Responsive Design**: Fully responsive across all devices with mobile-first approach
-- **Modern Tech Stack**: React 18, TypeScript, Vite, styled-components
-- **Smooth Animations**: Interactive hover effects and smooth scrolling
-- **Professional Layout**: Clean, modern design with gradient backgrounds
-- **Social Integration**: Direct links to GitHub, LinkedIn, and email
-- **Resume Access**: Built-in PDF resume viewer
-- **Performance Optimized**: Fast loading with Vite's HMR and build optimization
+- **Interactive experience**: Wormhole landing → galaxy hub → environments, driven by client-side scene state (no page reloads)
+- **Modern Tech Stack**: React 18, TypeScript, Vite, styled-components, framer-motion
+- **Game-style dialogue**: Typewriter text in a pixel font (Silkscreen) with Yes/No choices
+- **Living backdrops**: Drifting gradients, a parallax starfield, and gently floating characters
+- **Responsive Design**: Mobile-first, full-viewport scenes
+- **Performance Optimized**: Lazy-loaded galaxy chunk, Vite HMR and build optimization
 
 ## 🛠️ Tech Stack
 
@@ -66,58 +65,57 @@ npm run type-check   # Run TypeScript compiler without emitting files
 ```
 home/
 ├── src/
-│   ├── pages/           # Page components
-│   │   ├── root.tsx     # Homepage with navigation
-│   │   ├── about.tsx    # About me page
-│   │   ├── projects.tsx # Projects showcase
-│   │   └── roadmap.tsx  # Development roadmap
-│   ├── styles/          # Styling system
-│   │   ├── globalStyles.ts  # Global styles and gradient container
-│   │   ├── theme.ts         # Design tokens and theme
-│   │   └── styled.d.ts      # TypeScript declarations
-│   ├── error-page.tsx   # Error boundary component
-│   ├── main.tsx         # Application entry point
-│   └── utils.ts         # Utility functions
+│   ├── main.tsx           # Entry: single "/" route (App) + ErrorPage
+│   ├── App.tsx            # App shell: ThemeProvider + GlobalStyle + SceneMachine
+│   ├── components/        # UI grouped by scene area
+│   │   ├── SceneMachine.tsx    # Renders the current scene
+│   │   ├── ErrorPage.tsx       # Route error element
+│   │   ├── landing/            # WormholeScene (the landing)
+│   │   ├── galaxy/             # GalaxyScene + PlanetButton + background layers
+│   │   └── environments/       # PlaceholderEnv (the five sections)
+│   ├── hooks/             # useSceneMachine (scene state + transitions)
+│   ├── data/              # galaxyLayout.ts (planet placements)
+│   ├── types/             # scene.ts (scene ids + guards + PlanetPlacement)
+│   └── styles/            # theme.ts, styled.d.ts, globalStyles.ts, animations.ts
 ├── public/
-│   ├── screenshots/     # Project screenshots
-│   ├── ady-resume.pdf   # Resume document
-│   ├── me.jpg          # Profile photo
-│   └── triquetra.ico   # Favicon
-└── dist/               # Production build output
+│   ├── objects/          # astronaut.webp, rocket.webp
+│   ├── planets/          # planet-1..3.webp
+│   ├── landing/          # wormhole.webp, clutter.webp
+│   ├── galaxy/           # clutter.webp, spiral-galaxy.svg
+│   ├── screenshots/      # Project screenshots (for the future Projects env)
+│   ├── ady-resume.pdf    # Resume document
+│   ├── me.jpg            # Profile photo
+│   └── triquetra.ico     # Favicon (+ triquetra.png)
+└── dist/                 # Production build output
 ```
 
 ## 🎨 Design System
 
-The portfolio uses a carefully crafted design system with:
+The experience uses a space-themed design system:
 
-- **Color Palette**: Emerald green gradients with sea-inspired shadows
-- **Typography**: Mix of default fonts and Space Mono for tech elements
-- **Responsive Breakpoints**: Mobile-first with sm (640px), md (768px), lg (1024px)
-- **Animation**: Smooth transitions and hover effects throughout
-- **Accessibility**: Semantic HTML and proper contrast ratios
+- **Color Palette**: Deep-space indigos and purples with teal and warm gold accents (`theme.play`)
+- **Typography**: Inter for base/UI text, Silkscreen (pixel) for the game dialogue
+- **Responsive**: Mobile-first, full-viewport scenes; media queries written inline
+- **Animation**: Drifting gradients and starfields, floating characters, typewriter dialogue
+- **Accessibility**: Semantic buttons with `aria-label`s, reduced-motion-friendly transitions
 
-## 📱 Pages Overview
+## 📱 Experience Overview
 
-### Homepage (`/`)
-- Hero section with animated introduction
-- Tech stack showcase: React | Next.js | Vite | Node.js | Figma | Vercel
-- Social media links with hover animations
-- Navigation menu with scroll animations
+### Landing
+- A spinning wormhole portal on a drifting starfield
+- Adelicia the astronaut as an NPC — click her for a typewriter dialogue (Yes/No)
+- Enter the wormhole to fly through to the galaxy
 
-### About Me (`/me`)
-- Personal background and journey
-- Skills and experience highlights
-- Professional interests and goals
+### Galaxy hub
+- A vibrant drifting gradient + parallax starfield
+- Five object-portals — About, Projects, Resume, Contact, Hobbies — that float and label on hover
 
-### Projects (`/projects`) 
-- Curated portfolio of development projects
-- Project screenshots and descriptions
-- Links to live demos and source code
+### Environments
+- One per portal; currently placeholders ("environment coming soon")
+- Real content will be ported in from the pre-play pages (kept locally in `scribble/_legacy/`, gitignored) + `public/` assets
 
-### Resume (`/ady-resume.pdf`)
-- Direct access to downloadable PDF resume
-- Professional experience and education
-- Skills and certifications
+### Resume
+- Served as a static asset at `/ady-resume.pdf`
 
 ## 🌐 Deployment
 
