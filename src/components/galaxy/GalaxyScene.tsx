@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import CssGradient from "./galaxy/CssGradient";
-import Starfield2D from "./galaxy/Starfield2D";
-import SpaceClutter from "./galaxy/SpaceClutter";
-import PlanetButton from "./galaxy/PlanetButton";
-import { PLANETS } from "./galaxy/galaxyLayout";
-import { IconNavButton } from "../styles/playStyles";
-import { EnvironmentId } from "../types";
+import CssGradient from "./CssGradient";
+import Starfield2D from "./Starfield2D";
+import SpaceClutter from "./SpaceClutter";
+import PlanetButton from "./PlanetButton";
+import { PLANETS } from "../../data/galaxyLayout";
+import { IconNavButton } from "../../styles/globalStyles";
+import { EnvironmentId } from "../../types/scene";
 
 interface GalaxySceneProps {
   onSelectPlanet: (id: EnvironmentId) => void;

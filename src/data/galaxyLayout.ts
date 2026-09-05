@@ -1,20 +1,4 @@
-import { EnvironmentId } from "../../types";
-
-export interface PlanetPlacement {
-  id: EnvironmentId;
-  label: string;
-  src: string;
-  // Centre position as % of the stage, and size in vmin (width).
-  xPct: number;
-  yPct: number;
-  sizeVmin: number;
-  glow: string;
-  // Width / height of the art, so non-square objects (astronaut, rocket) get a
-  // tight button. Defaults to 1 (planets are ~square).
-  aspect?: number;
-  // Characters (astronaut, rocket) gently bob; planets stay still.
-  float?: boolean;
-}
+import { PlanetPlacement } from "../types/scene";
 
 // Extracted art (public/planets + public/objects) scattered across the stage.
 // id -> section mapping is easily swapped here.

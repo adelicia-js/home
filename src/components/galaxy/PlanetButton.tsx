@@ -1,6 +1,6 @@
-import styled, { keyframes, css } from "styled-components";
-import { PlanetPlacement } from "./galaxyLayout";
-import { EnvironmentId } from "../../types";
+import styled, { css } from "styled-components";
+import { EnvironmentId, PlanetPlacement } from "../../types/scene";
+import { floatBob } from "../../styles/animations";
 
 interface PlanetButtonProps {
   planet: PlanetPlacement;
@@ -41,11 +41,6 @@ const Btn = styled.button`
   &:hover {
     transform: translate(-50%, -50%) scale(1.08);
   }
-`;
-
-const floatBob = keyframes`
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7%) rotate(-2deg); }
 `;
 
 const Img = styled.img<{ $float: boolean }>`

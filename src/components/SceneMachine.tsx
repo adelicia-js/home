@@ -1,12 +1,13 @@
-import { useState, useCallback, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import WormholeScene from "./scenes/WormholeScene";
-import PlaceholderEnv from "./scenes/PlaceholderEnv";
-import { SceneId, EnvironmentId } from "./types";
+import WormholeScene from "./landing/WormholeScene";
+import PlaceholderEnv from "./environments/PlaceholderEnv";
+import { useSceneMachine } from "../hooks/useSceneMachine";
+import { isEnvironment } from "../types/scene";
 
 // Lazy so the galaxy's assets/CSS land in a separate chunk, loaded only once the
 // visitor leaves the landing.
-const GalaxyScene = lazy(() => import("./scenes/GalaxyScene"));
+const GalaxyScene = lazy(() => import("./galaxy/GalaxyScene"));
 
 const variants = {
   initial: { opacity: 0 },
@@ -14,19 +15,9 @@ const variants = {
   exit: { opacity: 0 },
 };
 
-const isEnvironment = (scene: SceneId): scene is EnvironmentId =>
-  scene === "about" ||
-  scene === "projects" ||
-  scene === "resume" ||
-  scene === "contact" ||
-  scene === "hobbies";
-
 export default function SceneMachine() {
-  const [scene, setScene] = useState<SceneId>("landing");
-
-  const enterGalaxy = useCallback(() => setScene("galaxy"), []);
-  const enterEnvironment = useCallback((id: EnvironmentId) => setScene(id), []);
-  const backToLanding = useCallback(() => setScene("landing"), []);
+  const { scene, enterGalaxy, enterEnvironment, backToLanding } =
+    useSceneMachine();
 
   return (
     <AnimatePresence mode="wait">

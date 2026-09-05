@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { EnvironmentId } from "../types";
-import { play } from "../styles/playStyles";
+import { EnvironmentId } from "../../types/scene";
 
 interface PlaceholderEnvProps {
   id: EnvironmentId;
@@ -46,7 +45,7 @@ const Env = styled.div<{ $bg: string }>`
   justify-content: center;
   gap: 1rem;
   background: ${(p) => p.$bg};
-  color: ${play.goldSoft};
+  color: ${({ theme }) => theme.play.goldSoft};
 `;
 
 const EnvTitle = styled.h1`
@@ -69,7 +68,7 @@ const BackButton = styled.button`
   padding: 0.6rem 1.1rem;
   font-family: "Inter", sans-serif;
   font-size: 0.8rem;
-  color: ${play.goldSoft};
+  color: ${({ theme }) => theme.play.goldSoft};
   background: rgba(10, 14, 30, 0.45);
   border: 1px solid rgba(246, 226, 160, 0.4);
   border-radius: 4px;

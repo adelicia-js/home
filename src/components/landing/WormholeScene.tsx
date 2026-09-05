@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
 import { motion } from "framer-motion";
+import { floatBob } from "../../styles/animations";
 
 interface WormholeSceneProps {
   onEnter: () => void;
@@ -193,11 +194,6 @@ const Wormhole = styled.img`
   animation: ${spin} 60s linear infinite;
 `;
 
-const floatBob = keyframes`
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7%) rotate(-2deg); }
-`;
-
 const Astronaut = styled.button`
   position: absolute;
   left: 70%;
@@ -241,7 +237,7 @@ const Marker = styled.span`
   left: 40%;
   top: -15%;
   transform: translate(-50%, 0);
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
   font-weight: 700;
   font-size: clamp(1.4rem, 3vmin, 2.2rem);
   color: #ffd23f;
@@ -260,7 +256,7 @@ const Dialogue = styled(motion.div)`
   width: fit-content;
   max-width: 94vw;
   padding: 1rem 1.2rem;
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
   color: #e9e4f6;
   background: rgba(10, 8, 22, 0.72);
   border: 2px solid rgba(180, 150, 255, 0.5);
@@ -272,17 +268,17 @@ const Dialogue = styled(motion.div)`
 const Line = styled.p`
   position: relative;
   margin: 0;
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
   font-size: 0.78rem;
   line-height: 1.7;
   white-space: nowrap;
 `;
 
 // Reserves the full line width but stays invisible; the typed copy sits on top.
-// Both carry the pixel font explicitly so the global `*` reset can't force
-// Unbounded onto them (and so their widths match exactly).
+// Both carry the pixel font explicitly so the global `*` reset can't force the
+// base font onto them (and so their widths match exactly).
 const Ghost = styled.span`
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
   visibility: hidden;
 `;
 
@@ -290,7 +286,7 @@ const Typed = styled.span`
   position: absolute;
   left: 0;
   top: 0;
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
 `;
 
 const Choices = styled.div`
@@ -302,7 +298,7 @@ const Choices = styled.div`
 const Choice = styled.button`
   flex: 1;
   padding: 0.5rem 0.8rem;
-  font-family: "Silkscreen", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: ${({ theme }) => theme.fonts.pixel};
   font-size: 0.72rem;
   color: #e9e4f6;
   background: rgba(180, 150, 255, 0.12);

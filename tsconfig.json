@@ -20,6 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "scribble/_legacy"],
+  "exclude": ["scribble/_legacy"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
