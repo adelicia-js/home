@@ -5,6 +5,9 @@ import { floatBob } from "../../styles/animations";
 
 interface WormholeSceneProps {
   onEnter: () => void;
+  // Warm the lazy galaxy chunk while the warp plays, so entering the galaxy never
+  // waits on a network fetch (and never shows the Suspense fallback).
+  onPreload?: () => void;
 }
 
 type Phase = "idle" | "asking" | "accepted" | "declined";
@@ -65,10 +68,17 @@ function TypeLine({ text, onDone }: { text: string; onDone?: () => void }) {
 // (Adelicia) as a game-style NPC. Click her to talk. Help her home and she
 // becomes draggable — drag her into the wormhole to enter. Decline and the
 // wormhole turns red, shakes, and sucks you in anyway. No title text.
-export default function WormholeScene({ onEnter }: WormholeSceneProps) {
+export default function WormholeScene({ onEnter, onPreload }: WormholeSceneProps) {
   const [entering, setEntering] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
   const [angry, setAngry] = useState(false);
+
+  // Kick off the galaxy chunk fetch as soon as entry is on the table (either path),
+  // so it's ready by the time the warp finishes and onEnter mounts the galaxy.
+  const beginEntering = () => {
+    onPreload?.();
+    setEntering(true);
+  };
 
   const stageRef = useRef<HTMLDivElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
@@ -81,7 +91,7 @@ export default function WormholeScene({ onEnter }: WormholeSceneProps) {
   // shakes for a beat, then pulls everything in.
   const handleDeclinedDone = () => {
     setAngry(true);
-    window.setTimeout(() => setEntering(true), 1400);
+    window.setTimeout(beginEntering, 1400);
   };
 
   // Dropped the astronaut: if her centre landed inside the wormhole, she shrinks
@@ -100,7 +110,7 @@ export default function WormholeScene({ onEnter }: WormholeSceneProps) {
         opacity: 0,
         transition: { duration: 0.4, ease: "easeIn" },
       });
-      setEntering(true);
+      beginEntering();
     } else {
       dropControls.start({
         x: 0,
@@ -114,9 +124,7 @@ export default function WormholeScene({ onEnter }: WormholeSceneProps) {
     <Stage
       ref={stageRef}
       animate={
-        entering
-          ? { scale: [1, 3.2, 6], opacity: [1, 1, 0] }
-          : { scale: 1, opacity: 1 }
+        entering ? { scale: [1, 3.2, 6] } : { scale: 1, opacity: 1 }
       }
       transition={{ duration: 0.85, ease: "easeIn", times: [0, 0.6, 1] }}
       onAnimationComplete={() => {
@@ -162,7 +170,13 @@ export default function WormholeScene({ onEnter }: WormholeSceneProps) {
             <>
               <TypeLine text="Hey there, I'm Adelicia. I'm stranded here. Can you help me get home?" />
               <Choices>
-                <Choice type="button" onClick={() => setPhase("accepted")}>
+                <Choice
+                  type="button"
+                  onClick={() => {
+                    onPreload?.();
+                    setPhase("accepted");
+                  }}
+                >
                   Yes
                 </Choice>
                 <Choice type="button" onClick={decline}>
