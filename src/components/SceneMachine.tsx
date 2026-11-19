@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import WormholeScene from "./landing/WormholeScene";
 import PlaceholderEnv from "./environments/PlaceholderEnv";
+import ProjectsEnv from "./environments/ProjectsEnv";
 import { useSceneMachine } from "../hooks/useSceneMachine";
 import { isEnvironment } from "../types/scene";
 
@@ -36,7 +37,10 @@ export default function SceneMachine() {
             <GalaxyScene onSelectPlanet={enterEnvironment} onBack={backToLanding} />
           </Suspense>
         )}
-        {isEnvironment(scene) && <PlaceholderEnv id={scene} onBack={enterGalaxy} />}
+        {scene === "projects" && <ProjectsEnv onBack={enterGalaxy} />}
+        {isEnvironment(scene) && scene !== "projects" && (
+          <PlaceholderEnv id={scene} onBack={enterGalaxy} />
+        )}
       </motion.div>
     </AnimatePresence>
   );
